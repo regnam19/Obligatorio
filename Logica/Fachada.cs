@@ -41,5 +41,10 @@ namespace Logica
             }
 
             return horariosLibres;        }
+
+        public Boolean HorarioDisponible(int idConsultorio, DateTime dia, int hora)
+        {
+            return daoh.horarioDisponible(idConsultorio, dia, hora);
+        }
     }
 }

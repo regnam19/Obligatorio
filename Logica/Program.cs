@@ -171,6 +171,11 @@ namespace Logica
                 Console.WriteLine("Ocupados: {0}", h);
             }
 
+            if (f.HorarioDisponible(1,dia,11))
+                Console.WriteLine("Disponible");
+            else
+                Console.WriteLine("NO Disponible");
+
 
             Console.ReadLine();
 

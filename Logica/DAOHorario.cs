@@ -45,6 +45,36 @@ namespace Logica
             return horarios;
         }
         
+        public Boolean horarioDisponible(int idConsultorio,DateTime dia,int hora)
+        {
+            Boolean disponible = true;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.horarioDia(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@id", idConsultorio);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                int horario = Convert.ToInt32(myReader["hora"]);
+                if (horario == hora)
+                    disponible = false;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+
+            return disponible;
+        }
     }
 }
