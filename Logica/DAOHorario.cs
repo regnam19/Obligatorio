@@ -13,7 +13,7 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
-        public List<int> horariosReservadorsDiaXProfesional(DateTime dia,int idConsultorio)
+        public List<int> horariosReservadosDiaXProfesional(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
 
