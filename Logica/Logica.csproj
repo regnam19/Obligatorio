@@ -49,6 +49,7 @@
     <Compile Include="DAOHorario.cs" />
     <Compile Include="DAOProfesional.cs" />
     <Compile Include="Enumerados.cs" />
+    <Compile Include="Fachada.cs" />
     <Compile Include="Horario.cs" />
     <Compile Include="Horarios.cs" />
     <Compile Include="Paciente.cs" />

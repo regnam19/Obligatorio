@@ -41,6 +41,7 @@ namespace Logica
             myReader.Close();
             myConnection.Close();
 
+            horarios.Sort();
             return horarios;
         }
         

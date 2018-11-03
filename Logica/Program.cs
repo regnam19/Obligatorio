@@ -12,7 +12,7 @@ namespace Logica
     {
         static void Main(string[] args)
         {
-
+            
             // cracion de 4 profesionales
 
             DateTime fechap1 = new DateTime(1990, 9, 1);
@@ -134,6 +134,11 @@ namespace Logica
             }
 
 
+
+            
+
+
+
             // Horarios_disponibles_ocupados_por_Consultorio();
 
             // conexion funcionando
@@ -144,25 +149,33 @@ namespace Logica
 
             DAOConsultorio daoc = new DAOConsultorio();
 
-            if (daoc.Member(1))
-                Console.Write("SI!");
-            else
-                Console.Write("NO!");
+            Fachada f = new Fachada();
+            DateTime dia = new DateTime(2018, 09, 01);
+            Console.WriteLine("horarios lires: ");
+            foreach(var h in f.HorariosLibresConsultorioDia(1,dia))
+            {
+                Console.WriteLine("Libre: {0}", h);
+            }
+            List<int> lista = new List<int>();
 
-            
+            lista = f.HorariosReservadosConsultorioDia(1, dia);
+            lista.Sort();
 
-            VOConsultorio voc = new VOConsultorio();
+            foreach (var h in lista)
+            {
+                Console.WriteLine("Ocupados: {0}", h);
+            }
 
-            voc = daoc.Find(1);
+            foreach (var h in f.HorariosReservadosConsultorioDia(1, dia))
+            {
+                Console.WriteLine("Ocupados: {0}", h);
+            }
 
-            Console.WriteLine("Hora inicio: {0}", voc.HoraInicio);
-
-
-            Console.WriteLine("Hora inicio: {0}", voc.HoraFin);
 
             Console.ReadLine();
 
             /*
+             * 
 
             // craecion de diccionario de profesionales
             Profesionales dicc = new Profesionales();
