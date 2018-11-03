@@ -22,7 +22,7 @@ namespace Logica
             this.Hora = hora;
             this.Dia = dia;
             this.IdConsultorio = idConsultorio;
-            this.Estado = Enumerados.Estado.libre;
+            this.Estado = Enumerados.Estado.disponible;
             this.Profesional = ciProfesional;
         }
 

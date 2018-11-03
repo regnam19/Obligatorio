@@ -33,7 +33,7 @@ namespace Logica
             this.hora = hora;
             this.dia = dia;
             this.idConsultorio = idConsultorio;
-            this.Estado = Enumerados.Estado.libre;
+            this.Estado = Enumerados.Estado.disponible;
             this.profesional = ciProfesional;
         }
 

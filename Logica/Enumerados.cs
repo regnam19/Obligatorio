@@ -10,9 +10,9 @@ namespace Logica
     {
         public enum Estado
         {
-            libre,
-            reservado,
-            confirmado
+            disponible,
+            pendiente,
+            reservado
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
-        public List<int> horariosReservadorsDia(DateTime dia,int idConsultorio)
+        public List<int> horariosReservadorsDiaXProfesional(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
 
@@ -45,7 +45,7 @@ namespace Logica
             return horarios;
         }
         
-        public Boolean horarioDisponible(int idConsultorio,DateTime dia,int hora)
+        public Boolean horarioDisponibleParaProfesional(int idConsultorio,DateTime dia,int hora)
         {
             Boolean disponible = true;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -76,5 +76,46 @@ namespace Logica
 
             return disponible;
         }
+        /*
+        public List<VOHorario> horariosProfesional(long ci)
+        {
+            // del dia de hoy en adelante
+            List<VOHorario> horarios = new List<VOHorario>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.horarioDia(), myConnection);
+
+            DateTime hoy = DateTime.Today;
+
+            myCommand.Parameters.AddWithValue("@dia", hoy);
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                //if 
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int hora = Convert.ToInt32(myReader["hora"]);
+                DateTime dia = Convert.ToDateTime(myReader["dia"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                long ciProfesional = Convert.ToInt64(myReader["ciProfesional"]);
+
+                horarios.Add(horario);
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            horarios.Sort();
+
+        }
+        */
     }
 }

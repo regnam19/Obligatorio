@@ -150,7 +150,8 @@ namespace Logica
             DAOConsultorio daoc = new DAOConsultorio();
 
             Fachada f = new Fachada();
-            DateTime dia = new DateTime(2018, 09, 01);
+            DateTime dia = new DateTime(2018, 09, 06);
+            /*
             Console.WriteLine("horarios lires: ");
             foreach(var h in f.HorariosLibresConsultorioDia(1,dia))
             {
@@ -175,7 +176,16 @@ namespace Logica
                 Console.WriteLine("Disponible");
             else
                 Console.WriteLine("NO Disponible");
+           */
 
+            Horario h = new Horario(7, 16, dia, 1, 11111111);
+
+            Console.WriteLine("{0}", h.Estado);
+
+            if(Equals(h.Estado.ToString(),"lisre"))
+            {
+                Console.WriteLine("SI");
+            }
 
             Console.ReadLine();
 

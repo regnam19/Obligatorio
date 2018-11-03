@@ -32,5 +32,11 @@ namespace Logica
             String consulta = "select * from consultorio where idConsultorio=@id";
             return consulta;
         }
+
+        public String horariosLibreProfesional()
+        {
+            String consulta = "select * from horario where dia > @dia and ciProfesional = @ci";
+            return consulta;
+        }
     }
 }
