@@ -44,6 +44,74 @@ namespace Logica
             horarios.Sort();
             return horarios;
         }
+
+        public List<int> horariosReservadosDiaXPaciente(DateTime dia,int idConsultorio)
+        {
+            List<int> horarios = new List<int>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.horarioDiaPacienteReservado(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@id", idConsultorio);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
+            myCommand.Parameters.AddWithValue("@hora", hora);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                int horario = Convert.ToInt32(myReader["hora"]);
+
+                horarios.Add(horario);
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            horarios.Sort();
+            return horarios;
+        }
+
+        public List<int> horariosLibresDiaXPaciente(DateTime dia,int idConsultorio)
+        {
+            List<int> horarios = new List<int>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.horarioDiaPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@id", idConsultorio);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
+            myCommand.Parameters.AddWithValue("@hora", hora);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                int horario = Convert.ToInt32(myReader["hora"]);
+
+                horarios.Add(horario);
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            horarios.Sort();
+            return horarios;
+        }
         
         public Boolean horarioDisponibleParaProfesional(int idConsultorio,DateTime dia,int hora)
         {

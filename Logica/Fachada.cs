@@ -18,6 +18,11 @@ namespace Logica
             return daoh.horariosReservadosDiaXProfesional(dia, idConsultorio);
         }
 
+        public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
+        {
+            return daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);
+        }
+
         public List<int> HorariosLibresConsultorioDiaParaProfesional(int idConsultorio, DateTime dia)
         {
             List<int> horariosLibres = new List<int>();
@@ -41,6 +46,20 @@ namespace Logica
             }
 
             return horariosLibres;        }
+
+
+
+        public List<int> HorariosLibresConsultorioDiaParaPaciente(int idConsultorio, DateTime dia)
+        {
+            List<int> horariosLibres = new List<int>();
+            VOHorario voh = new VOHorario();
+
+            List<int> horariosLibres = new List<int>();
+
+            horariosLibres = daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);
+
+            return horariosLibres;       
+        }
 
         public Boolean HorarioDisponible(int idConsultorio, DateTime dia, int hora)
         {
