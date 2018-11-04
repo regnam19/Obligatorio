@@ -13,6 +13,7 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
+        // sirve para ver los horarios que ya fueron reservados por profesionales
         public List<int> horariosReservadosDiaXProfesional(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
@@ -45,6 +46,7 @@ namespace Logica
             return horarios;
         }
 
+        
         public List<int> horariosReservadosDiaXPaciente(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
@@ -113,6 +115,7 @@ namespace Logica
             return horarios;
         }
         
+        // sirve para ver si una hora esta disponible para ser reservada por un profesional
         public Boolean horarioDisponibleParaProfesional(int idConsultorio,DateTime dia,int hora)
         {
             Boolean disponible = true;
