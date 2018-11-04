@@ -29,7 +29,7 @@ namespace Logica
 
         public String horariosDiaPaciente()
         {
-            String consulta = "select * from horario where dia = @dia and ciProfesional = @ci and estado = @estado";
+            String consulta = "select * from horario where dia = @dia and ciProfesional = @ci and estado = @estado and hora = @hora;
             return consulta;
         }
 

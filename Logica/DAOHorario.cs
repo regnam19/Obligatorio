@@ -90,6 +90,7 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@dia", dia);
             myCommand.Parameters.AddWithValue("@id", idConsultorio);
             myCommand.Parameters.AddWithValue("@estado", "disponible");
+            myCommand.Parameters.AddWithValue("@hora", hora);
 
             myCommand.ExecuteNonQuery();
 
