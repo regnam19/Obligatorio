@@ -27,6 +27,12 @@ namespace Logica
             return consulta;
         }
 
+        public String horariosDiaPaciente()
+        {
+            String consulta = "select * from horario where dia = @dia and ciProfesional = @ci and estado = @estado";
+            return consulta;
+        }
+
         public String consultorioObtener()
         {
             String consulta = "select * from consultorio where idConsultorio=@id";
@@ -38,5 +44,6 @@ namespace Logica
             String consulta = "select * from horario where dia > @dia and ciProfesional = @ci";
             return consulta;
         }
+
     }
 }
