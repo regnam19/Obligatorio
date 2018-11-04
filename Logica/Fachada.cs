@@ -56,7 +56,7 @@ namespace Logica
 
             List<int> horariosLibres = new List<int>();
 
-            horariosLibres = daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);
+            horariosLibres = daoh.horariosLibresDiaXPaciente(dia, idConsultorio);
 
             return horariosLibres;       
         }
