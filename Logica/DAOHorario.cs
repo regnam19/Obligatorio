@@ -46,7 +46,8 @@ namespace Logica
             return horarios;
         }
 
-        
+        // trae todos los horarios que ya estan reservados o confirmados, para un dia y consultorio 
+        // en particular (todos los no disponibles)
         public List<int> horariosReservadosDiaXPaciente(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
@@ -56,7 +57,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.horarioDiaPacienteReservado(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.horariosDiaPacienteReservado(), myConnection);
 
             myCommand.Parameters.AddWithValue("@dia", dia);
             myCommand.Parameters.AddWithValue("@id", idConsultorio);
@@ -80,6 +81,7 @@ namespace Logica
             return horarios;
         }
 
+        // trae los horarios que estan disponibles para los pacientes, en determinado dia en un consultorio
         public List<int> horariosLibresDiaXPaciente(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
@@ -89,7 +91,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.horarioDiaPacienteLibre(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.horariosDiaPacienteLibre(), myConnection);
 
             myCommand.Parameters.AddWithValue("@dia", dia);
             myCommand.Parameters.AddWithValue("@id", idConsultorio);
@@ -146,6 +148,7 @@ namespace Logica
             return disponible;
         }
 
+        // sirve para ver si un horario en particular esta disponible para ser reservaod por un paciente
         public Boolean horarioDisponibleParaPacientes(int idConsultorio,DateTime dia, int hora)
         {
             Boolean disponible = true;
