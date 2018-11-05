@@ -148,10 +148,10 @@ namespace Logica
             return disponible;
         }
 
-        // sirve para ver si un horario en particular esta disponible para ser reservaod por un paciente
+        // sirve para ver si un horario en particular esta disponible para ser reservado por un paciente
         public Boolean horarioDisponibleParaPacientes(int idConsultorio,DateTime dia, int hora)
         {
-            Boolean disponible = true;
+            Boolean disponible = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
 
@@ -168,9 +168,10 @@ namespace Logica
 
             SqlDataReader myReader = myCommand.ExecuteReader();
 
-            if (myReader.HasRows = false)
+            if (myReader.HasRows)
             {
-                disponible = false;
+                Console.WriteLine("Entro IF");
+                disponible = true;
             }
 
             myReader.Close();
