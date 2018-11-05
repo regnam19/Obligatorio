@@ -13,6 +13,17 @@ namespace Logica
         DAOHorario daoh = new DAOHorario();
         DAOConsultorio daoc = new DAOConsultorio();
 
+        //singleton
+        private static Fachada instancia = null;
+        
+        public static Fachada GetInstancia()
+        {
+            if (instancia == null)
+                instancia = new Fachada();
+            return instancia;
+        }
+
+        //operaciones 
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosDiaXProfesional(dia, idConsultorio);
@@ -54,7 +65,7 @@ namespace Logica
             List<int> horariosLibres = new List<int>();
             VOHorario voh = new VOHorario();
 
-            List<int> horariosLibres = new List<int>();
+            //List<int> horariosLibres = new List<int>();
 
             horariosLibres = daoh.horariosLibresDiaXPaciente(dia, idConsultorio);
 
