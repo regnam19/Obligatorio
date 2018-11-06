@@ -28,9 +28,9 @@ namespace Logica
             DAOConsultorio daoc = new DAOConsultorio();
 
             Fachada f = new Fachada();
-            DateTime dia = new DateTime(2018, 09, 08);
+            DateTime dia = new DateTime(2018, 09, 02);
 
-           foreach(var horario in daoh.horariosReservadosDiaXPaciente(dia,1))
+           foreach(var horario in daoh.horasLibresProfesional(dia,33333333))
             {
                 Console.WriteLine("Horario: {0}", horario);
             }

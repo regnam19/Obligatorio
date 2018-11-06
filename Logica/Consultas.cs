@@ -57,5 +57,17 @@ namespace Logica
             return consulta;
         }
 
+        public String horariosLibresPacienteTotales()
+        {
+            String consulta = "select * from horario where dia > @dia and estado = @estado";
+            return consulta;
+        }
+
+        public String horariosLibresProfesional()
+        {
+            String consulta = "select hora from horario where ciProfesional = @ci and estado = @estado and dia=@dia";
+            return consulta;
+        }
+
     }
 }

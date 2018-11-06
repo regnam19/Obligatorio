@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class VOHorario
+    public class VOHorario
     {
         public long IdHorario { get; set; }
         public int Hora { get; set; }
