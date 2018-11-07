@@ -61,6 +61,7 @@
     <Compile Include="VOHorario.cs" />
     <Compile Include="VOHorarioDisponible.cs" />
     <Compile Include="VOHorarioInsertarPaciente.cs" />
+    <Compile Include="VOHorarioPaciente.cs" />
     <Compile Include="VOProfesional.cs" />
   </ItemGroup>
   <ItemGroup>

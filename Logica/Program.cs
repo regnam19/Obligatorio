@@ -32,9 +32,10 @@ namespace Logica
 
             VOHorarioInsertarPaciente voh = new VOHorarioInsertarPaciente(8, 12345678);
 
-            daoh.insertarHorarioPaciente(voh);
+            foreach (var horario in daoh.horariosPaciente(12345678))
+                Console.WriteLine("Horario: {0}", horario.Hora);
 
-           
+            Console.ReadLine();
             /*
             Console.WriteLine("horarios lires: ");
             foreach(var h in f.HorariosLibresConsultorioDia(1,dia))

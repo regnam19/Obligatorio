@@ -77,11 +77,16 @@ namespace Logica
             return daoh.horarioDisponibleParaProfesional(idConsultorio, dia, hora);
         }
 
-
+        // requerimiento 1
         public void reservaProfesional(VOHorarioInsertarPaciente vohip)
         {
             daoh.insertarHorarioPaciente(vohip);
         }
         
+        // requerimiento 2
+        public List<VOHorarioPaciente> horariosPaciente(long ciPaciente)
+        {
+           return  daoh.horariosPaciente(ciPaciente);
+        }
     }
 }

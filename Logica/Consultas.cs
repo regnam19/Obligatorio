@@ -86,5 +86,11 @@ namespace Logica
             String consulta = "update horario set ciPaciente = @ciPaciente, estado = @estado where idHorario = @idHorario";
             return consulta;
         }
+
+        public String listarHorariosPaciente()
+        {
+            String consulta = "select * from horario where ciPaciente = @ciPaciente and dia > @dia";
+            return consulta;
+        }
     }
 }
