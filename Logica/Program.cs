@@ -30,12 +30,11 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 02);
 
-           foreach(var horario in daoh.horasLibresProfesional(dia,33333333))
-            {
-                Console.WriteLine("Horario: {0}", horario);
-            }
+            VOHorarioInsertarPaciente voh = new VOHorarioInsertarPaciente(8, 12345678);
 
+            daoh.insertarHorarioPaciente(voh);
 
+           
             /*
             Console.WriteLine("horarios lires: ");
             foreach(var h in f.HorariosLibresConsultorioDia(1,dia))
@@ -63,17 +62,7 @@ namespace Logica
                 Console.WriteLine("NO Disponible");
            */
 
-            Horario h = new Horario(7, 16, dia, 1, 11111111);
-
-            Console.WriteLine("{0}", h.Estado);
-
-            if(Equals(h.Estado.ToString(),"lisre"))
-            {
-                Console.WriteLine("SI");
-            }
-
-            Console.ReadLine();
-
+        
             /*
              * 
 

@@ -48,7 +48,6 @@
     <Compile Include="DAOConsultorio.cs" />
     <Compile Include="DAOHorario.cs" />
     <Compile Include="DAOProfesional.cs" />
-    <Compile Include="Enumerados.cs" />
     <Compile Include="Fachada.cs" />
     <Compile Include="Horario.cs" />
     <Compile Include="Horarios.cs" />
@@ -60,6 +59,8 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="VOConsultorio.cs" />
     <Compile Include="VOHorario.cs" />
+    <Compile Include="VOHorarioDisponible.cs" />
+    <Compile Include="VOHorarioInsertarPaciente.cs" />
     <Compile Include="VOProfesional.cs" />
   </ItemGroup>
   <ItemGroup>

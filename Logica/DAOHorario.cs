@@ -13,6 +13,74 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
+        public Boolean Member(long idHorario)
+        {
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.memberHorario(), myConnection);
+
+ 
+            myCommand.Parameters.AddWithValue("@id", idHorario);
+
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+            if (myReader.HasRows)
+            {
+                existe = true;
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
+
+        }
+
+        public VOHorario Find (long idHorario)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.findHorario(), myConnection);
+
+            DateTime hoy = DateTime.Today;
+
+            myCommand.Parameters.AddWithValue("@id", idHorario);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                int hora = Convert.ToInt32(myReader["hora"]);
+                DateTime dia = Convert.ToDateTime(myReader["dia"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                long ciProfesional = Convert.ToInt64(myReader["ciProfesional"]);
+                String estado = Convert.ToString(myReader["estado"]);
+                long ciPaciente = Convert.ToInt64(myReader["ciPaciente"]);
+                VOHorario voh = new VOHorario(idHorario,hora,dia,idConsultorio,ciProfesional,estado,ciPaciente);
+
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+           
+            return voh;
+
+        }
+
         // sirve para ver los horarios que ya fueron reservados por profesionales
         public List<int> horariosReservadosConsultorios(DateTime dia,int idConsultorio)
         {
@@ -130,7 +198,7 @@ namespace Logica
             DateTime hoy = DateTime.Today;
 
             myCommand.Parameters.AddWithValue("@dia", hoy);
-            myCommand.Parameters.AddWithValue("@estado", Enumerados.Estado.disponible);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
 
             myCommand.ExecuteNonQuery();
 
@@ -218,9 +286,9 @@ namespace Logica
 
 
         // para requerimiento 1, tras los hroarios disponibles para un profesional en un dias
-       public List<int> horasLibresProfesional(DateTime dia,long ciProfesional)
+       public List<VOHorarioDisponible> horasLibresProfesional(DateTime dia,long ciProfesional)
         {
-            List<int> horarios = new List<int>();
+            List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -232,7 +300,7 @@ namespace Logica
 
             myCommand.Parameters.AddWithValue("@ci", ciProfesional);
             myCommand.Parameters.AddWithValue("@dia", dia);
-            myCommand.Parameters.AddWithValue("@estado", Enumerados.Estado.disponible.ToString());
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
 
             myCommand.ExecuteNonQuery();
 
@@ -241,12 +309,16 @@ namespace Logica
 
             while (myReader.Read())
             {
-                int horario = Convert.ToInt32(myReader["hora"]);
-                horarios.Add(horario);
 
+                int hora = Convert.ToInt32(myReader["hora"]);
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+
+                VOHorarioDisponible vohd = new VOHorarioDisponible(idHorario, hora, idConsultorio);
+
+                horarios.Add(vohd);
             }
 
-            horarios.Sort();
             myReader.Close();
             myConnection.Close();
 
@@ -255,6 +327,21 @@ namespace Logica
 
         }
 
+        public void insertarHorarioPaciente(VOHorarioInsertarPaciente vho)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarHorarioPaciente(), myConnection);
+    
+            myCommand.Parameters.AddWithValue("@idHorario", vho.IdHorario);
+            myCommand.Parameters.AddWithValue("@ciPaciente", vho.CiPaciente);
+            myCommand.Parameters.AddWithValue("@estado", "reservado");
+
+            myCommand.ExecuteNonQuery();
+        }
 
         /*
         public List<VOHorario> horariosProfesional(long ci)

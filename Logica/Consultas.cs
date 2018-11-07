@@ -65,9 +65,26 @@ namespace Logica
 
         public String horariosLibresProfesional()
         {
-            String consulta = "select hora from horario where ciProfesional = @ci and estado = @estado and dia=@dia";
+            String consulta = "select hora, idHorario, idConsultorio from horario where ciProfesional = @ci and estado = @estado and dia=@dia order by idConsultorio, hora";
             return consulta;
         }
 
+        public String memberHorario()
+        {
+            String consulta = "select idHorario from horario where idHorario = @id";
+            return consulta;
+        }
+
+        public String findHorario()
+        {
+            String consulta = "select * from horario where idHorario = @id";
+            return consulta;
+        }
+
+        public String insertarHorarioPaciente()
+        {
+            String consulta = "update horario set ciPaciente = @ciPaciente, estado = @estado where idHorario = @idHorario";
+            return consulta;
+        }
     }
 }

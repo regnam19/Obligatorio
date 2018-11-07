@@ -24,16 +24,16 @@ namespace Logica
 
 
 
-        public Enumerados.Estado Estado { get; set; }
+        public String Estado { get; set; }
         public long Paciente { get; set; }
 
-        public Horario (long idHorario, int hora, DateTime dia,int idConsultorio,long ciProfesional)
+        public Horario (long idHorario, int hora, DateTime dia,int idConsultorio,long ciProfesional,String estado)
         {
             this.idHorario = idHorario;
             this.hora = hora;
             this.dia = dia;
             this.idConsultorio = idConsultorio;
-            this.Estado = Enumerados.Estado.disponible;
+            this.Estado = estado;
             this.profesional = ciProfesional;
         }
 

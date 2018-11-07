@@ -78,9 +78,9 @@ namespace Logica
         }
 
 
-        public void reservaProfesional(VOHorario voh)
+        public void reservaProfesional(VOHorarioInsertarPaciente vohip)
         {
-
+            daoh.insertarHorarioPaciente(vohip);
         }
         
     }
