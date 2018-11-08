@@ -12,7 +12,7 @@ namespace Logica
 
         DAOHorario daoh = new DAOHorario();
         DAOConsultorio daoc = new DAOConsultorio();
-
+        //prueba git
         //singleton
         private static Fachada instancia = null;
         
