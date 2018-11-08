@@ -87,7 +87,7 @@ namespace Logica
         // requerimiento 2
         public void cancelarHoraPaciente(long idHorario)
         {
-
+            daoh.cancelarHoraPaciente(idHorario);
         }
         
         // requerimiento 3

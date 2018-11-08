@@ -92,5 +92,11 @@ namespace Logica
             String consulta = "select * from horario where ciPaciente = @ciPaciente and dia > @dia";
             return consulta;
         }
+
+        public String cancelarHorarioPaciente()
+        {
+            String consulta = "update  horario set ciPaciente = null ,estado = @estado where idHorario = @idHorario;";
+            return consulta;
+        }
     }
 }

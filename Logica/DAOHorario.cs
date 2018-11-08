@@ -343,6 +343,8 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@estado", "reservado");
 
             myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
         }
 
         // para requerimiento 3, trae los horarios reservados y confirmados de un paciente de la fecha de hoy en adelante
@@ -386,7 +388,23 @@ namespace Logica
             return horarios;
         }
         
+        // para requerimiento 2
+        public void cancelarHoraPaciente(long idHorario)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.cancelarHorarioPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
         
         
         
