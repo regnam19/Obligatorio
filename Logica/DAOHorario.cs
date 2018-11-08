@@ -345,7 +345,7 @@ namespace Logica
             myCommand.ExecuteNonQuery();
         }
 
-        // para requerimiento 2, trae los horarios reservados y confirmados de un paciente de la fecha de hoy en adelante
+        // para requerimiento 3, trae los horarios reservados y confirmados de un paciente de la fecha de hoy en adelante
         public List<VOHorarioPaciente> horariosPaciente(long ciPaciente)
         {
             List<VOHorarioPaciente> horarios = new List<VOHorarioPaciente>();

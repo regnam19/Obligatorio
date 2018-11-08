@@ -82,8 +82,15 @@ namespace Logica
         {
             daoh.insertarHorarioPaciente(vohip);
         }
-        
+
+
         // requerimiento 2
+        public void cancelarHoraPaciente(long idHorario)
+        {
+
+        }
+        
+        // requerimiento 3
         public List<VOHorarioPaciente> horariosPaciente(long ciPaciente)
         {
            return  daoh.horariosPaciente(ciPaciente);
