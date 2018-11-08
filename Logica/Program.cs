@@ -30,10 +30,7 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 02);
 
-            VOHorarioInsertarPaciente voh = new VOHorarioInsertarPaciente(8, 12345678);
-
-            foreach (var horario in daoh.horariosPaciente(12345678))
-                Console.WriteLine("Horario: {0}", horario.Hora);
+            daoh.aceptarCancelarHorarioProfesional(7, "confirmado");
 
             Console.ReadLine();
             /*

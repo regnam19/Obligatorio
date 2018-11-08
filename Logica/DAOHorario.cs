@@ -183,6 +183,7 @@ namespace Logica
             horarios.Sort();
             return horarios;
         }
+        
         // trae todos los horarios disponibles para los pacientes de hoy en adelante
         public List<VOHorario> horariosDisponiblePaciente()
         {
@@ -343,6 +344,8 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@estado", "reservado");
 
             myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
         }
 
         // para requerimiento 3, trae los horarios reservados y confirmados de un paciente de la fecha de hoy en adelante
@@ -386,9 +389,101 @@ namespace Logica
             return horarios;
         }
         
+        // para requerimiento 2, pone un horario en disponible y ciPaciente en null
+        public void cancelarHoraPaciente(long idHorario)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.cancelarHorarioPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
         
+        // para requerimiento 4 trae todos los horarios que tenga en estado reservado un profesional
+        public List<VOHorarioReservadoProfesional> horariosReservadosProfesional(long ciProfesional)
+        {
+            List<VOHorarioReservadoProfesional> horarios = new List<VOHorarioReservadoProfesional>();
+
+            DateTime dia = DateTime.Today;
+
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.listarHorariosRservadosProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
+            myCommand.Parameters.AddWithValue("@estado","reservado");
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int hora = Convert.ToInt32(myReader["hora"]);
+                dia = Convert.ToDateTime(myReader["dia"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                long ciPaciente = Convert.ToInt64(myReader["ciPaciente"]);
+                String estado = Convert.ToString(myReader["estado"]);
+                VOHorarioReservadoProfesional voh = new VOHorarioReservadoProfesional(idHorario, hora, dia, idConsultorio, estado, ciPaciente);
+
+                horarios.Add(voh);
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+
+            return horarios; 
+        }
         
+        // para requerimiento 4, se le pasa un horario y un estado y cambia el estado a ese horario
+        public void aceptarCancelarHorarioProfesional(long idHorario, Boolean confirmado)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            if(confirmado)
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(consulta.aceptarHorarioProfesional(), myConnection);
+
+                myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+                myCommand.Parameters.AddWithValue("@estado", "confirmado");
+
+                myCommand.ExecuteNonQuery();
+
+                myConnection.Close();
+
+            }
+            else
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(consulta.cancelarHorarioProfesional(), myConnection);
+
+                myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+                myCommand.Parameters.AddWithValue("@estado", "disponible");
+
+                myCommand.ExecuteNonQuery();
+
+                myConnection.Close();
+            }
+           
+        }
         
         /*
         public List<VOHorario> horariosProfesional(long ci)
