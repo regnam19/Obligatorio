@@ -30,7 +30,7 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 02);
 
-            f.cancelarHoraPaciente(8);
+            daoh.aceptarCancelarHorarioProfesional(7, "confirmado");
 
             Console.ReadLine();
             /*
