@@ -45,6 +45,14 @@ namespace webServiceObligatorio
             }
             return temperatura;
             }
+
+        [WebMethod]
+        public void reservaProfesional(long idHorario, long ciPaciente)
+        {
+            Fachada fach = new Fachada();
+            VOHorarioInsertarPaciente voInsertar = new VOHorarioInsertarPaciente(idHorario, ciPaciente);
+            fach.reservaProfesional(voInsertar);
+        }
         }
     }
 
