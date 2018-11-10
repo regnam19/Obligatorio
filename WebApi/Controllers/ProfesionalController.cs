@@ -15,11 +15,12 @@ namespace WebApi.Controllers
         public IEnumerable<WebApi.Models.Profesional> GetProfesioales()
         {
             Fachada fach = new Fachada();
-            var lista = fach.listaProfesionales();
-            WebApi.Models.Profesional[] profesionales = new WebApi.Models.Profesional[lista.LongCount()];
+            
+            WebApi.Models.Profesional[] profesionales = new WebApi.Models.Profesional[fach.listaProfesionales().LongCount()];
             int i = 0;
-            foreach(var prof in lista)
+            foreach(var prof in fach.listaProfesionales())
             {
+                profesionales[i] = new Models.Profesional();
                 profesionales[i].nombre = prof.Nombre;
                 profesionales[i].apellido = prof.Apellido;
                 profesionales[i].fechaNacimiento = prof.FechaNac;
