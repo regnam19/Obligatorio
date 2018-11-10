@@ -114,6 +114,8 @@ namespace Logica
             return horarios;
         }
 
+
+
         // trae todos los horarios que ya estan reservados o confirmados, para un dia y consultorio 
         // en particular (todos los no disponibles)
         // HAY QUE VER PARA QUE SIRVE

@@ -14,11 +14,6 @@ namespace Logica
         {
             
            
-
-           
-
-            
-
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -30,14 +25,12 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 22);
 
-            VOInsertarHorario v = new VOInsertarHorario(16, dia, 1, 22222222);
-
-            foreach(var h in daoh.listarHorariosProfesional(11111111))
+            foreach(var p in daop.listarProfesionales())
             {
-                Console.WriteLine("Idconsultorio: {0}", h.IdConsultorio);
-                Console.WriteLine("Fecha: {0}", h.Dia);
-                Console.WriteLine("Hora: {0}", h.Hora);
+                Console.WriteLine("Nombre: {0}", p.Nombre);
             }
+
+            
             Console.ReadLine();
             /*
             Console.WriteLine("horarios lires: ");

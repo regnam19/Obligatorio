@@ -78,7 +78,7 @@ namespace Logica
             return vop;
         }
 
-        public List<VOProfesional> listar()
+        public List<VOProfesional> listarProfesionales()
         {
             List<VOProfesional> lista = new List<VOProfesional>();
 
