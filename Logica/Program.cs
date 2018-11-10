@@ -25,7 +25,7 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 22);
 
-            foreach(var p in daop.listarProfesionales())
+            foreach(var p in f.listaProfesionales())
             {
                 Console.WriteLine("Nombre: {0}", p.Nombre);
                 Console.WriteLine("Especialidad: {0}", p.Especialidad);
