@@ -11,6 +11,7 @@ namespace Logica
         public Fachada() { }
 
         DAOHorario daoh = new DAOHorario();
+        DAOProfesional daop = new DAOProfesional();
         DAOConsultorio daoc = new DAOConsultorio();
         //prueba git
         //singleton
@@ -70,6 +71,11 @@ namespace Logica
             horariosLibres = daoh.horariosLibresDiaXPaciente(dia, idConsultorio);
 
             return horariosLibres;       
+        }
+
+        public List<VOListarProfesional> listaProfesionales()
+        {
+            return daop.listarProfesionales();
         }
 
         public Boolean HorarioDisponible(int idConsultorio, DateTime dia, int hora)
