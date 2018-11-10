@@ -8,14 +8,27 @@
     <div>
         <h1>Profesionales</h1>
         <ul id="profesionales"></ul>
-
     </div>
-
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"> </script>
+    <div>
+        <input type="text" id="cedulaProfesional"  size="20" />
+        <input type="button" value="buscar" onclick="traerProfesional();" />
+    </div>
+    <ul id="tirar"></ul>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
 
     <script>
 
         var url = '/api/Profesional';
+
+        function traerProfesional() {
+            $.getJSON('api/Profesional/' + cedulaProfesional.value)
+                .done(function (data) {
+                        $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
+                });
+        }
+
+
+
         $(document).ready(function () {
             $.getJSON(url)
                 .done(function (data) {
@@ -31,7 +44,7 @@
             return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
         }
 
-       
+
     </script>
 </body>
 </html>
