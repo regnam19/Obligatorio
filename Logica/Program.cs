@@ -28,6 +28,7 @@ namespace Logica
             foreach(var p in daop.listarProfesionales())
             {
                 Console.WriteLine("Nombre: {0}", p.Nombre);
+                Console.WriteLine("Especialidad: {0}", p.Especialidad);
             }
 
             

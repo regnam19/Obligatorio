@@ -78,9 +78,9 @@ namespace Logica
             return vop;
         }
 
-        public List<VOProfesional> listarProfesionales()
+        public List<VOListarProfesional> listarProfesionales()
         {
-            List<VOProfesional> lista = new List<VOProfesional>();
+            List<VOListarProfesional> lista = new List<VOListarProfesional>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -95,14 +95,11 @@ namespace Logica
 
             while (myReader.Read())
             {
-                long cedula = Convert.ToInt64(myReader["ci"]);
                 String nombre = Convert.ToString(myReader["nombre"]);
                 String apellido = Convert.ToString(myReader["apellido"]);
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
-                String celular = Convert.ToString(myReader["celular"]);
-                Boolean habilitado = Convert.ToBoolean(myReader["habilitado"]);
                 String especialidad = Convert.ToString(myReader["especialidad"]);
-                VOProfesional vop = new VOProfesional(cedula, nombre, apellido, fecha, celular, habilitado, especialidad);
+                VOListarProfesional vop = new VOListarProfesional(nombre, apellido, fecha, especialidad);
 
                 lista.Add(vop);
 

@@ -65,6 +65,7 @@
     <Compile Include="VOHorarioProfesional.cs" />
     <Compile Include="VOHorarioReservadoProfesional.cs" />
     <Compile Include="VOInsertarHorario.cs" />
+    <Compile Include="VOListarProfesional.cs" />
     <Compile Include="VOProfesional.cs" />
   </ItemGroup>
   <ItemGroup>

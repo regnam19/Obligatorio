@@ -10,8 +10,7 @@ namespace Logica
     {
         public String profesionalListar()
         {
-            String consulta = "select * from profesional";
-
+            String consulta = "select nombre, apellido, fechaNacimiento, especialidad from profesional where habilitado=1";
             return consulta;
         }
 
