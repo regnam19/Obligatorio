@@ -116,5 +116,23 @@ namespace Logica
             String consulta = "update horario set estado = @estado, ciPaciente = null where idHorario = @idHorario";
             return consulta;
         }
+
+        public String obtenerIdHorario()
+        {
+            String consulta = "select top 1 idHorario from horario  order by idHorario desc; ";
+            return consulta;
+        }
+
+        public String insertarHorario()
+        {
+            String consulta = "insert into horario (idHorario,hora,dia,idConsultorio,ciProfesional,estado) values(@idHorario,@hora,@dia,@idConsultorio,@ciProfesional,@estado);";
+            return consulta;
+        }
+
+        public String obtenerHorarioProfecional()
+        {
+            String consulta = "select idHorario, hora, dia, idConsultorio, ciPaciente from horario where ciProfesional = @ciProfesional and dia > @dia and estado = @estado order by dia,idConsultorio;";
+            return consulta;
+        }
     }
 }

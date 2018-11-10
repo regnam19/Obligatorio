@@ -62,11 +62,15 @@
     <Compile Include="VOHorarioDisponible.cs" />
     <Compile Include="VOHorarioInsertarPaciente.cs" />
     <Compile Include="VOHorarioPaciente.cs" />
+    <Compile Include="VOHorarioProfesional.cs" />
     <Compile Include="VOHorarioReservadoProfesional.cs" />
+    <Compile Include="VOInsertarHorario.cs" />
     <Compile Include="VOProfesional.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

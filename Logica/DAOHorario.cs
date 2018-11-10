@@ -286,7 +286,7 @@ namespace Logica
         }
 
 
-        // para requerimiento 1, tras los hroarios disponibles para un profesional en un dias
+        // para requerimiento 1, tras los hroarios disponibles para un profesional en un dia
        public List<VOHorarioDisponible> horasLibresProfesional(DateTime dia,long ciProfesional)
         {
             List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
@@ -485,6 +485,108 @@ namespace Logica
            
         }
         
+
+        // para requerimiento 5
+        public void insertarHorarioProfesional(VOInsertarHorario voih)
+        {
+
+            long idHorario = this.obtenerIdHorario();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+
+           
+            SqlCommand myCommand = new SqlCommand(consulta.insertarHorario(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+            myCommand.Parameters.AddWithValue("@hora", voih.Hora);
+            myCommand.Parameters.AddWithValue("@dia", voih.Dia);
+            myCommand.Parameters.AddWithValue("@idConsultorio", voih.IdConsultorio);
+            myCommand.Parameters.AddWithValue("@ciProfesional", voih.Profesional);
+            myCommand.Parameters.AddWithValue("@estado", "disponible");
+            
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
+
+        // para requerimiento 5
+        public long obtenerIdHorario()
+        {
+            long idHorario = 0;
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.obtenerIdHorario(), myConnection);
+
+         
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                idHorario = Convert.ToInt64(myReader["idHorario"]) + 1;
+
+
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+            return idHorario;
+        }
+
+
+        // para requerimiento 6, se le pasa una cedula de un profesional y devuelve los horarios confirmados
+        public List<VOHorarioProfesional> listarHorariosProfesional(long ciProfesional)
+        {
+            List<VOHorarioProfesional> horarios = new List<VOHorarioProfesional>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            //DateTime dia = DateTime.Today;
+
+            DateTime dia = new DateTime(2018, 1, 1);
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.obtenerHorarioProfecional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
+            myCommand.Parameters.AddWithValue("@estado", "confirmado");
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int hora = Convert.ToInt32(myReader["hora"]);
+                dia = Convert.ToDateTime(myReader["dia"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                long ciPaciente = Convert.ToInt64(myReader["ciPaciente"]);
+
+                VOHorarioProfesional vo = new VOHorarioProfesional(idHorario, hora, dia, idConsultorio, ciPaciente);
+                horarios.Add(vo);
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return horarios;
+        }
+
         /*
         public List<VOHorario> horariosProfesional(long ci)
         {

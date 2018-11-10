@@ -28,12 +28,16 @@ namespace Logica
             DAOConsultorio daoc = new DAOConsultorio();
 
             Fachada f = new Fachada();
-            DateTime dia = new DateTime(2018, 09, 02);
+            DateTime dia = new DateTime(2018, 09, 22);
 
-            VOHorarioInsertarPaciente v = new VOHorarioInsertarPaciente(9, 12345678);
+            VOInsertarHorario v = new VOInsertarHorario(16, dia, 1, 22222222);
 
-
-            f.reservaProfesional(v);
+            foreach(var h in daoh.listarHorariosProfesional(11111111))
+            {
+                Console.WriteLine("Idconsultorio: {0}", h.IdConsultorio);
+                Console.WriteLine("Fecha: {0}", h.Dia);
+                Console.WriteLine("Hora: {0}", h.Hora);
+            }
             Console.ReadLine();
             /*
             Console.WriteLine("horarios lires: ");
