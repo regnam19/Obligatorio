@@ -14,11 +14,43 @@
         <input type="button" value="buscar" onclick="traerProfesional();" />
     </div>
     <ul id="tirar"></ul>
+
+    <div>
+        <h3>Cedula Profesional</h3>
+        <input type="text" id="profesional" size="20" />
+        <h3>Id Horario</h3>
+        <input type="text" id="fecha" />
+        <input type="button" value="Reservar" onclick="reservarHora(); "/>
+    </div>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
 
     <script>
 
         var url = '/api/Profesional';
+
+        function reservarHora() {
+            var cedulaProfesional = $('#cedulaProfesional').val();
+            var fecha = $('#fecha').val();
+
+            var Horario = {
+                cedula: cedulaProfesional,
+                fecha: fecha
+            };
+
+            var info_reserva = JSON.stringify(Horario);
+            $.ajax({
+                url: 'api/Horario',
+                cache: false,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8'
+                data: info,
+                dataType: 'json',
+                success: function (data) {
+                    alert('Se agrego el horario');
+                    location.reload;
+                }
+            });
+        }
 
         function traerProfesional() {
             $.getJSON('api/Profesional/' + cedulaProfesional.value)
