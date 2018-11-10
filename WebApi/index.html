@@ -5,6 +5,33 @@
     <title>TITULO</title>
 </head>
 <body>
+    <div>
+        <h1>Profesionales</h1>
+        <ul id="profesionales"></ul>
 
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"> </script>
+
+    <script>
+
+        var url = '/api/Profesional';
+        $(document).ready(function () {
+            $.getJSON(url)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('<li>', { text: formatear(item) }).appendTo($('#profesionales'));
+                    });
+                });
+        });
+
+
+
+        function formatear(item) {
+            return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
+        }
+
+       
+    </script>
 </body>
 </html>
