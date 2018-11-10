@@ -36,7 +36,7 @@ namespace WebApi.Controllers
             WebApi.Models.Profesional p = new WebApi.Models.Profesional();
             p.nombre = fach.darProfesional(id).Nombre;
             p.apellido = fach.darProfesional(id).Apellido;
-            p.nombre = fach.darProfesional(id).Especialidad;
+            p.especialidad = fach.darProfesional(id).Especialidad;
             return p;
         }
 
