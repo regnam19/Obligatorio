@@ -30,8 +30,10 @@ namespace Logica
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 02);
 
-            daoh.aceptarCancelarHorarioProfesional(7, true);
+            VOHorarioInsertarPaciente v = new VOHorarioInsertarPaciente(9, 12345678);
 
+
+            f.reservaProfesional(v);
             Console.ReadLine();
             /*
             Console.WriteLine("horarios lires: ");
