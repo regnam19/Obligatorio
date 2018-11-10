@@ -29,5 +29,14 @@ namespace WebApi.Controllers
             return profesionales;
             
         }
+        public WebApi.Models.Profesional GetProfesioales(long id)
+        {
+            Fachada fach = new Fachada();
+            WebApi.Models.Profesional p = new WebApi.Models.Profesional();
+            p.nombre = fach.darProfesional(id).Nombre;
+            p.apellido = fach.darProfesional(id).Apellido;
+            p.nombre = fach.darProfesional(id).Especialidad;
+            return p;
+        }
     }
 }

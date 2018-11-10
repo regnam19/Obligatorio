@@ -30,6 +30,11 @@ namespace Logica
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
         }
 
+        public VOProfesional darProfesional(long ced)
+        {
+            return daop.Find(ced);
+        }
+
         public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);
