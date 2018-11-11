@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+using Logica.WINFORMS;
 
 namespace Logica
 {
@@ -12,8 +14,8 @@ namespace Logica
     {
         static void Main(string[] args)
         {
-            
            
+           // Application.Run(new Login());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -60,7 +62,7 @@ namespace Logica
                 Console.WriteLine("NO Disponible");
            */
 
-        
+
             /*
              * 
 

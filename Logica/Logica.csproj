@@ -35,6 +35,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,9 +47,9 @@
   <ItemGroup>
     <Compile Include="Consultas.cs" />
     <Compile Include="Consultorio.cs" />
-    <Compile Include="DAOConsultorio.cs" />
-    <Compile Include="DAOHorario.cs" />
-    <Compile Include="DAOProfesional.cs" />
+    <Compile Include="DAOS\DAOConsultorio.cs" />
+    <Compile Include="DAOS\DAOHorario.cs" />
+    <Compile Include="DAOS\DAOProfesional.cs" />
     <Compile Include="Fachada.cs" />
     <Compile Include="Horario.cs" />
     <Compile Include="Horarios.cs" />
@@ -57,21 +59,50 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="VOConsultorio.cs" />
-    <Compile Include="VOHorario.cs" />
-    <Compile Include="VOHorarioDisponible.cs" />
-    <Compile Include="VOHorarioInsertarPaciente.cs" />
-    <Compile Include="VOHorarioPaciente.cs" />
-    <Compile Include="VOHorarioProfesional.cs" />
-    <Compile Include="VOHorarioReservadoProfesional.cs" />
-    <Compile Include="VOInsertarHorario.cs" />
-    <Compile Include="VOListarProfesional.cs" />
-    <Compile Include="VOProfesional.cs" />
+    <Compile Include="VO\VOConsultorio.cs" />
+    <Compile Include="VO\VOHorario.cs" />
+    <Compile Include="VO\VOHorarioDisponible.cs" />
+    <Compile Include="VO\VOHorarioInsertarPaciente.cs" />
+    <Compile Include="VO\VOHorarioPaciente.cs" />
+    <Compile Include="VO\VOHorarioProfesional.cs" />
+    <Compile Include="VO\VOHorarioReservadoProfesional.cs" />
+    <Compile Include="VO\VOInsertarHorario.cs" />
+    <Compile Include="VO\VOListarProfesional.cs" />
+    <Compile Include="VO\VOProfesional.cs" />
+    <Compile Include="WINFORMS\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WINFORMS\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WINFORMS\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WINFORMS\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WINFORMS\Registros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WINFORMS\Registros.Designer.cs">
+      <DependentUpon>Registros.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WINFORMS\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WINFORMS\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WINFORMS\Registros.resx">
+      <DependentUpon>Registros.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
