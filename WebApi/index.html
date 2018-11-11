@@ -33,7 +33,7 @@
             var fecha = $('#fecha').val();
 
             var Horario = {
-                cedula: cedulaProfesional,
+                cedula: profesional,
                 fecha: fecha
             };
 
@@ -42,8 +42,8 @@
                 url: 'api/Horario',
                 cache: false,
                 type: 'POST',
-                contentType: 'application/json; charset=utf-8'
-                data: info,
+                contentType: 'application/json; charset=utf-8',
+                data: info_reserva,
                 dataType: 'json',
                 success: function (data) {
                     alert('Se agrego el horario');
