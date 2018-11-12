@@ -17,8 +17,8 @@ namespace Logica
         public Boolean Member(long ci)
         {
             Boolean existe = false;
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
+            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
 
@@ -44,8 +44,8 @@ namespace Logica
         
         public VOProfesional Find(long ci)
         {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
+            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
 
@@ -83,8 +83,8 @@ namespace Logica
         {
             List<VOListarProfesional> lista = new List<VOListarProfesional>();
 
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
+            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
 

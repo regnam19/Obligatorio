@@ -120,7 +120,7 @@
             this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "XPOLogistics - Admin";
+            this.Text = "Admin";
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
             this.ResumeLayout(false);

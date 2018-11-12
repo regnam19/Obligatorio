@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Consultas.cs" />
     <Compile Include="Consultorio.cs" />
     <Compile Include="DAOS\DAOConsultorio.cs" />
