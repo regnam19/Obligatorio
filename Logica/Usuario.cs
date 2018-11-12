@@ -6,30 +6,25 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public abstract class Usuario
+    class Usuario
     {
-        private long ci;
-        private String nombre;
-        private String apellido;
-        private DateTime fechaNac;
+        private int idUsuario;
+        private String usuario;
+        private String contraseña;
+        private String rol;
 
-        public long Ci { get { return this.ci; } }
-        public String Nombre { get { return this.nombre; } }
-        public String Apellido { get { return this.apellido; } }
-        public DateTime FechaNac { get { return this.fechaNac; } }
+        public int IdUsuario { get { return this.idUsuario; } }
+        public String NomUsuario {  get { return this.usuario; } }
+        public String Contraseña { get { return this.contraseña; } }
+        public String Rol { get { return this.rol; } }
 
-        public String Celular { get; set; }
-        public bool Habilitado { get; set; }
-
-        public Usuario(long ci, String nombre, String apellido, DateTime fecha, String celular,bool habilitado)
+        public Usuario(int idUsuario, String usuario, String contraseña, String rol)
         {
-            this.ci = ci;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.fechaNac = fecha;
-            this.Celular = celular;
-            this.Habilitado = habilitado;
-        }
+            this.idUsuario = idUsuario;
+            this.usuario = usuario;
+            this.contraseña = contraseña;
+            this.rol = rol;
 
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Logica
         DAOHorario daoh = new DAOHorario();
         DAOProfesional daop = new DAOProfesional();
         DAOConsultorio daoc = new DAOConsultorio();
+        DAOUsuario daou = new DAOUsuario();
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -25,10 +26,18 @@ namespace Logica
         }
 
         //operaciones 
+
+        public String darRol (String user, String pass)
+        {
+            return daou.Rol(user, pass);
+
+        }
+      
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
         }
+
 
         public VOProfesional darProfesional(long ced)
         {

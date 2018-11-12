@@ -16,12 +16,18 @@ namespace Logica.WINFORMS
         {
             InitializeComponent();
         }
-        
+
         private void btnEnter_Click(object sender, EventArgs e)
         {
+            Fachada f = new Fachada();
             Principal frmPrincipal = new Principal();
-            frmPrincipal.Show();
-            Hide();
-        }
+            if (f.darRol(txtUser.Text, txtPassword.Text).Equals("admin"))
+            {
+                 frmPrincipal.Show();
+                 Hide();
+            } 
+                
+          }
+
     }
 }

@@ -6,20 +6,16 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Paciente : Usuario
+    class Paciente : Persona
     {
-        public String Direccion { get; set; }
-        public long CelularEmergencia { get; set; }
         public String ContactoEmergencia { get; set; }
         public String EmergenciaMovil { get; set; }
         public String Mutualista { get; set; }
 
         public Paciente (long ci, String nombre, String apellido,DateTime fecha, String celular, bool habilitado,
                             String direccion, long celularEmergencia,String contactoEmergencia,String emergenciaMovil,String mutualista)
-                            : base (ci, nombre, apellido, fecha, celular, habilitado)
+                            : base (ci, nombre, apellido, fecha, celular, direccion, habilitado)
         {
-            this.Direccion = direccion;
-            this.CelularEmergencia = celularEmergencia;
             this.ContactoEmergencia = contactoEmergencia;
             this.EmergenciaMovil = emergenciaMovil;
             this.Mutualista = mutualista;

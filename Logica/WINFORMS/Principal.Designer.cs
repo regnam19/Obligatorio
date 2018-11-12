@@ -30,10 +30,6 @@
         {
             this.lblRegisters = new System.Windows.Forms.Label();
             this.lblUsers = new System.Windows.Forms.Label();
-            this.lblSections = new System.Windows.Forms.Label();
-            this.lblSumary = new System.Windows.Forms.Label();
-            this.btnSumary = new System.Windows.Forms.Button();
-            this.btnSections = new System.Windows.Forms.Button();
             this.btnRegisters = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -51,58 +47,12 @@
             // lblUsers
             // 
             this.lblUsers.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsers.Location = new System.Drawing.Point(9, 228);
+            this.lblUsers.Location = new System.Drawing.Point(177, 20);
             this.lblUsers.Name = "lblUsers";
             this.lblUsers.Size = new System.Drawing.Size(150, 23);
             this.lblUsers.TabIndex = 5;
             this.lblUsers.Text = "USUARIOS";
             this.lblUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblSections
-            // 
-            this.lblSections.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSections.Location = new System.Drawing.Point(174, 20);
-            this.lblSections.Name = "lblSections";
-            this.lblSections.Size = new System.Drawing.Size(150, 23);
-            this.lblSections.TabIndex = 6;
-            this.lblSections.Text = "SECCIONES";
-            this.lblSections.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblSumary
-            // 
-            this.lblSumary.Enabled = false;
-            this.lblSumary.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSumary.Location = new System.Drawing.Point(174, 228);
-            this.lblSumary.Name = "lblSumary";
-            this.lblSumary.Size = new System.Drawing.Size(150, 23);
-            this.lblSumary.TabIndex = 7;
-            this.lblSumary.Text = "CALCULOS";
-            this.lblSumary.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblSumary.Visible = false;
-            // 
-            // btnSumary
-            // 
-            this.btnSumary.Enabled = false;
-            this.btnSumary.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSumary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSumary.Location = new System.Drawing.Point(177, 254);
-            this.btnSumary.Name = "btnSumary";
-            this.btnSumary.Size = new System.Drawing.Size(147, 151);
-            this.btnSumary.TabIndex = 3;
-            this.btnSumary.TabStop = false;
-            this.btnSumary.UseVisualStyleBackColor = true;
-            this.btnSumary.Visible = false;
-            // 
-            // btnSections
-            // 
-            this.btnSections.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSections.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSections.Location = new System.Drawing.Point(177, 46);
-            this.btnSections.Name = "btnSections";
-            this.btnSections.Size = new System.Drawing.Size(147, 151);
-            this.btnSections.TabIndex = 2;
-            this.btnSections.TabStop = false;
-            this.btnSections.UseVisualStyleBackColor = true;
             // 
             // btnRegisters
             // 
@@ -120,7 +70,7 @@
             // 
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.Location = new System.Drawing.Point(12, 254);
+            this.btnUsers.Location = new System.Drawing.Point(180, 46);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(147, 151);
             this.btnUsers.TabIndex = 0;
@@ -132,13 +82,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(339, 431);
-            this.Controls.Add(this.lblSumary);
-            this.Controls.Add(this.lblSections);
+            this.ClientSize = new System.Drawing.Size(340, 238);
             this.Controls.Add(this.lblUsers);
             this.Controls.Add(this.lblRegisters);
-            this.Controls.Add(this.btnSumary);
-            this.Controls.Add(this.btnSections);
             this.Controls.Add(this.btnRegisters);
             this.Controls.Add(this.btnUsers);
             this.MaximizeBox = false;
@@ -153,11 +99,7 @@
 
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Button btnRegisters;
-        private System.Windows.Forms.Button btnSections;
-        private System.Windows.Forms.Button btnSumary;
         private System.Windows.Forms.Label lblRegisters;
         private System.Windows.Forms.Label lblUsers;
-        private System.Windows.Forms.Label lblSections;
-        private System.Windows.Forms.Label lblSumary;
     }
 }

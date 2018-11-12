@@ -52,6 +52,7 @@ namespace Logica
             SqlCommand myCommand = new SqlCommand(consulta.profesionalObtenerUno(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@ciProfesional", ci);
 
             myCommand.ExecuteNonQuery();
 

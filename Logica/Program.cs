@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using Logica.WINFORMS;
 
+
 namespace Logica
 {
     class Program
@@ -15,7 +16,7 @@ namespace Logica
         static void Main(string[] args)
         {
            
-           // Application.Run(new Login());
+           Application.Run(new Login());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -24,10 +25,19 @@ namespace Logica
 
             DAOConsultorio daoc = new DAOConsultorio();
 
+            DAOUsuario daou = new DAOUsuario();
+
             Fachada f = new Fachada();
             DateTime dia = new DateTime(2018, 09, 22);
 
-            foreach(var p in f.listaProfesionales())
+           /* string rol = f.darRol("user", "user");
+            Console.WriteLine(rol);
+            Console.Read();
+
+           /* var pe = f.darProfesional(11111111);
+            Console.WriteLine("hola");
+
+            /*foreach (var p in f.listaProfesionales())
             {
                 Console.WriteLine("Nombre: {0}", p.Nombre);
                 Console.WriteLine("Especialidad: {0}", p.Especialidad);

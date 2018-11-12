@@ -8,15 +8,20 @@ namespace Logica
 {
     public class Consultas
     {
+        public String esAdmin()
+        {
+            string consulta = "select rol from usuario where usuario=@usuario and contraseña=@contraseña";
+            return consulta;
+        }
         public String profesionalListar()
         {
-            String consulta = "select nombre, apellido, fechaNacimiento, especialidad from profesional where habilitado=1";
+            String consulta = "select nombre, apellido, fechaNacimiento, especialidad  from profesional p, persona pe where pe.ci = p.ciProfesional";
             return consulta;
         }
 
         public String profesionalObtenerUno()
         {
-            String consulta = "Select * from profesional where ci=@ci";
+            String consulta = "Select * from profesional p, persona pe where p.ciProfesional = pe.ci and ciProfesional=@ci";
             return consulta;
         }
 
