@@ -17,6 +17,11 @@ namespace Logica.WINFORMS
             InitializeComponent();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Persona frmPersona = new Persona();
+            frmPersona.Show();
+            Hide();
+        }
     }
 }

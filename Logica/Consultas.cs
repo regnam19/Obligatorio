@@ -13,6 +13,17 @@ namespace Logica
             string consulta = "select rol from usuario where usuario=@usuario and contraseña=@contraseña";
             return consulta;
         }
+        public String buscarPersona()
+        {
+            string consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
+            return consulta;
+        }
+        public String insertarPersona()
+        {
+            string consulta = "insert into persona (ci,nombre,apellido,celular, direccion, habilitado) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado)";
+            return consulta;
+        }
+
         public String profesionalListar()
         {
             String consulta = "select nombre, apellido, fechaNacimiento, especialidad  from profesional p, persona pe where pe.ci = p.ciProfesional";

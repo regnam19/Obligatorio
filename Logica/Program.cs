@@ -15,8 +15,8 @@ namespace Logica
     {
         static void Main(string[] args)
         {
-           
-           Application.Run(new Login());
+
+            Application.Run(new WINFORMS.Persona());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -27,7 +27,25 @@ namespace Logica
 
             DAOUsuario daou = new DAOUsuario();
 
+            DAOPersona daope = new DAOPersona();
+
+            VOPersona vope = new VOPersona();
+
             Fachada f = new Fachada();
+
+            vope = f.darPersona(11111111);
+
+            Console.WriteLine(vope.Nombre);
+            Console.WriteLine(vope.Apellido);
+            Console.WriteLine(vope.Celular);
+            Console.WriteLine(vope.Direccion);
+            if (vope.Habilitado.Equals(true))
+                Console.WriteLine("Si");
+            else
+                Console.WriteLine("NO");
+
+
+            Console.Read();
             DateTime dia = new DateTime(2018, 09, 22);
 
            /* string rol = f.darRol("user", "user");

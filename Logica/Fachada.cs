@@ -14,6 +14,7 @@ namespace Logica
         DAOProfesional daop = new DAOProfesional();
         DAOConsultorio daoc = new DAOConsultorio();
         DAOUsuario daou = new DAOUsuario();
+        DAOPersona daope = new DAOPersona();
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -27,10 +28,20 @@ namespace Logica
 
         //operaciones 
 
+        public VOPersona darPersona(long ci)
+        {
+            return daope.find(ci);
+        }
+
         public String darRol (String user, String pass)
         {
             return daou.Rol(user, pass);
 
+        }
+
+        public void ingresarPersona(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        {
+            daope.insert(ci, nombre, apellido, celular, direccion, habilitado);
         }
       
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)

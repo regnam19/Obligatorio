@@ -50,6 +50,7 @@
     <Compile Include="Consultorio.cs" />
     <Compile Include="DAOS\DAOConsultorio.cs" />
     <Compile Include="DAOS\DAOHorario.cs" />
+    <Compile Include="DAOS\DAOPersona.cs" />
     <Compile Include="DAOS\DAOProfesional.cs" />
     <Compile Include="DAOS\DAOUsuario.cs" />
     <Compile Include="Fachada.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="VO\VOHorarioReservadoProfesional.cs" />
     <Compile Include="VO\VOInsertarHorario.cs" />
     <Compile Include="VO\VOListarProfesional.cs" />
+    <Compile Include="VO\VOPersona.cs" />
     <Compile Include="VO\VOProfesional.cs" />
     <Compile Include="VO\VOUsuario.cs" />
     <Compile Include="WINFORMS\Login.cs">
@@ -78,6 +80,12 @@
     </Compile>
     <Compile Include="WINFORMS\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WINFORMS\Persona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WINFORMS\Persona.Designer.cs">
+      <DependentUpon>Persona.cs</DependentUpon>
     </Compile>
     <Compile Include="WINFORMS\Principal.cs">
       <SubType>Form</SubType>
@@ -100,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="WINFORMS\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WINFORMS\Persona.resx">
+      <DependentUpon>Persona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WINFORMS\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

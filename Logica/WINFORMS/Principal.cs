@@ -19,7 +19,9 @@ namespace Logica.WINFORMS
 
         private void btnRegisters_Click(object sender, EventArgs e)
         {
-
+            Registros frmRegistros = new Registros();
+            frmRegistros.Show();
+            Hide();
         }
     }
 }

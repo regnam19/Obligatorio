@@ -12,7 +12,7 @@ namespace Logica
 
         public static string MyConnection
         {
-            get { return MyConnection; }
+            get { return myConnection; }
         }
     }
 }
