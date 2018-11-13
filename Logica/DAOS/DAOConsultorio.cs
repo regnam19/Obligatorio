@@ -17,7 +17,7 @@ namespace Logica
         {
 
             Boolean existe = false;
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
@@ -47,7 +47,7 @@ namespace Logica
         public VOConsultorio Find(long id)
         {
 
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();

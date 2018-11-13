@@ -17,7 +17,7 @@ namespace Logica
         public String Rol(String user, String pass)
         {
 
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
