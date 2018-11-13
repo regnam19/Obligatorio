@@ -17,7 +17,7 @@ namespace Logica
         public Boolean Member(long ci)
         {
             Boolean existe = false;
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString Initial"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();

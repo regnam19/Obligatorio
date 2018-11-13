@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Logica
 
         public VOPersona find (long ci)
         {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
