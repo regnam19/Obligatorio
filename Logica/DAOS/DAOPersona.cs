@@ -36,7 +36,8 @@ namespace Logica
                 DateTime fechaNacimiento = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String direccion = Convert.ToString(myReader["direccion"]);
                 bool habilitado = Convert.ToBoolean(myReader["habilitado"]);
-                vope = new VOPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado);
+                int idUsuario = Convert.ToInt32(myReader["idUsuario"]);
+                vope = new VOPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario);
 
             }
             return vope;
@@ -62,6 +63,43 @@ namespace Logica
 
             myConnection.Close();
            
+        }
+        public void update(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        {
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarPersona(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@nombre", nombre);
+            myCommand.Parameters.AddWithValue("@apellido", apellido);
+            myCommand.Parameters.AddWithValue("@celular", celular);
+            // myCommand.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
+            myCommand.Parameters.AddWithValue("@direccion", direccion);
+            myCommand.Parameters.AddWithValue("@habilitado", habilitado);
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+        public void delete(long ci)
+        {
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarPersona(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
         }
     }
 }

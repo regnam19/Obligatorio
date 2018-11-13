@@ -10,20 +10,49 @@ namespace Logica
     {
         public String esAdmin()
         {
-            string consulta = "select rol from usuario where usuario=@usuario and contraseña=@contraseña";
+            String consulta = "select rol from usuario where usuario=@usuario and contraseña=@contraseña";
             return consulta;
         }
         public String buscarPersona()
         {
-            string consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
+            String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario from persona where ci=@ci";
             return consulta;
         }
         public String insertarPersona()
         {
-            string consulta = "insert into persona (ci,nombre,apellido,celular, direccion, habilitado) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado)";
+            String consulta = "insert into persona (ci,nombre,apellido,celular, direccion, habilitado) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado)";
             return consulta;
         }
-
+        public String modificarPersona()
+        {
+            String consulta = "update persona set nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, habilitado = @habilitado where ci = @ci";
+            return consulta;
+        }
+        public String eliminarPersona()
+        {
+            String consulta = "delete from persona where ci = @ci";
+            return consulta;
+        }
+        public String eliminarProfesional()
+        {
+            String consulta = "delete from profesional where ciProfesional = @ci";
+            return consulta;
+        }
+        public String eliminarPaciente()
+        {
+            String consulta = "delete from paciente where ciPaciente = @ci";
+            return consulta;
+        }
+        public String eliminarHorarioProfesional()
+        {
+            String consulta = "delete from horario where ciProfesional = @ci";
+            return consulta;
+        }
+        public String eliminarHorarioPaciente()
+        {
+            String consulta = "delete from horario where ciPaciente =@ci";
+            return consulta;
+        }
         public String profesionalListar()
         {
             String consulta = "select nombre, apellido, fechaNacimiento, especialidad  from profesional p, persona pe where pe.ci = p.ciProfesional";
@@ -36,6 +65,31 @@ namespace Logica
             return consulta;
         }
 
+        public String pacienteObtenerUno()
+        {
+            String consulta = "Select * from paciente p, persona pe where p.ciPaciente= pe.ci and ciPaciente=@ci";
+            return consulta;
+        }
+        public String pacienteListar()
+        {
+            String consulta = "select nombre, apellido, fechaNacimiento, contactoEmergencia, emergenciaMovil, mutualista  from paciente p, persona pe where pe.ci = p.ciPaciente";
+            return consulta;
+        }
+        public String usuarioObtenerUno()
+        {
+            String consulta = "select * from usuario u, persona p where u.idUsuario = p.idUsuario and ci = @ci";
+            return consulta;
+        }
+        public String tieneHorarioProfesional()
+        {
+            String consulta = "select * from horario where ciProfesional = @ci ";
+            return consulta;
+        }
+        public String tieneHorarioPaciente()
+        {
+            String consulta = "select * from horario where ciPaciente = @ci ";
+            return consulta;
+        }
         public String horarioDia()
         {
             String consulta = "Select * from horario where idConsultorio=@id and dia=@dia";

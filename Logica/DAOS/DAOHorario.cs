@@ -13,6 +13,36 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
+        public void deleteHorarioProfesional(long ci)
+        {
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarHorarioProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+        public void deleteHorarioPaciente(long ci)
+        {
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarHorarioPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
         public Boolean Member(long idHorario)
         {
             Boolean existe = false;
@@ -41,6 +71,62 @@ namespace Logica
 
             return existe;
 
+        }
+
+        public Boolean ProfesionalTieneHorario(long ci)
+        {
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.tieneHorarioProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                existe = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
+        }
+
+        public Boolean PacienteTieneHorario(long ci)
+        {
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.tieneHorarioPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                existe = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
         }
 
         public VOHorario Find (long idHorario)

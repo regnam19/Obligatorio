@@ -15,6 +15,7 @@ namespace Logica
         DAOConsultorio daoc = new DAOConsultorio();
         DAOUsuario daou = new DAOUsuario();
         DAOPersona daope = new DAOPersona();
+        DAOPaciente daopa = new DAOPaciente();
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -33,6 +34,11 @@ namespace Logica
             return daope.find(ci);
         }
 
+        public VOUsuario darUsuario(long ci)
+        {
+            return daou.Find(ci);
+        }
+
         public String darRol (String user, String pass)
         {
             return daou.Rol(user, pass);
@@ -43,7 +49,44 @@ namespace Logica
         {
             daope.insert(ci, nombre, apellido, celular, direccion, habilitado);
         }
-      
+
+        public void modificarPersona(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        {
+            daope.update(ci, nombre, apellido, celular, direccion, habilitado);
+        }
+        public void eliminarPersona(long ci)
+        {
+            if (!daop.Member(ci) && (!daopa.Member(ci)))
+                daope.delete(ci);
+            else if (!daoh.ProfesionalTieneHorario(ci) && (!daoh.PacienteTieneHorario(ci)))
+            {
+                if (daop.Member(ci))
+                {
+                    daop.delete(ci);
+                    daope.delete(ci);
+                }else
+                {
+                    daopa.delete(ci);
+                    daope.delete(ci);
+                }
+                    
+            } else
+            {
+                if (daop.Member(ci))
+                {
+                    daoh.deleteHorarioProfesional(ci);
+                    daop.delete(ci);
+                    daope.delete(ci);
+                }
+                else
+                {
+                    daoh.deleteHorarioPaciente(ci);
+                    daopa.delete(ci);
+                    daope.delete(ci);
+                }
+            }     
+        }
+        
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
@@ -53,6 +96,11 @@ namespace Logica
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
+        }
+
+        public VOPaciente darPaciente(long ced)
+        {
+            return daopa.Find(ced);
         }
 
         public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
@@ -101,6 +149,10 @@ namespace Logica
         public List<VOListarProfesional> listaProfesionales()
         {
             return daop.listarProfesionales();
+        }
+        public List<VOPaciente> listarPacientes()
+        {
+            return daopa.listarPacientes();
         }
 
         public Boolean HorarioDisponible(int idConsultorio, DateTime dia, int hora)

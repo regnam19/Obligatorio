@@ -45,5 +45,37 @@ namespace Logica
 
 
         }
+        public VOUsuario Find(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.usuarioObtenerUno(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+
+                int idUsuario = Convert.ToInt32(myReader["idUsuario"]);
+                String usuario = Convert.ToString(myReader["usuario"]);
+                String contraseña = Convert.ToString(myReader["contraseña"]);
+                String rol = Convert.ToString(myReader["rol"]);
+                vous = new VOUsuario (idUsuario,usuario,contraseña,rol);
+
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return vous;
+        }
     }
 }

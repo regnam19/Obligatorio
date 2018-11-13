@@ -21,8 +21,9 @@ namespace Logica
         public String Celular { get; set; }
         public String Direccion { get; set; }
         public bool Habilitado { get; set; }
+        public int IdUsuario { get; set; }
 
-        public Persona(long ci, String nombre, String apellido, DateTime fecha, String celular, String direccion, bool habilitado)
+        public Persona(long ci, String nombre, String apellido, DateTime fecha, String celular, String direccion, bool habilitado, int idUsuario)
         {
             this.ci = ci;
             this.nombre = nombre;
@@ -31,6 +32,7 @@ namespace Logica
             this.Celular = celular;
             this.Direccion = direccion;
             this.Habilitado = habilitado;
+            this.IdUsuario = idUsuario;
         }
 
     }

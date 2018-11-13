@@ -16,8 +16,9 @@ namespace Logica
         public DateTime FechaNac { get; set; }
         public String Direccion { get; set; }
         public bool Habilitado { get; set; }
+        public int IdUsuario { get; set; }
 
-        public VOPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNac, String direccion, bool habilitado)
+        public VOPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNac, String direccion, bool habilitado, int idUsuario)
         {
             this.Ci = ci;
             this.Nombre = nombre;
@@ -26,6 +27,7 @@ namespace Logica
             this.FechaNac = fechaNac;
             this.Direccion = direccion;
             this.Habilitado = habilitado;
+            this.IdUsuario = IdUsuario;
         }
 
         public VOPersona() { }

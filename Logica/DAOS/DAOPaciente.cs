@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class DAOProfesional
+    public class DAOPaciente
     {
         Consultas consulta = new Consultas();
-     
-        VOProfesional vop;
+        VOPaciente vopa;
 
         public Boolean Member(long ci)
         {
@@ -22,7 +21,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.profesionalObtenerUno(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.pacienteObtenerUno(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 
@@ -41,15 +40,14 @@ namespace Logica
 
             return existe;
         }
-        
-        public VOProfesional Find(long ci)
+        public VOPaciente Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.profesionalObtenerUno(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.pacienteObtenerUno(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 
@@ -57,7 +55,7 @@ namespace Logica
 
             SqlDataReader myReader = myCommand.ExecuteReader();
 
-            
+
             while (myReader.Read())
             {
 
@@ -67,20 +65,23 @@ namespace Logica
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String celular = Convert.ToString(myReader["celular"]);
                 Boolean habilitado = Convert.ToBoolean(myReader["habilitado"]);
-                String especialidad = Convert.ToString(myReader["especialidad"]);
-                vop = new VOProfesional(cedula, nombre, apellido, fecha, celular, habilitado, especialidad);
+                String contactoEmergencia = Convert.ToString(myReader["contactoEmergencia"]);
+                String emergenciaMovil = Convert.ToString(myReader["emergenciaMovil"]);
+                String mutualista = Convert.ToString(myReader["mutualista"]);
+                vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado, contactoEmergencia, emergenciaMovil, mutualista);
 
-     
+
             }
             myReader.Close();
             myConnection.Close();
 
-            return vop;
+            return vopa;
         }
-
-        public List<VOListarProfesional> listarProfesionales()
+        //hacer un vo para listar paciente
+        
+        public List<VOPaciente> listarPacientes()
         {
-            List<VOListarProfesional> lista = new List<VOListarProfesional>();
+            List<VOPaciente> lista = new List<VOPaciente>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
@@ -88,7 +89,7 @@ namespace Logica
             myConnection.Open();
 
 
-            SqlCommand myCommand = new SqlCommand(consulta.profesionalListar (), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.pacienteListar(), myConnection);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
 
@@ -98,10 +99,12 @@ namespace Logica
                 String nombre = Convert.ToString(myReader["nombre"]);
                 String apellido = Convert.ToString(myReader["apellido"]);
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
-                String especialidad = Convert.ToString(myReader["especialidad"]);
-                VOListarProfesional vop = new VOListarProfesional(nombre, apellido, fecha, especialidad);
+                String contactoEmergencia = Convert.ToString(myReader["contactoEmergencia"]);
+                String emergenciaMovil = Convert.ToString(myReader["emergenciaMovil"]);
+                String mutualista = Convert.ToString(myReader["mutualista"]);
+               
 
-                lista.Add(vop);
+                lista.Add(vopa);
 
             }
             myReader.Close();
@@ -109,13 +112,14 @@ namespace Logica
 
             return lista;
         }
+
         public void delete(long ci)
         {
             SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.eliminarProfesional(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarPaciente(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 

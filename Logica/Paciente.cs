@@ -12,9 +12,9 @@ namespace Logica
         public String EmergenciaMovil { get; set; }
         public String Mutualista { get; set; }
 
-        public Paciente (long ci, String nombre, String apellido,DateTime fecha, String celular, bool habilitado,
-                            String direccion, long celularEmergencia,String contactoEmergencia,String emergenciaMovil,String mutualista)
-                            : base (ci, nombre, apellido, fecha, celular, direccion, habilitado)
+        public Paciente (long ci, String nombre, String apellido,DateTime fecha, String celular, bool habilitado, int idUsuario,
+                            String direccion,String contactoEmergencia,String emergenciaMovil,String mutualista)
+                            : base (ci, nombre, apellido, fecha, celular, direccion, habilitado, idUsuario)
         {
             this.ContactoEmergencia = contactoEmergencia;
             this.EmergenciaMovil = emergenciaMovil;

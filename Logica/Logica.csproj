@@ -50,6 +50,7 @@
     <Compile Include="Consultorio.cs" />
     <Compile Include="DAOS\DAOConsultorio.cs" />
     <Compile Include="DAOS\DAOHorario.cs" />
+    <Compile Include="DAOS\DAOPaciente.cs" />
     <Compile Include="DAOS\DAOPersona.cs" />
     <Compile Include="DAOS\DAOProfesional.cs" />
     <Compile Include="DAOS\DAOUsuario.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="VO\VOHorarioReservadoProfesional.cs" />
     <Compile Include="VO\VOInsertarHorario.cs" />
     <Compile Include="VO\VOListarProfesional.cs" />
+    <Compile Include="VO\VOPaciente.cs" />
     <Compile Include="VO\VOPersona.cs" />
     <Compile Include="VO\VOProfesional.cs" />
     <Compile Include="VO\VOUsuario.cs" />
