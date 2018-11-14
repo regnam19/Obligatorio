@@ -18,7 +18,7 @@ namespace Logica
         {
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -45,7 +45,7 @@ namespace Logica
         public VOProfesional Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -83,7 +83,7 @@ namespace Logica
             List<VOListarProfesional> lista = new List<VOListarProfesional>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -111,7 +111,8 @@ namespace Logica
         }
         public void delete(long ci)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 

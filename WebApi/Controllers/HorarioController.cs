@@ -11,9 +11,10 @@ namespace WebApi.Controllers
 {
     public class HorarioController : ApiController
     {
-
         public IHttpActionResult PostHorario(WebApi.Models.Horario horario)
         {
+            
+            Console.WriteLine("Estoy2");
             Fachada fach = new Fachada();
             long cedula = horario.cedula;
             long idHorario = horario.fecha;

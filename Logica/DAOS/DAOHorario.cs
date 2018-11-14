@@ -15,7 +15,8 @@ namespace Logica
 
         public void deleteHorarioProfesional(long ci)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -30,7 +31,8 @@ namespace Logica
         }
         public void deleteHorarioPaciente(long ci)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -47,7 +49,7 @@ namespace Logica
         {
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -77,7 +79,7 @@ namespace Logica
         {
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -105,7 +107,7 @@ namespace Logica
         {
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -132,7 +134,7 @@ namespace Logica
         public VOHorario Find (long idHorario)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -173,7 +175,7 @@ namespace Logica
             List<int> horarios = new List<int>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -210,7 +212,7 @@ namespace Logica
             List<int> horarios = new List<int>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -244,7 +246,7 @@ namespace Logica
             List<int> horarios = new List<int>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -278,7 +280,7 @@ namespace Logica
             List<VOHorario> horarios = new List<VOHorario>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -313,7 +315,7 @@ namespace Logica
         {
             Boolean disponible = true;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -346,7 +348,7 @@ namespace Logica
         {
             Boolean disponible = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -380,7 +382,7 @@ namespace Logica
             List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -421,7 +423,7 @@ namespace Logica
         public void insertarHorarioPaciente(VOHorarioInsertarPaciente vho)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -444,7 +446,7 @@ namespace Logica
 
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -481,7 +483,7 @@ namespace Logica
         public void cancelarHoraPaciente(long idHorario)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -504,7 +506,7 @@ namespace Logica
 
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -542,8 +544,8 @@ namespace Logica
         // para requerimiento 4, se le pasa un horario y un estado y cambia el estado a ese horario
         public void aceptarCancelarHorarioProfesional(long idHorario, Boolean confirmado)
         {
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             if (confirmado)
             {
@@ -581,7 +583,8 @@ namespace Logica
             long idHorario = this.obtenerIdHorario();
 
             //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -606,8 +609,8 @@ namespace Logica
         {
             long idHorario = 0;
 
-            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -640,7 +643,8 @@ namespace Logica
             List<VOHorarioProfesional> horarios = new List<VOHorarioProfesional>();
 
             //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             //DateTime dia = DateTime.Today;
 

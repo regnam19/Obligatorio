@@ -18,7 +18,7 @@ namespace Logica
 
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -48,7 +48,7 @@ namespace Logica
         {
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 

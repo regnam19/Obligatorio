@@ -16,9 +16,8 @@ namespace Logica
 
         public String Rol(String user, String pass)
         {
-
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -48,7 +47,7 @@ namespace Logica
         public VOUsuario Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 

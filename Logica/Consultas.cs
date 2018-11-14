@@ -55,13 +55,14 @@ namespace Logica
         }
         public String profesionalListar()
         {
-            String consulta = "select nombre, apellido, fechaNacimiento, especialidad  from profesional p, persona pe where pe.ci = p.ciProfesional";
+            String consulta = "select nombre, apellido, fechaNacimiento, especialidad  from profesional ";
             return consulta;
         }
 
         public String profesionalObtenerUno()
         {
-            String consulta = "Select * from profesional p, persona pe where p.ciProfesional = pe.ci and ciProfesional=@ci";
+            //String consulta = "Select * from profesional p, persona pe where p.ciProfesional = pe.ci and ciProfesional=@ci";
+            String consulta = "select * from profesional where ci=@ci;";
             return consulta;
         }
 

@@ -16,8 +16,8 @@
     <ul id="tirar"></ul>
 
     <div>
-        <h3>Cedula Profesional</h3>
-        <input type="text" id="profesional" size="20" />
+        <h3>Cedula paciente</h3>
+        <input type="text" id="paciente" size="20" />
         <h3>Id Horario</h3>
         <input type="text" id="fecha" />
         <input type="button" value="Reservar" onclick="reservarHora(); "/>
@@ -29,11 +29,11 @@
         var url = '/api/Profesional';
 
         function reservarHora() {
-            var cedulaProfesional = $('#cedulaProfesional').val();
-            var fecha = $('#fecha').val();
+            var cedulaPaciente = document.getElementById("paciente").value;//$('#paciente').text();
+            var fecha = document.getElementById("fecha").value;//$('#fecha').text();
 
             var Horario = {
-                cedula: profesional,
+                cedula: cedulaPaciente,
                 fecha: fecha
             };
 

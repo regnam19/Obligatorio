@@ -16,7 +16,7 @@ namespace Logica
         public VOPersona find (long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -44,7 +44,8 @@ namespace Logica
         }
         public void insert(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -66,7 +67,8 @@ namespace Logica
         }
         public void update(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
 
@@ -88,9 +90,8 @@ namespace Logica
         }
         public void delete(long ci)
         {
-            SqlConnection myConnection = new SqlConnection(Conexion.MyConnection);
-
-            myConnection.Open();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
             SqlCommand myCommand = new SqlCommand(consulta.eliminarPersona(), myConnection);
 
