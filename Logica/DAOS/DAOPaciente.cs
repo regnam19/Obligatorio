@@ -114,6 +114,48 @@ namespace Logica
             return lista;
         }
 
+        public void insert(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@contactoEmergencia", contactoEmergencia);
+            myCommand.Parameters.AddWithValue("@celularEmergencia", celularEmergencia);
+            myCommand.Parameters.AddWithValue("@emergenciaMovil", emergenciaMovil);
+            myCommand.Parameters.AddWithValue("@mutualista", mutualista);
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+        public void update(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@contactoEmergencia", contactoEmergencia);
+            myCommand.Parameters.AddWithValue("@celularEmergencia", celularEmergencia);
+            myCommand.Parameters.AddWithValue("@emergenciaMovil", emergenciaMovil);
+            myCommand.Parameters.AddWithValue("@mutualista", mutualista);
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
         public void delete(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();

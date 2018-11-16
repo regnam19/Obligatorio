@@ -40,7 +40,24 @@ namespace Logica
             myConnection.Close();
 
             return esadmin;
+            
+        }
+        public void insert(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarAdmin(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
 
         }
     }

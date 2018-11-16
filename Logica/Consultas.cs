@@ -19,15 +19,41 @@ namespace Logica
             return consulta;
         }
 
-        
+
+        public String insertarPaciente()
+        {
+            String consulta = "insert into paciente (ciPaciente, contactoEmergencia,  celularEmergencia, emergenciaMovil, mutualista) values (@ci,  @contactoEmergencia, @celularEmergencia, @emergenciaMovil, @mutualista)";
+            return consulta;
+        }
+        public String modificarPaciente()
+        {
+            String consulta = "update paciente set contactoEmergencia = @contactoEmergencia, celularEmergencia = @celularEmergencia, emergenciaMovil = @emergenciaMovil, mutualista = @mutualista where ciPaciente = @ci";
+            return consulta;
+        }
+        public String insertarProfesional()
+        {
+            String consulta = "insert into profesional (ciProfesional, especialidad) values (@ci,  @especialidad)";
+            return consulta;
+        }
+        public String modificarProfesional()
+        {
+            String consulta = "update profesional set especialidad = @especialidad where ciProfesional = @ci";
+            return consulta;
+        }
+        public String insertarAdmin()
+        {
+            String consulta = "insert into admin (ciAdmin) values (@ci)";
+            return consulta;
+        }
+       
         public String insertarPersona()
         {
-            String consulta = "insert into persona (ci, nombre, apellido, celular, direccion, habilitado, contrasena) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado, @contrasena)";
+            String consulta = "insert into persona (ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado, contrasena) values (@ci, @nombre, @apellido, @celular, @fechaNacimiento, @direccion, @habilitado, @contraseña)";
             return consulta;
         }
         public String modificarPersona()
         {
-            String consulta = "update persona set nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, habilitado = @habilitado, contrasena = @contrasena where ci = @ci";
+            String consulta = "update persona set nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, habilitado = @habilitado where ci = @ci";
             return consulta;
         }
         public String eliminarPersona()

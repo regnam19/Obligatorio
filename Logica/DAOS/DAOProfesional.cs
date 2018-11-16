@@ -125,5 +125,45 @@ namespace Logica
             myConnection.Close();
 
         }
+
+        public void insert(long ci, String especialidad)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
+            
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
+        public void update(long ci, String especialidad)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
     }
 }

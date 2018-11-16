@@ -41,7 +41,7 @@ namespace Logica
             }
             return vope;
         }
-        public void insert(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        public void insert(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -54,8 +54,9 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@nombre", nombre);
             myCommand.Parameters.AddWithValue("@apellido", apellido);
             myCommand.Parameters.AddWithValue("@celular", celular);
-           // myCommand.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
+            myCommand.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
             myCommand.Parameters.AddWithValue("@direccion", direccion);
+            myCommand.Parameters.AddWithValue("@contraseña", contraseña);
             myCommand.Parameters.AddWithValue("@habilitado", habilitado);
 
 
@@ -64,7 +65,7 @@ namespace Logica
             myConnection.Close();
            
         }
-        public void update(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        public void update(long ci, String nombre, String apellido, String celular, String direccion, bool habilitado)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -79,6 +80,7 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@celular", celular);
             // myCommand.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
             myCommand.Parameters.AddWithValue("@direccion", direccion);
+
             myCommand.Parameters.AddWithValue("@habilitado", habilitado);
 
 
