@@ -34,10 +34,10 @@ namespace Logica
             return daope.find(ci);
         }
 
-        public VOUsuario darUsuario(long ci)
+        /*public VOUsuario darUsuario(long ci)
         {
             return daou.Find(ci);
-        }
+        }*/
 
         public String darRol (String user, String pass)
         {
@@ -54,7 +54,7 @@ namespace Logica
         {
             daope.update(ci, nombre, apellido, celular, direccion, habilitado);
         }
-        public void eliminarPersona(long ci)
+       /* public void eliminarPersona(long ci)
         {
             if (!daop.Member(ci) && (!daopa.Member(ci)))
                 daope.delete(ci);
@@ -85,7 +85,7 @@ namespace Logica
                     daope.delete(ci);
                 }
             }     
-        }
+        }*/
         
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {

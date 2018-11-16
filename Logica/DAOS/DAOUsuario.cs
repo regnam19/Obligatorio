@@ -44,7 +44,7 @@ namespace Logica
 
 
         }
-        public VOUsuario Find(long ci)
+        /*public VOUsuario Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -75,6 +75,6 @@ namespace Logica
             myConnection.Close();
 
             return vous;
-        }
+        }*/
     }
 }

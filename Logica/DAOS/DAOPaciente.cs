@@ -68,7 +68,7 @@ namespace Logica
                 String contactoEmergencia = Convert.ToString(myReader["contactoEmergencia"]);
                 String emergenciaMovil = Convert.ToString(myReader["emergenciaMovil"]);
                 String mutualista = Convert.ToString(myReader["mutualista"]);
-                vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado, contactoEmergencia, emergenciaMovil, mutualista);
+                //vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado, contactoEmergencia, emergenciaMovil, mutualista);
 
 
             }

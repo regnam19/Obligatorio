@@ -13,11 +13,13 @@ namespace Logica
             String consulta = "select * from admin where ciAdmin=@usuario;";
             return consulta;
         }
-        /*public String buscarPersona()
+        public String buscarPersona()
         {
             String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario from persona where ci=@ci";
             return consulta;
-        }*/
+        }
+
+        
         public String insertarPersona()
         {
             String consulta = "insert into persona (ci, nombre, apellido, celular, direccion, habilitado, contrasena) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado, @contrasena)";
@@ -64,16 +66,16 @@ namespace Logica
         public String profesionalObtenerUno()
         {
             //String consulta = "Select * from profesional p, persona pe where p.ciProfesional = pe.ci and ciProfesional=@ci";
-            String consulta = "select p.nombre, p.apellido, p.celular, p.fechaNacimiento, p.direccion, p.habilitado, pr.especialidad from persona p, profesional pr where p.ci = pr.ciProfesional and p.ci = @ci ";
+            String consulta = "select p.ci, p.nombre, p.apellido, p.celular, p.fechaNacimiento, p.direccion, p.habilitado, pr.especialidad from persona p, profesional pr where p.ci = pr.ciProfesional and p.ci = @ci ";
             return consulta;
         }
         // ver si es necesario
-        /*
+        
         public String pacienteObtenerUno()
         {
             String consulta = "Select * from paciente p, persona pe where p.ciPaciente= pe.ci and ciPaciente=@ci";
             return consulta;
-        }*/
+        }
         public String pacienteListar()
         {
             String consulta = "select nombre, apellido, fechaNacimiento, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista  from paciente p, persona pe where pe.ci = p.ciPaciente";
@@ -97,14 +99,14 @@ namespace Logica
             String consulta = "insert into horario (hora,dia,idConsultorio,ciProfesional) values(@hora,@dia,@idConsultorio,@ciProfesional);";
             return consulta;
         }
-        /*
+        
         public String horarioDiaPaciente()
         {
             String consulta = "Select * from horario where idConsultorio=@id and dia=@dia and estado = @estado and hora = @hora";
             return consulta;
-        }*/
+        }
         // dado un dia y un consultorio mostrar todos los }
-        /*
+        
         public String horariosDiaPacienteLibre()
         {
             String consulta = "select * from horario where dia = @dia and idConsultorio = @id and estado = @estado";
@@ -115,7 +117,7 @@ namespace Logica
         {
             String consulta = "select * from horario where dia = @dia and idConsultorio = @id and estado <> @estado";
             return consulta;
-        }*/
+        }
 
         public String consultorioObtener()
         {
@@ -152,10 +154,10 @@ namespace Logica
             String consulta = "select * from horario where idHorario = @id";
             return consulta;
         }
-        /*
+        
         public String insertarHorarioPaciente()
         {
-            String consulta = "update horario set ciPaciente = @ciPaciente, estado = @estado where idHorario = @idHorario";
+            String consulta = "insert into reserva (idHorario,ciPaciente,estado) values (@idHorario, @ciPaciente, 0)";
             return consulta;
         }
 
@@ -194,13 +196,13 @@ namespace Logica
             String consulta = "select top 1 idHorario from horario  order by idHorario desc; ";
             return consulta;
         }
-
+        
        
 
         public String obtenerHorarioProfecional()
         {
             String consulta = "select idHorario, hora, dia, idConsultorio, ciPaciente from horario where ciProfesional = @ciProfesional and dia > @dia and estado = @estado order by dia,idConsultorio;";
             return consulta;
-        }*/
+        }
     }
 }

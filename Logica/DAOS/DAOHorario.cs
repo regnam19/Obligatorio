@@ -31,7 +31,7 @@ namespace Logica
         }
         public void deleteHorarioPaciente(long ci)
         {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+           /* String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
@@ -43,7 +43,7 @@ namespace Logica
             myCommand.ExecuteNonQuery();
 
             myConnection.Close();
-
+            */
         }
         public Boolean Member(long idHorario)
         {
@@ -103,7 +103,7 @@ namespace Logica
             return existe;
         }
 
-        public Boolean PacienteTieneHorario(long ci)
+        /*public Boolean PacienteTieneHorario(long ci)
         {
             Boolean existe = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -129,7 +129,7 @@ namespace Logica
             myConnection.Close();
 
             return existe;
-        }
+        }*/
 
         public VOHorario Find (long idHorario)
         {

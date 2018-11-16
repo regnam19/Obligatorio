@@ -25,7 +25,7 @@ namespace Logica.WINFORMS
         {
             vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
             vopro = f.darProfesional(Int64.Parse(textBoxCedula.Text));
-            vou = f.darUsuario(Int64.Parse(textBoxCedula.Text));
+           // vou = f.darUsuario(Int64.Parse(textBoxCedula.Text));
             textBoxNombre.Text = vope.Nombre;
             textBoxApellido.Text = vope.Apellido;
             textBoxCelular.Text = vope.Celular;
@@ -69,7 +69,7 @@ namespace Logica.WINFORMS
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+           // f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
         }
 
         private void Persona_Load(object sender, EventArgs e)
