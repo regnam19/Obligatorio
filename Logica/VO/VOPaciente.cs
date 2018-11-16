@@ -15,10 +15,11 @@ namespace Logica
         public String Celular { get; set; }
         public bool Habilitado { get; set; }
         public String ContactoEmergencia { get; set; }
+        public String CelularEmergencia { get; set; }
         public String EmergenciaMovil { get; set; }
         public String Mutualista { get; set; }
 
-        public VOPaciente(long ci, String nombre, String apellido, DateTime fecha, String celular, bool habilitado, String contactoEmergencia, String emergenciaMovil, String mutualista)
+        public VOPaciente(long ci, String nombre, String apellido, DateTime fecha, String celular, bool habilitado,String celularEmergencia, String contactoEmergencia, String emergenciaMovil, String mutualista)
                            
         {
             this.Ci = ci;
@@ -27,6 +28,7 @@ namespace Logica
             this.FechaNac = fecha;
             this.Celular = celular;
             this.Habilitado = habilitado;
+            this.CelularEmergencia = CelularEmergencia;
             this.ContactoEmergencia = contactoEmergencia;
             this.EmergenciaMovil = emergenciaMovil;
             this.Mutualista = mutualista;
