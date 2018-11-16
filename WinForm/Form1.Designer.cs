@@ -1,6 +1,6 @@
 ﻿namespace WinForm
 {
-    partial class Login
+    partial class Admin
     {
         /// <summary>
         /// Required designer variable.
@@ -108,7 +108,7 @@
             this.lblUser.Text = "USUARIO:";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Login
+            // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,9 +118,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Login";
+            this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Admin";
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
             this.ResumeLayout(false);

@@ -10,7 +10,7 @@ namespace Logica
     {
         public String Especialidad { get; set; }
 
-        public Profesional(long ci, String nombre, String apellido, DateTime fecha, String celular, String direccion, bool habilitado, int idUsuario, String especialidad) : base(ci, nombre, apellido, fecha, celular, direccion, habilitado, idUsuario)
+        public Profesional (long ci, String nombre, String apellido, DateTime fecha, String celular, String direccion, bool habilitado, String contrasena, String especialidad) : base(ci, nombre, apellido, fecha, celular, direccion, habilitado, contrasena)
         {
             this.Especialidad = especialidad;
         }

@@ -13,9 +13,9 @@ namespace Logica
         DAOHorario daoh = new DAOHorario();
         DAOProfesional daop = new DAOProfesional();
         DAOConsultorio daoc = new DAOConsultorio();
-        DAOUsuario daou = new DAOUsuario();
         DAOPersona daope = new DAOPersona();
         DAOPaciente daopa = new DAOPaciente();
+        DAOAdmin daoad = new DAOAdmin();
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -39,10 +39,9 @@ namespace Logica
             return daou.Find(ci);
         }*/
 
-        public String darRol (String user, String pass)
+        public Boolean esAdmin (long ci)
         {
-            return daou.Rol(user, pass);
-
+            return daoad.esAdmin(ci);
         }
 
         public void ingresarPersona(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)

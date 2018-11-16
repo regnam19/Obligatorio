@@ -19,20 +19,28 @@ namespace Logica.WINFORMS
         Fachada f = new Fachada();
         VOPersona vope;
         VOProfesional vopro;
-        VOUsuario vou;
+        VOPaciente vopa;
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
             vopro = f.darProfesional(Int64.Parse(textBoxCedula.Text));
-           // vou = f.darUsuario(Int64.Parse(textBoxCedula.Text));
+            vopa = f.darPaciente(Int64.Parse(textBoxCedula.Text));
             textBoxNombre.Text = vope.Nombre;
             textBoxApellido.Text = vope.Apellido;
             textBoxCelular.Text = vope.Celular;
             textBoxDireccion.Text = vope.Direccion;
-            textBoxEspecialidad.Text = vopro.Especialidad;
-            textBoxUsuarioProfesional.Text = vou.Usuario;
-            textBoxContraseñaProfesional.Text = vou.Contraseña;
+            //textBoxEspecialidad.Text = vopro.Especialidad;
+            textBoxContactoEmergencia.Text = vopa.ContactoEmergencia;
+            textBoxCelularEmergencia.Text = vopa.CelularEmergencia;
+            textBoxMutualista.Text = vopa.Mutualista;
+            textBoxEmergenciaMovil.Text = vopa.EmergenciaMovil;
+
+           
+            
+
+         
             
             
             //dateTimePickerFechaNacimiento = vope.FechaNac;
@@ -84,7 +92,6 @@ namespace Logica.WINFORMS
                 textBoxEmergenciaMovil.Enabled = true;
                 textBoxMutualista.Enabled = true;
                 textBoxUsuarioPaciente.Enabled = true;
-                textBoxContraseñaPaciente.Enabled = true;
             }
             else
             {
@@ -92,7 +99,6 @@ namespace Logica.WINFORMS
                 textBoxEmergenciaMovil.Enabled = false;
                 textBoxMutualista.Enabled = false;
                 textBoxUsuarioPaciente.Enabled = false;
-                textBoxContraseñaPaciente.Enabled = false;
             }
         }
 
@@ -102,13 +108,11 @@ namespace Logica.WINFORMS
             {
                 textBoxEspecialidad.Enabled = true;
                 textBoxUsuarioProfesional.Enabled = true;
-                textBoxContraseñaProfesional.Enabled = true;
             }
             else
             {
                 textBoxEspecialidad.Enabled = false;
                 textBoxUsuarioProfesional.Enabled = false;
-                textBoxContraseñaProfesional.Enabled = false;
             }
         }
 
@@ -117,12 +121,10 @@ namespace Logica.WINFORMS
             if (checkBoxAdmin.Checked)
             {
                 textBoxUsuarioAdmin.Enabled = true;
-                textBoxContraseñaAdmin.Enabled = true;
             }
             else
             {
                 textBoxUsuarioAdmin.Enabled = false;
-                textBoxContraseñaAdmin.Enabled = false;
             }
         }
     }

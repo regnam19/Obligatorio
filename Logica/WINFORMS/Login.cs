@@ -21,7 +21,7 @@ namespace Logica.WINFORMS
         {
             Fachada f = new Fachada();
             Principal frmPrincipal = new Principal();
-            if (f.darRol(txtUser.Text, txtPassword.Text).Equals("admin"))
+            if (f.esAdmin(Int64.Parse(textBoxUser.Text)))
             {
                  frmPrincipal.Show();
                  Hide();

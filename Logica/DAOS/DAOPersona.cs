@@ -36,8 +36,7 @@ namespace Logica
                 DateTime fechaNacimiento = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String direccion = Convert.ToString(myReader["direccion"]);
                 bool habilitado = Convert.ToBoolean(myReader["habilitado"]);
-                int idUsuario = Convert.ToInt32(myReader["idUsuario"]);
-                vope = new VOPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario);
+                vope = new VOPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado);
 
             }
             return vope;

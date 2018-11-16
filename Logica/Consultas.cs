@@ -15,7 +15,7 @@ namespace Logica
         }
         public String buscarPersona()
         {
-            String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario from persona where ci=@ci";
+            String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
             return consulta;
         }
 

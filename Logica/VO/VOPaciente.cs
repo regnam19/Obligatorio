@@ -28,7 +28,7 @@ namespace Logica
             this.FechaNac = fecha;
             this.Celular = celular;
             this.Habilitado = habilitado;
-            this.CelularEmergencia = CelularEmergencia;
+            this.CelularEmergencia = celularEmergencia;
             this.ContactoEmergencia = contactoEmergencia;
             this.EmergenciaMovil = emergenciaMovil;
             this.Mutualista = mutualista;

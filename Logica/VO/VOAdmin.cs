@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class VOPersona
+    public class VOAdmin
     {
-       
         public long Ci { get; set; }
         public String Nombre { get; set; }
         public String Apellido { get; set; }
-        public String Celular { get; set; }
         public DateTime FechaNac { get; set; }
-        public String Direccion { get; set; }
+        public String Celular { get; set; }
         public bool Habilitado { get; set; }
 
-        public VOPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNac, String direccion, bool habilitado)
+        public VOAdmin(long ci, String nombre, String apellido, DateTime fecha, String celular, bool habilitado)
         {
             this.Ci = ci;
             this.Nombre = nombre;
             this.Apellido = apellido;
+            this.FechaNac = fecha;
             this.Celular = celular;
-            this.FechaNac = fechaNac;
-            this.Direccion = direccion;
             this.Habilitado = habilitado;
+       
         }
 
-        public VOPersona() { }
+        public VOAdmin() { }
     }
 }

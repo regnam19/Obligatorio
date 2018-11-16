@@ -54,8 +54,6 @@
             this.textBoxEspecialidad = new System.Windows.Forms.TextBox();
             this.textBoxUsuarioAdmin = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBoxContraseñaAdmin = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -68,12 +66,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxUsuarioProfesional = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBoxContraseñaProfesional = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.textBoxUsuarioPaciente = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBoxContraseñaPaciente = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxCelularEmergencia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -194,7 +190,7 @@
             // 
             // buttonIngresar
             // 
-            this.buttonIngresar.Location = new System.Drawing.Point(471, 506);
+            this.buttonIngresar.Location = new System.Drawing.Point(473, 476);
             this.buttonIngresar.Name = "buttonIngresar";
             this.buttonIngresar.Size = new System.Drawing.Size(172, 39);
             this.buttonIngresar.TabIndex = 16;
@@ -204,7 +200,7 @@
             // 
             // buttonModificar
             // 
-            this.buttonModificar.Location = new System.Drawing.Point(64, 506);
+            this.buttonModificar.Location = new System.Drawing.Point(66, 476);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(172, 39);
             this.buttonModificar.TabIndex = 17;
@@ -214,7 +210,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(272, 506);
+            this.btnEliminar.Location = new System.Drawing.Point(274, 476);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(172, 39);
             this.btnEliminar.TabIndex = 18;
@@ -263,7 +259,7 @@
             // textBoxMutualista
             // 
             this.textBoxMutualista.Enabled = false;
-            this.textBoxMutualista.Location = new System.Drawing.Point(156, 370);
+            this.textBoxMutualista.Location = new System.Drawing.Point(156, 400);
             this.textBoxMutualista.Name = "textBoxMutualista";
             this.textBoxMutualista.Size = new System.Drawing.Size(100, 20);
             this.textBoxMutualista.TabIndex = 66;
@@ -271,7 +267,7 @@
             // textBoxEmergenciaMovil
             // 
             this.textBoxEmergenciaMovil.Enabled = false;
-            this.textBoxEmergenciaMovil.Location = new System.Drawing.Point(156, 330);
+            this.textBoxEmergenciaMovil.Location = new System.Drawing.Point(156, 360);
             this.textBoxEmergenciaMovil.Name = "textBoxEmergenciaMovil";
             this.textBoxEmergenciaMovil.Size = new System.Drawing.Size(100, 20);
             this.textBoxEmergenciaMovil.TabIndex = 65;
@@ -310,24 +306,6 @@
             this.label12.TabIndex = 59;
             this.label12.Text = "Usuario";
             // 
-            // textBoxContraseñaAdmin
-            // 
-            this.textBoxContraseñaAdmin.Enabled = false;
-            this.textBoxContraseñaAdmin.Location = new System.Drawing.Point(573, 330);
-            this.textBoxContraseñaAdmin.Name = "textBoxContraseñaAdmin";
-            this.textBoxContraseñaAdmin.Size = new System.Drawing.Size(98, 20);
-            this.textBoxContraseñaAdmin.TabIndex = 58;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label13.Location = new System.Drawing.Point(487, 330);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 17);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "Contraseña";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -342,7 +320,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(11, 373);
+            this.label7.Location = new System.Drawing.Point(11, 403);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 17);
             this.label7.TabIndex = 55;
@@ -362,7 +340,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label9.Location = new System.Drawing.Point(11, 330);
+            this.label9.Location = new System.Drawing.Point(11, 360);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 17);
             this.label9.TabIndex = 53;
@@ -449,28 +427,10 @@
             this.label14.TabIndex = 69;
             this.label14.Text = "Usuario";
             // 
-            // textBoxContraseñaProfesional
-            // 
-            this.textBoxContraseñaProfesional.Enabled = false;
-            this.textBoxContraseñaProfesional.Location = new System.Drawing.Point(371, 365);
-            this.textBoxContraseñaProfesional.Name = "textBoxContraseñaProfesional";
-            this.textBoxContraseñaProfesional.Size = new System.Drawing.Size(98, 20);
-            this.textBoxContraseñaProfesional.TabIndex = 68;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label15.Location = new System.Drawing.Point(280, 365);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(81, 17);
-            this.label15.TabIndex = 67;
-            this.label15.Text = "Contraseña";
-            // 
             // textBoxUsuarioPaciente
             // 
             this.textBoxUsuarioPaciente.Enabled = false;
-            this.textBoxUsuarioPaciente.Location = new System.Drawing.Point(156, 408);
+            this.textBoxUsuarioPaciente.Location = new System.Drawing.Point(156, 438);
             this.textBoxUsuarioPaciente.Name = "textBoxUsuarioPaciente";
             this.textBoxUsuarioPaciente.Size = new System.Drawing.Size(98, 20);
             this.textBoxUsuarioPaciente.TabIndex = 74;
@@ -479,51 +439,47 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label16.Location = new System.Drawing.Point(11, 408);
+            this.label16.Location = new System.Drawing.Point(11, 438);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 17);
             this.label16.TabIndex = 73;
             this.label16.Text = "Usuario";
             // 
-            // textBoxContraseñaPaciente
+            // label11
             // 
-            this.textBoxContraseñaPaciente.Enabled = false;
-            this.textBoxContraseñaPaciente.Location = new System.Drawing.Point(156, 444);
-            this.textBoxContraseñaPaciente.Name = "textBoxContraseñaPaciente";
-            this.textBoxContraseñaPaciente.Size = new System.Drawing.Size(98, 20);
-            this.textBoxContraseñaPaciente.TabIndex = 72;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label11.Location = new System.Drawing.Point(11, 327);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 17);
+            this.label11.TabIndex = 75;
+            this.label11.Text = "Celular Emergencia";
             // 
-            // label17
+            // textBoxCelularEmergencia
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label17.Location = new System.Drawing.Point(12, 444);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 17);
-            this.label17.TabIndex = 71;
-            this.label17.Text = "Contraseña";
+            this.textBoxCelularEmergencia.Enabled = false;
+            this.textBoxCelularEmergencia.Location = new System.Drawing.Point(156, 327);
+            this.textBoxCelularEmergencia.Name = "textBoxCelularEmergencia";
+            this.textBoxCelularEmergencia.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCelularEmergencia.TabIndex = 76;
             // 
             // Persona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 591);
+            this.ClientSize = new System.Drawing.Size(717, 550);
+            this.Controls.Add(this.textBoxCelularEmergencia);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxUsuarioPaciente);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBoxContraseñaPaciente);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.textBoxUsuarioProfesional);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBoxContraseñaProfesional);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.textBoxMutualista);
             this.Controls.Add(this.textBoxEmergenciaMovil);
             this.Controls.Add(this.textBoxContactoEmergencia);
             this.Controls.Add(this.textBoxEspecialidad);
             this.Controls.Add(this.textBoxUsuarioAdmin);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBoxContraseñaAdmin);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -590,8 +546,6 @@
         private System.Windows.Forms.TextBox textBoxEspecialidad;
         private System.Windows.Forms.TextBox textBoxUsuarioAdmin;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBoxContraseñaAdmin;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -604,11 +558,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxUsuarioProfesional;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBoxContraseñaProfesional;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxUsuarioPaciente;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBoxContraseñaPaciente;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxCelularEmergencia;
     }
 }

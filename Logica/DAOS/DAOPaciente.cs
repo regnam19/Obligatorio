@@ -65,10 +65,11 @@ namespace Logica
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String celular = Convert.ToString(myReader["celular"]);
                 Boolean habilitado = Convert.ToBoolean(myReader["habilitado"]);
+                String celularEmergenica = Convert.ToString(myReader["celularEmergencia"]);
                 String contactoEmergencia = Convert.ToString(myReader["contactoEmergencia"]);
                 String emergenciaMovil = Convert.ToString(myReader["emergenciaMovil"]);
                 String mutualista = Convert.ToString(myReader["mutualista"]);
-                //vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado, contactoEmergencia, emergenciaMovil, mutualista);
+                vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado,celularEmergenica, contactoEmergencia, emergenciaMovil, mutualista);
 
 
             }
