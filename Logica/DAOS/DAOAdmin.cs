@@ -13,7 +13,7 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOAdmin voad = new VOAdmin();
 
-        public Boolean esAdmin(long ci)
+        public Boolean member(long ci)
         {
             bool esadmin = false;
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -54,6 +54,22 @@ namespace Logica
             myCommand.Parameters.AddWithValue("@ci", ci);
 
 
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+        public void delete(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarAdmin(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
 
             myCommand.ExecuteNonQuery();
 

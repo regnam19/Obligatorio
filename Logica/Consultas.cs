@@ -13,13 +13,26 @@ namespace Logica
             String consulta = "select * from admin where ciAdmin=@usuario;";
             return consulta;
         }
+        public String esProfesional()
+        {
+            String consulta = "select * from profesional where ciProfesional =@ci";
+            return consulta;
+        }
+        public String esPaciente()
+        {
+            String consulta = "select * from paciente where ciPaciente =@ci";
+            return consulta;
+        }
         public String buscarPersona()
         {
             String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
             return consulta;
         }
-
-
+        public String eliminarAdmin()
+        {
+            String consulta = "delete from admin where ciAdmin = @ci";
+            return consulta;
+        }
         public String insertarPaciente()
         {
             String consulta = "insert into paciente (ciPaciente, contactoEmergencia,  celularEmergencia, emergenciaMovil, mutualista) values (@ci,  @contactoEmergencia, @celularEmergencia, @emergenciaMovil, @mutualista)";

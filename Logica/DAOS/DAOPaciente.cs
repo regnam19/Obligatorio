@@ -21,7 +21,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.pacienteObtenerUno(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.esPaciente(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 

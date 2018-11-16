@@ -22,7 +22,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.profesionalObtenerUno(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.esProfesional(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 
@@ -41,7 +41,64 @@ namespace Logica
 
             return existe;
         }
-        
+
+        public void delete(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
+        public void insert(long ci, String especialidad)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
+        public void update(long ci, String especialidad)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
         public VOProfesional Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -109,61 +166,6 @@ namespace Logica
 
             return lista;
         }
-        public void delete(long ci)
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.eliminarProfesional(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@ci", ci);
-
-            myCommand.ExecuteNonQuery();
-
-            myConnection.Close();
-
-        }
-
-        public void insert(long ci, String especialidad)
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.insertarProfesional(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@ci", ci);
-            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
-            
-
-
-            myCommand.ExecuteNonQuery();
-
-            myConnection.Close();
-
-        }
-
-        public void update(long ci, String especialidad)
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.modificarProfesional(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@ci", ci);
-            myCommand.Parameters.AddWithValue("@especialidad", especialidad);
-
-
-
-            myCommand.ExecuteNonQuery();
-
-            myConnection.Close();
-
-        }
+       
     }
 }

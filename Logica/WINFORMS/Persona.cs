@@ -138,7 +138,7 @@ namespace Logica.WINFORMS
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           // f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+           f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
         }
 
         private void Persona_Load(object sender, EventArgs e)

@@ -94,6 +94,8 @@ namespace Logica
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
             SqlCommand myCommand = new SqlCommand(consulta.eliminarPersona(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
