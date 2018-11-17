@@ -11,7 +11,7 @@ namespace Logica
     public class DAOHorario
     {
         VOHorario voh = new VOHorario();
-
+        Consultas consulta = new Consultas();
         public void deleteHorarioProfesional(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -421,6 +421,7 @@ namespace Logica
 
         // para requerimiento 1
         // asigna un paciente  a un horario y pone estado en reservado
+        //FUNCIONA
         public void insertarHorarioPaciente(VOHorarioInsertarPaciente vho)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();

@@ -96,12 +96,15 @@ namespace Logica
             String consulta = "delete from reserva where idReserva =@idReserva";
             return consulta;
         }
+
+        //FUNCIONA
         public String profesionalListar()
         {
-            String consulta = "select p.nombre, p.apellido, p.fechaNacimiento, pr.especialidad  from persona p, profesional pr where p.ci = pr.ciProfesional";
+            String consulta = "select p.ci, p.nombre, p.apellido, p.fechaNacimiento, pr.especialidad  from persona p, profesional pr where p.ci = pr.ciProfesional";
             return consulta;
         }
 
+        //FUNCIONA
         public String profesionalObtenerUno()
         {
             //String consulta = "Select * from profesional p, persona pe where p.ciProfesional = pe.ci and ciProfesional=@ci";
@@ -212,6 +215,7 @@ namespace Logica
             return consulta;
         }
         
+        //FUNCIONA
         public String insertarHorarioPaciente()
         {
             String consulta = "insert into reserva (idHorario,ciPaciente,estado) values (@idHorario, @ciPaciente, 0)";

@@ -14,51 +14,6 @@ namespace Logica
      
         VOProfesional vop;
 
-        public Boolean Member(long ci)
-        {
-            Boolean existe = false;
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.esProfesional(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@ci", ci);
-
-            myCommand.ExecuteNonQuery();
-
-            SqlDataReader myReader = myCommand.ExecuteReader();
-
-
-            while (myReader.Read())
-            {
-                existe = true;
-
-            }
-            myReader.Close();
-            myConnection.Close();
-
-            return existe;
-        }
-
-        public void delete(long ci)
-        {
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.eliminarProfesional(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@ci", ci);
-
-            myCommand.ExecuteNonQuery();
-
-            myConnection.Close();
-
-        }
-
         public void insert(long ci, String especialidad)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -99,6 +54,35 @@ namespace Logica
 
         }
 
+        public Boolean Member(long ci)
+        {
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.profesionalObtenerUno(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                existe = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
+        }
+        
+        //FUNCIONA
         public VOProfesional Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -135,6 +119,7 @@ namespace Logica
             return vop;
         }
 
+        //FUNCIONA
         public List<VOListarProfesional> listarProfesionales()
         {
             List<VOListarProfesional> lista = new List<VOListarProfesional>();
@@ -152,11 +137,12 @@ namespace Logica
 
             while (myReader.Read())
             {
+                long cedula = Convert.ToInt64(myReader["ci"]);
                 String nombre = Convert.ToString(myReader["nombre"]);
                 String apellido = Convert.ToString(myReader["apellido"]);
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String especialidad = Convert.ToString(myReader["especialidad"]);
-                VOListarProfesional vop = new VOListarProfesional(nombre, apellido, fecha, especialidad);
+                VOListarProfesional vop = new VOListarProfesional(cedula, nombre, apellido, fecha, especialidad);
 
                 lista.Add(vop);
 
@@ -166,6 +152,21 @@ namespace Logica
 
             return lista;
         }
-       
+        public void delete(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarProfesional(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
     }
 }
