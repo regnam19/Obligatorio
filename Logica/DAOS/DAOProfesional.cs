@@ -97,11 +97,12 @@ namespace Logica
 
             while (myReader.Read())
             {
+                long cedula = Convert.ToInt64(myReader["cedula"]);
                 String nombre = Convert.ToString(myReader["nombre"]);
                 String apellido = Convert.ToString(myReader["apellido"]);
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String especialidad = Convert.ToString(myReader["especialidad"]);
-                VOListarProfesional vop = new VOListarProfesional(nombre, apellido, fecha, especialidad);
+                VOListarProfesional vop = new VOListarProfesional(cedula, nombre, apellido, fecha, especialidad);
 
                 lista.Add(vop);
 
