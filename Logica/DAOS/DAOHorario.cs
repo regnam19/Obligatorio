@@ -11,7 +11,7 @@ namespace Logica
     public class DAOHorario
     {
         VOHorario voh = new VOHorario();
-
+        Consultas consulta = new Consultas();
         public void deleteHorarioProfesional(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
