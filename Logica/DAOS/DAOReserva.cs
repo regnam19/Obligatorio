@@ -25,7 +25,7 @@ namespace Logica.DAOS
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.horariosLibresProfesional(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.reservasPaciente(), myConnection);
 
 
             myCommand.Parameters.AddWithValue("@ciPaciente", ciPaciente);
@@ -55,6 +55,58 @@ namespace Logica.DAOS
             return lista;
         }
 
+        public void deleteReserva(long idReserva)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
 
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarReserva(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idReserva", idReserva);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
+
+        public List<VOReserva> historialRservasPaciente(long ciPaciente)
+        {
+            List<VOReserva> lista = new List<VOReserva>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.historialReservasPaciente(), myConnection);
+
+
+            myCommand.Parameters.AddWithValue("@ciPaciente", ciPaciente);
+
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                String estado = Convert.ToString(myReader["estado"]);
+
+                VOReserva vohd = new VOReserva(idHorario, ciPaciente, estado);
+
+                lista.Add(vohd);
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+
+            return lista;
+        }
     }
 }

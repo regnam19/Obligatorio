@@ -194,6 +194,18 @@ namespace Logica
             return consulta;
         }
 
+        public String historialReservasPaciente()
+        {
+            String consulta = "select * from reserva where ciPaciente = @ciPaciente";
+            return consulta;
+        }
+
+        public String eliminarReserva()
+        {
+            String consulta = "delete from reserva where idReserva = @idReserva;";
+            return consulta;
+        }
+
         public String findHorario()
         {
             String consulta = "select * from horario where idHorario = @id";
