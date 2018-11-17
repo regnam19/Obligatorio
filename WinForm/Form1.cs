@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica.fachada;
 
-namespace Logica.WINFORMS
+namespace WinForm
 {
-    public partial class Login : Form
+    public partial class Admin : Form
     {
-        public Login()
+        public Admin()
         {
             InitializeComponent();
         }
@@ -21,13 +22,11 @@ namespace Logica.WINFORMS
         {
             Fachada f = new Fachada();
             Principal frmPrincipal = new Principal();
-            if (f.esAdmin(Int64.Parse(textBoxUser.Text)))
+            if (f.darRol(txtUser.Text, txtPassword.Text).Equals("admin"))
             {
-                 frmPrincipal.Show();
-                 Hide();
-            } 
-                
-          }
-
+                frmPrincipal.Show();
+                Hide();
+            }
+        }
     }
 }

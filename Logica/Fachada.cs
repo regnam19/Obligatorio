@@ -13,9 +13,9 @@ namespace Logica
         DAOHorario daoh = new DAOHorario();
         DAOProfesional daop = new DAOProfesional();
         DAOConsultorio daoc = new DAOConsultorio();
-        DAOUsuario daou = new DAOUsuario();
         DAOPersona daope = new DAOPersona();
         DAOPaciente daopa = new DAOPaciente();
+        DAOAdmin daoad = new DAOAdmin();
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -39,54 +39,76 @@ namespace Logica
             return daou.Find(ci);
         }*/
 
-        public String darRol (String user, String pass)
+        public Boolean esAdmin (long ci)
         {
-            return daou.Rol(user, pass);
-
+            return daoad.member(ci);
         }
-
-        public void ingresarPersona(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        public Boolean esPaciente (long ci)
         {
-            daope.insert(ci, nombre, apellido, celular, direccion, habilitado);
+            return daopa.Member(ci);
         }
-
-        public void modificarPersona(long ci, string nombre, string apellido, string celular, string direccion, bool habilitado)
+        public Boolean esProfesional (long ci)
         {
-            daope.update(ci, nombre, apellido, celular, direccion, habilitado);
+            return daop.Member(ci);
         }
-       /* public void eliminarPersona(long ci)
+         public void eliminarPersona(long ci)
         {
-            if (!daop.Member(ci) && (!daopa.Member(ci)))
+            if (!daop.Member(ci)&& (!daoad.member(ci)))
                 daope.delete(ci);
-            else if (!daoh.ProfesionalTieneHorario(ci) && (!daoh.PacienteTieneHorario(ci)))
+            else if (daoad.member(ci))
+            {
+                daoad.delete(ci);
+                daope.delete(ci);
+            } else if (!daoh.ProfesionalTieneHorario(ci))
             {
                 if (daop.Member(ci))
                 {
                     daop.delete(ci);
                     daope.delete(ci);
-                }else
-                {
-                    daopa.delete(ci);
-                    daope.delete(ci);
                 }
-                    
-            } else
-            {
-                if (daop.Member(ci))
+
+            } else if (daop.Member(ci))
                 {
                     daoh.deleteHorarioProfesional(ci);
                     daop.delete(ci);
                     daope.delete(ci);
                 }
-                else
-                {
-                    daoh.deleteHorarioPaciente(ci);
-                    daopa.delete(ci);
-                    daope.delete(ci);
-                }
-            }     
-        }*/
+            
+         }     
         
+        public void ingresarPersona(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
+        {
+            daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
+        }
+        public void ingresarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            daopa.insert(ci, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista);
+        }
+        public void ingresarProfesional(long ci, String especialidad)
+        {
+            daop.insert(ci, especialidad);
+        }
+        public void ingresarAdmin(long ci)
+        {
+            daoad.insert(ci);
+        }
+
+        public void modificarPersona(long ci, String nombre, String apellido, String celular, String direccion, bool habilitado)
+        {
+            daope.update(ci, nombre, apellido, celular, direccion, habilitado);
+        }
+
+        public void modificarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            daopa.update(ci, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista);
+        }
+
+        public void modificarProfesional(long ci, String especialidad)
+        {
+            daop.update(ci, especialidad);
+        }
+       
+
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
@@ -164,7 +186,7 @@ namespace Logica
 
         public List<VOHorarioDisponible> horasLibresProfesional (DateTime fecha, long cedula)
         {
-            return daoh.horasLibresProfesional(fecha, cedula);
+            return daoh.horasLibresProfesional(cedula);
         }
 
         // requerimiento 1

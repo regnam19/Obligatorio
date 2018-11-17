@@ -24,8 +24,7 @@ namespace Logica
             DAOHorario daoh = new DAOHorario();
 
             DAOConsultorio daoc = new DAOConsultorio();
-
-            DAOUsuario daou = new DAOUsuario();
+            
 
             DAOPersona daope = new DAOPersona();
 

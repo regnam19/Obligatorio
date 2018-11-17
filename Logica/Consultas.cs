@@ -13,21 +13,60 @@ namespace Logica
             String consulta = "select * from admin where ciAdmin=@usuario;";
             return consulta;
         }
-        public String buscarPersona()
+        public String esProfesional()
         {
-            String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado, idUsuario from persona where ci=@ci";
+            String consulta = "select * from profesional where ciProfesional =@ci";
             return consulta;
         }
-
-        
+        public String esPaciente()
+        {
+            String consulta = "select * from paciente where ciPaciente =@ci";
+            return consulta;
+        }
+        public String buscarPersona()
+        {
+            String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
+            return consulta;
+        }
+        public String eliminarAdmin()
+        {
+            String consulta = "delete from admin where ciAdmin = @ci";
+            return consulta;
+        }
+        public String insertarPaciente()
+        {
+            String consulta = "insert into paciente (ciPaciente, contactoEmergencia,  celularEmergencia, emergenciaMovil, mutualista) values (@ci,  @contactoEmergencia, @celularEmergencia, @emergenciaMovil, @mutualista)";
+            return consulta;
+        }
+        public String modificarPaciente()
+        {
+            String consulta = "update paciente set contactoEmergencia = @contactoEmergencia, celularEmergencia = @celularEmergencia, emergenciaMovil = @emergenciaMovil, mutualista = @mutualista where ciPaciente = @ci";
+            return consulta;
+        }
+        public String insertarProfesional()
+        {
+            String consulta = "insert into profesional (ciProfesional, especialidad) values (@ci,  @especialidad)";
+            return consulta;
+        }
+        public String modificarProfesional()
+        {
+            String consulta = "update profesional set especialidad = @especialidad where ciProfesional = @ci";
+            return consulta;
+        }
+        public String insertarAdmin()
+        {
+            String consulta = "insert into admin (ciAdmin) values (@ci)";
+            return consulta;
+        }
+       
         public String insertarPersona()
         {
-            String consulta = "insert into persona (ci, nombre, apellido, celular, direccion, habilitado, contrasena) values (@ci, @nombre, @apellido, @celular, @direccion, @habilitado, @contrasena)";
+            String consulta = "insert into persona (ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado, contrasena) values (@ci, @nombre, @apellido, @celular, @fechaNacimiento, @direccion, @habilitado, @contraseña)";
             return consulta;
         }
         public String modificarPersona()
         {
-            String consulta = "update persona set nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, habilitado = @habilitado, contrasena = @contrasena where ci = @ci";
+            String consulta = "update persona set nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, habilitado = @habilitado where ci = @ci";
             return consulta;
         }
         public String eliminarPersona()
@@ -142,7 +181,13 @@ namespace Logica
 
         public String horariosLibresProfesional()
         {
-            String consulta = "select hora, idHorario, idConsultorio from horario where ciProfesional = @ci and estado = @estado and dia=@dia order by idConsultorio, hora";
+            String consulta = "select idHorario,hora,dia,idConsultorio  from horario where ciProfesional = @ciProfesional and dia > @dia and idHorario not in (select idHorario from reserva) order by dia,idConsultorio,hora";
+            return consulta;
+        }
+
+        public String reservasPaciente()
+        {
+            String consulta = "select r.idHorario,r.estado from reserva r , horario h where r.idhorario = h.idHorario and h.dia > @dia and r.ciPaciente = @ciPaciente";
             return consulta;
         }
 

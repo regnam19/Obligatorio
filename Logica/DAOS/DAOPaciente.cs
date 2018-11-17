@@ -21,7 +21,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.pacienteObtenerUno(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.esPaciente(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 
@@ -65,10 +65,11 @@ namespace Logica
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
                 String celular = Convert.ToString(myReader["celular"]);
                 Boolean habilitado = Convert.ToBoolean(myReader["habilitado"]);
+                String celularEmergenica = Convert.ToString(myReader["celularEmergencia"]);
                 String contactoEmergencia = Convert.ToString(myReader["contactoEmergencia"]);
                 String emergenciaMovil = Convert.ToString(myReader["emergenciaMovil"]);
                 String mutualista = Convert.ToString(myReader["mutualista"]);
-                //vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado, contactoEmergencia, emergenciaMovil, mutualista);
+                vopa = new VOPaciente(cedula, nombre, apellido, fecha, celular, habilitado,celularEmergenica, contactoEmergencia, emergenciaMovil, mutualista);
 
 
             }
@@ -113,6 +114,48 @@ namespace Logica
             return lista;
         }
 
+        public void insert(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@contactoEmergencia", contactoEmergencia);
+            myCommand.Parameters.AddWithValue("@celularEmergencia", celularEmergencia);
+            myCommand.Parameters.AddWithValue("@emergenciaMovil", emergenciaMovil);
+            myCommand.Parameters.AddWithValue("@mutualista", mutualista);
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+        public void update(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+            myCommand.Parameters.AddWithValue("@contactoEmergencia", contactoEmergencia);
+            myCommand.Parameters.AddWithValue("@celularEmergencia", celularEmergencia);
+            myCommand.Parameters.AddWithValue("@emergenciaMovil", emergenciaMovil);
+            myCommand.Parameters.AddWithValue("@mutualista", mutualista);
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
         public void delete(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
