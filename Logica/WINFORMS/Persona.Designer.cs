@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.labelCedula = new System.Windows.Forms.Label();
             this.textBoxCedula = new System.Windows.Forms.TextBox();
@@ -70,6 +71,8 @@
             this.textBoxContraseñaAdmin = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.errorProviderPersona = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -98,6 +101,7 @@
             this.textBoxCedula.Name = "textBoxCedula";
             this.textBoxCedula.Size = new System.Drawing.Size(98, 20);
             this.textBoxCedula.TabIndex = 2;
+            this.textBoxCedula.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCedula_Validating);
             // 
             // buttonBuscar
             // 
@@ -116,6 +120,7 @@
             this.textBoxCelular.Name = "textBoxCelular";
             this.textBoxCelular.Size = new System.Drawing.Size(98, 20);
             this.textBoxCelular.TabIndex = 5;
+            this.textBoxCelular.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCelular_Validating);
             // 
             // labelCelular
             // 
@@ -133,6 +138,7 @@
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(98, 20);
             this.textBoxApellido.TabIndex = 7;
+            this.textBoxApellido.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxApellido_Validating);
             // 
             // labelApellido
             // 
@@ -150,6 +156,7 @@
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(98, 20);
             this.textBoxNombre.TabIndex = 9;
+            this.textBoxNombre.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNombre_Validating);
             // 
             // labelNombre
             // 
@@ -177,6 +184,7 @@
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(98, 20);
             this.textBoxDireccion.TabIndex = 13;
+            this.textBoxDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxDireccion_Validating);
             // 
             // label3
             // 
@@ -463,6 +471,10 @@
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged_1);
             // 
+            // errorProviderPersona
+            // 
+            this.errorProviderPersona.ContainerControl = this;
+            // 
             // Persona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,6 +525,7 @@
             this.Name = "Persona";
             this.Text = "Persona";
             this.Load += new System.EventHandler(this.Persona_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,5 +575,6 @@
         private System.Windows.Forms.TextBox textBoxContraseñaAdmin;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.ErrorProvider errorProviderPersona;
     }
 }

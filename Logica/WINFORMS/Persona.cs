@@ -195,5 +195,90 @@ namespace Logica.WINFORMS
                 textBoxContraseñaAdmin.Enabled = false;
             }
         }
+
+        private void textBoxCedula_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxCedula.Text))
+            {
+                errorProviderPersona.SetError(textBoxCedula, "Debe ingresar una cédula");
+            }
+            else
+            {
+                errorProviderPersona.SetError(textBoxCedula, "");
+            }
+        }
+
+        private void textBoxNombre_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(textBoxNombre.Text))
+            {
+                errorProviderPersona.SetError(textBoxNombre, "Debe ingresar un nombre");
+            }
+            else
+            {
+                errorProviderPersona.SetError(textBoxNombre, "");
+            }
+
+        }
+
+        private void textBoxApellido_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(textBoxApellido.Text))
+            {
+                errorProviderPersona.SetError(textBoxApellido, "Debe ingresar un apellido");
+            }
+            else
+            {
+                errorProviderPersona.SetError(textBoxApellido, "");
+            }
+
+        }
+
+        private void textBoxCelular_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(textBoxCelular.Text))
+            {
+                errorProviderPersona.SetError(textBoxCelular, "Debe ingresar un celular");
+            }
+            else
+            {
+                errorProviderPersona.SetError(textBoxCelular, "");
+            }
+
+        }
+
+        /*private void dateTimePickerFechaNacimiento_Validating(object sender)
+        {
+
+            if (string.IsNullOrEmpty(dateTimePickerFechaNacimiento.Text))
+            {
+                errorProviderPersona.SetError(dateTimePickerFechaNacimiento, "Debe ingresar una cédula");
+            }
+            else
+            {
+                errorProviderPersona.SetError(dateTimePickerFechaNacimiento, "");
+            }
+
+        }*/
+
+        private void textBoxDireccion_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(textBoxDireccion.Text))
+            {
+                errorProviderPersona.SetError(textBoxDireccion, "Debe ingresar una dirección");
+            }
+            else
+            {
+                errorProviderPersona.SetError(textBoxDireccion, "");
+            }
+
+        }
+
+       
     }
+
 }
