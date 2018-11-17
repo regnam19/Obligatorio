@@ -20,35 +20,57 @@ namespace Logica.WINFORMS
         VOPersona vope;
         VOProfesional vopro;
         VOPaciente vopa;
+        VOAdmin voad;
 
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
-            vopro = f.darProfesional(Int64.Parse(textBoxCedula.Text));
-            vopa = f.darPaciente(Int64.Parse(textBoxCedula.Text));
-            textBoxNombre.Text = vope.Nombre;
-            textBoxApellido.Text = vope.Apellido;
-            textBoxCelular.Text = vope.Celular;
-            textBoxDireccion.Text = vope.Direccion;
-            //textBoxEspecialidad.Text = vopro.Especialidad;
-            /*textBoxContactoEmergencia.Text = vopa.ContactoEmergencia;
-            textBoxCelularEmergencia.Text = vopa.CelularEmergencia;
-            textBoxMutualista.Text = vopa.Mutualista;
-            textBoxEmergenciaMovil.Text = vopa.EmergenciaMovil;
-            //dateTimePickerFechaNacimiento = vope.FechaNac;*/
-            if (vope.Habilitado)
+            if (textBoxCedula.Text != String.Empty)
             {
-                checkBoxNo.Checked = false;
-                checkBoxSi.Checked = true;
+                vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
+                vopro = f.darProfesional(Int64.Parse(textBoxCedula.Text));
+                vopa = f.darPaciente(Int64.Parse(textBoxCedula.Text));
+                voad = f.darAdmin(Int64.Parse(textBoxCedula.Text));
+                if (vope != null && (vopro != null))
+                {
+                    textBoxNombre.Text = vope.Nombre;
+                    textBoxApellido.Text = vope.Apellido;
+                    textBoxCelular.Text = vope.Celular;
+                    textBoxDireccion.Text = vope.Direccion;
+                    if (vope.Habilitado)
+                        checkBoxSi.Checked = true;
+                    else
+                        checkBoxNo.Checked = false;
+                    textBoxEspecialidad.Text = vopro.Especialidad;
+                }
+                else if (vope != null && (vopa != null))
+                {
+                    textBoxNombre.Text = vope.Nombre;
+                    textBoxApellido.Text = vope.Apellido;
+                    textBoxCelular.Text = vope.Celular;
+                    textBoxDireccion.Text = vope.Direccion;
+                    if (vope.Habilitado)
+                        checkBoxSi.Checked = true;
+                    else
+                        checkBoxNo.Checked = false;
+                    textBoxContactoEmergencia.Text = vopa.ContactoEmergencia;
+                    textBoxCelularEmergencia.Text = vopa.CelularEmergencia;
+                    textBoxMutualista.Text = vopa.Mutualista;
+                    textBoxEmergenciaMovil.Text = vopa.EmergenciaMovil;
+                }
+                else
+                {
+                    textBoxNombre.Text = vope.Nombre;
+                    textBoxApellido.Text = vope.Apellido;
+                    textBoxCelular.Text = vope.Celular;
+                    textBoxDireccion.Text = vope.Direccion;
+                    if (vope.Habilitado)
+                        checkBoxSi.Checked = true;
+                    else
+                        checkBoxNo.Checked = false;
+                }
             }
-
-            else
-            {
-                checkBoxNo.Checked = true;
-                checkBoxSi.Checked = false;
-            }
-            
         }
 
         private void buttonIngresar_Click(object sender, EventArgs e)
@@ -284,8 +306,6 @@ namespace Logica.WINFORMS
             }
 
         }
-
-       
     }
 
 }

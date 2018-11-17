@@ -117,6 +117,7 @@ namespace Logica
             String consulta = "Select * from paciente p, persona pe where p.ciPaciente= pe.ci and ciPaciente=@ci";
             return consulta;
         }
+      
         public String pacienteListar()
         {
             String consulta = "select nombre, apellido, fechaNacimiento, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista  from paciente p, persona pe where pe.ci = p.ciPaciente";

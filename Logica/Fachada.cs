@@ -108,6 +108,11 @@ namespace Logica
             return daopa.Find(ced);
         }
 
+        public VOAdmin darAdmin(long ced)
+        {
+            return daoad.find(ced);
+        }
+
         public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);

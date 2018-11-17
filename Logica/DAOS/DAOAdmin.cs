@@ -76,5 +76,33 @@ namespace Logica
             myConnection.Close();
 
         }
+        public VOAdmin find(long ci)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.buscarPersona(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                String nombre = Convert.ToString(myReader["nombre"]);
+                String apellido = Convert.ToString(myReader["apellido"]);
+                DateTime fechaNacimiento = Convert.ToDateTime(myReader["fechaNacimiento"]);
+                String celular = Convert.ToString(myReader["celular"]);
+                String direccion = Convert.ToString(myReader["direccion"]);
+                bool habilitado = Convert.ToBoolean(myReader["habilitado"]);
+                voad = new VOAdmin(ci, nombre, apellido, fechaNacimiento,celular, direccion, habilitado);
+
+            }
+            return voad;
+        }
     }
 }
