@@ -182,6 +182,12 @@ namespace Logica
             return consulta;
         }
 
+        public String reservasPaciente()
+        {
+            String consulta = "select r.idHorario,r.estado from reserva r , horario h where r.idhorario = h.idHorario and h.dia > @dia and r.ciPaciente = @ciPaciente";
+            return consulta;
+        }
+
         public String memberHorario()
         {
             String consulta = "select idHorario from horario where idHorario = @id";

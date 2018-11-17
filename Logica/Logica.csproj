@@ -55,15 +55,16 @@
     <Compile Include="DAOS\DAOPaciente.cs" />
     <Compile Include="DAOS\DAOPersona.cs" />
     <Compile Include="DAOS\DAOProfesional.cs" />
+    <Compile Include="DAOS\DAOReserva.cs" />
     <Compile Include="Fachada.cs" />
     <Compile Include="Horario.cs" />
-    <Compile Include="Horarios.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Profesional.cs" />
     <Compile Include="Profesionales.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="Reserva.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="VO\VOAdmin.cs" />
     <Compile Include="VO\VOConsultorio.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="VO\VOPaciente.cs" />
     <Compile Include="VO\VOPersona.cs" />
     <Compile Include="VO\VOProfesional.cs" />
+    <Compile Include="VO\VOReserva.cs" />
     <Compile Include="WINFORMS\Login.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,7 +10,6 @@ namespace Logica
 {
     public class DAOHorario
     {
-        Consultas consulta = new Consultas();
         VOHorario voh = new VOHorario();
 
         public void deleteHorarioProfesional(long ci)
