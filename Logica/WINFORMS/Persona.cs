@@ -26,6 +26,9 @@ namespace Logica.WINFORMS
         
         private void button1_Click(object sender, EventArgs e)
         {
+           
+
+
             if (textBoxCedula.Text != String.Empty)
             {
                 vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
@@ -41,7 +44,7 @@ namespace Logica.WINFORMS
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
-                        checkBoxNo.Checked = false;
+                        checkBoxNo.Checked = true;
                     textBoxEspecialidad.Text = vopro.Especialidad;
                 }
                 else if (vope != null && (vopa != null))
@@ -53,7 +56,7 @@ namespace Logica.WINFORMS
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
-                        checkBoxNo.Checked = false;
+                        checkBoxNo.Checked = true;
                     textBoxContactoEmergencia.Text = vopa.ContactoEmergencia;
                     textBoxCelularEmergencia.Text = vopa.CelularEmergencia;
                     textBoxMutualista.Text = vopa.Mutualista;
@@ -68,7 +71,7 @@ namespace Logica.WINFORMS
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
-                        checkBoxNo.Checked = false;
+                        checkBoxNo.Checked = true;
                 }
             }
         }
@@ -83,16 +86,58 @@ namespace Logica.WINFORMS
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
                         f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Paciente ingresado correctamente", "My Application",MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton1.Checked)
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
                         f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Profesional ingresado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton2.Checked)
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
                         f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Admin ingresado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                 }
                 else
@@ -101,16 +146,58 @@ namespace Logica.WINFORMS
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
                         f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Paciente ingresado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton1.Checked)
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
                         f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Profesional ingresado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton2.Checked)
                     {
                         f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
                         f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                        textBoxCedula.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxNombre.Text = "";
+                        textBoxApellido.Text = "";
+                        textBoxCelular.Text = "";
+                        textBoxDireccion.Text = "";
+                        textBoxContactoEmergencia.Text = "";
+                        textBoxCelularEmergencia.Text = "";
+                        textBoxMutualista.Text = "";
+                        textBoxEmergenciaMovil.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        textBoxContraseñaPaciente.Text = "";
+                        textBoxContraseñaAdmin.Text = "";
+                        MessageBox.Show("Admin ingresado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
 
                     }
 
@@ -133,34 +220,116 @@ namespace Logica.WINFORMS
                 {
                     f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, true);
                     f.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Paciente modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton1.Checked)
                 {
                     f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, true);
                     f.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Profesional modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton2.Checked)
                 {
                     f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, true);
-                    
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Admin modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
             }
             else
             {
                 if (radioButtonPaciente.Checked)
                 {
-                   // f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
-                    f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, false);
+                    f.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Paciente modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton1.Checked)
                 {
-                    //f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
-                    f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, false);
+                    f.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Profesional modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton2.Checked)
                 {
-                   // f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
-                    f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, textBoxDireccion.Text, false);
+                    textBoxCedula.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxNombre.Text = "";
+                    textBoxApellido.Text = "";
+                    textBoxCelular.Text = "";
+                    textBoxDireccion.Text = "";
+                    textBoxContactoEmergencia.Text = "";
+                    textBoxCelularEmergencia.Text = "";
+                    textBoxMutualista.Text = "";
+                    textBoxEmergenciaMovil.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    textBoxContraseñaPaciente.Text = "";
+                    textBoxContraseñaAdmin.Text = "";
+                    MessageBox.Show("Admin modificado correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
             }
         }
@@ -168,6 +337,20 @@ namespace Logica.WINFORMS
         private void btnEliminar_Click(object sender, EventArgs e)
         {
            f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+            textBoxCedula.Text = "";
+            textBoxCelular.Text = "";
+            textBoxNombre.Text = "";
+            textBoxApellido.Text = "";
+            textBoxCelular.Text = "";
+            textBoxDireccion.Text = "";
+            textBoxContactoEmergencia.Text = "";
+            textBoxCelularEmergencia.Text = "";
+            textBoxMutualista.Text = "";
+            textBoxEmergenciaMovil.Text = "";
+            textBoxContraseñaAdmin.Text = "";
+            textBoxContraseñaPaciente.Text = "";
+            textBoxContraseñaAdmin.Text = "";
+            MessageBox.Show("Persona eliminada correctamente", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
         }
 
         private void Persona_Load(object sender, EventArgs e)
@@ -203,11 +386,21 @@ namespace Logica.WINFORMS
         {
             if (radioButton1.Checked)
             {
+                textBoxContactoEmergencia.Text = "";
+                textBoxCelularEmergencia.Text = "";
+                textBoxMutualista.Text = "";
+                textBoxEmergenciaMovil.Text = "";
+                textBoxContraseñaAdmin.Text = "";
+                textBoxContraseñaPaciente.Text = "";
+                textBoxContraseñaAdmin.Text = "";
                 textBoxEspecialidad.Enabled = true;
                 textBoxContraseñaProfesional.Enabled = true;
+            
             }
             else
             {
+                textBoxEspecialidad.Text = "";
+                textBoxContraseñaProfesional.Text = "";
                 textBoxEspecialidad.Enabled = false;
                 textBoxContraseñaProfesional.Enabled = false;
             }
@@ -217,10 +410,18 @@ namespace Logica.WINFORMS
         {
             if (radioButton2.Checked)
             {
+                textBoxContactoEmergencia.Text = "";
+                textBoxCelularEmergencia.Text = "";
+                textBoxMutualista.Text = "";
+                textBoxEmergenciaMovil.Text = "";
+                textBoxContraseñaAdmin.Text = "";
+                textBoxContraseñaPaciente.Text = "";
                 textBoxContraseñaAdmin.Enabled = true;
             }
             else
             {
+
+                textBoxContraseñaAdmin.Text = "";
                 textBoxContraseñaAdmin.Enabled = false;
             }
         }
@@ -306,6 +507,8 @@ namespace Logica.WINFORMS
             }
 
         }
+
+       
     }
 
 }
