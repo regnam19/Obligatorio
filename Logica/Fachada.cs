@@ -53,28 +53,8 @@ namespace Logica
         }
          public void eliminarPersona(long ci)
         {
-            if (!daop.Member(ci)&& (!daoad.member(ci)))
-                daope.delete(ci);
-            else if (daoad.member(ci))
-            {
-                daoad.delete(ci);
-                daope.delete(ci);
-            } else if (!daoh.ProfesionalTieneHorario(ci))
-            {
-                if (daop.Member(ci))
-                {
-                    daop.delete(ci);
-                    daope.delete(ci);
-                }
-
-            } else if (daop.Member(ci))
-                {
-                    daoh.deleteHorarioProfesional(ci);
-                    daop.delete(ci);
-                    daope.delete(ci);
-                }
-            
-         }     
+            daope.delete(ci); 
+        }     
         
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {

@@ -156,6 +156,7 @@ namespace Logica
             myConnection.Close();
 
         }
+        /*
         public void delete(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -163,7 +164,7 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.eliminarPaciente(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarPersona(), myConnection);
 
             myCommand.Parameters.AddWithValue("@ci", ci);
 
@@ -171,6 +172,6 @@ namespace Logica
 
             myConnection.Close();
 
-        }
+        }*/
     }
 }
