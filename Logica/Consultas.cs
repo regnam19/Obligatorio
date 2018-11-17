@@ -100,7 +100,7 @@ namespace Logica
         //FUNCIONA
         public String profesionalListar()
         {
-            String consulta = "select p.ci, select p.nombre, p.apellido, p.fechaNacimiento, pr.especialidad  from persona p, profesional pr where p.ci = pr.ciProfesional";
+            String consulta = "select p.ci, p.nombre, p.apellido, p.fechaNacimiento, pr.especialidad  from persona p, profesional pr where p.ci = pr.ciProfesional";
             return consulta;
         }
 

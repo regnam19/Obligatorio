@@ -137,7 +137,7 @@ namespace Logica
 
             while (myReader.Read())
             {
-                long cedula = Convert.ToInt64(myReader["cedula"]);
+                long cedula = Convert.ToInt64(myReader["ci"]);
                 String nombre = Convert.ToString(myReader["nombre"]);
                 String apellido = Convert.ToString(myReader["apellido"]);
                 DateTime fecha = Convert.ToDateTime(myReader["fechaNacimiento"]);
