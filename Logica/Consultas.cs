@@ -178,7 +178,7 @@ namespace Logica
 
         public String horariosLibresProfesional()
         {
-            String consulta = "select hora, idHorario, idConsultorio from horario where ciProfesional = @ci and estado = @estado and dia=@dia order by idConsultorio, hora";
+            String consulta = "select idHorario,hora,dia,idConsultorio  from horario where ciProfesional = @ciProfesional and dia > @dia and idHorario not in (select idHorario from reserva) order by dia,idConsultorio,hora";
             return consulta;
         }
 

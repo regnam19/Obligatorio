@@ -11,12 +11,14 @@ namespace Logica
         public long IdHorario { get; set; }
         public int Hora { get; set; }
         public int IdConsultorio { get; set; }
+        public DateTime dia { get; set; }
 
-        public VOHorarioDisponible(long idHorario, int hora, int idConsultorio)
+        public VOHorarioDisponible(long idHorario, int hora, int idConsultorio, DateTime dia)
         {
             this.IdHorario = idHorario;
             this.Hora = hora; 
             this.IdConsultorio = idConsultorio;
+            this.dia = dia;
         }
 
         public VOHorarioDisponible() { }

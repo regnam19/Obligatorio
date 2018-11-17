@@ -377,9 +377,11 @@ namespace Logica
 
 
         // para requerimiento 1, tras los hroarios disponibles para un profesional en un dia
-       public List<VOHorarioDisponible> horasLibresProfesional(DateTime dia,long ciProfesional)
+       public List<VOHorarioDisponible> horasLibresProfesional(long ciProfesional)
         {
             List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
+
+            DateTime dia = DateTime.Today;
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -391,7 +393,6 @@ namespace Logica
 
             myCommand.Parameters.AddWithValue("@ci", ciProfesional);
             myCommand.Parameters.AddWithValue("@dia", dia);
-            myCommand.Parameters.AddWithValue("@estado", "disponible");
 
             myCommand.ExecuteNonQuery();
 
@@ -404,8 +405,9 @@ namespace Logica
                 int hora = Convert.ToInt32(myReader["hora"]);
                 long idHorario = Convert.ToInt64(myReader["idHorario"]);
                 int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                dia = Convert.ToDateTime(myReader["dia"]);
 
-                VOHorarioDisponible vohd = new VOHorarioDisponible(idHorario, hora, idConsultorio);
+                VOHorarioDisponible vohd = new VOHorarioDisponible(idHorario, hora, idConsultorio,);
 
                 horarios.Add(vohd);
             }
