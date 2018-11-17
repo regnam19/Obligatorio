@@ -42,6 +42,7 @@ namespace Logica
             return existe;
         }
         
+        //FUNCIONA
         public VOProfesional Find(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -78,6 +79,7 @@ namespace Logica
             return vop;
         }
 
+        //FUNCIONA
         public List<VOListarProfesional> listarProfesionales()
         {
             List<VOListarProfesional> lista = new List<VOListarProfesional>();

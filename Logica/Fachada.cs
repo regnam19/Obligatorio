@@ -92,7 +92,7 @@ namespace Logica
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
         }
 
-
+        //FUNCIONA
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
@@ -146,6 +146,8 @@ namespace Logica
             return horariosLibres;       
         }
 
+
+        //FUNCIONA
         public List<VOListarProfesional> listaProfesionales()
         {
             return daop.listarProfesionales();

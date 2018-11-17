@@ -3,14 +3,33 @@
 <head>
     <meta charset="utf-8" />
     <title>TITULO</title>
+    <script>var __basePath = '';</script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="https://unpkg.com/ag-grid-community@19.1.2/dist/ag-grid-community.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div>
         <h1>Profesionales</h1>
-        <ul id="profesionales"></ul>
+
+        <!--<ul id="profesionales"></ul> -->
     </div>
+    <div class="test-container">
+        <div class="test-header">
+            Selection:
+            <span id="selectedRows"></span>
+        </div>
+        <div id="myGrid" class="ag-theme-balham" style="height: calc(100% - 30px);"></div>
+    </div>
+    <script src="main.js"></script>
     <div>
-        <input type="text" id="cedulaProfesional"  size="20" />
+        <input type="text" id="cedulaProfesional" size="20" />
         <input type="button" value="buscar" onclick="traerProfesional();" />
     </div>
     <ul id="tirar"></ul>
@@ -20,9 +39,12 @@
         <input type="text" id="paciente" size="20" />
         <h3>Id Horario</h3>
         <input type="text" id="fecha" />
-        <input type="button" value="Reservar" onclick="reservarHora(); "/>
+        <input type="button" value="Reservar" onclick="reservarHora(); " />
     </div>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+
+
+
 
     <script>
 
@@ -55,7 +77,7 @@
         function traerProfesional() {
             $.getJSON('api/Profesional/' + cedulaProfesional.value)
                 .done(function (data) {
-                        $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
+                    $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
                 });
         }
 
