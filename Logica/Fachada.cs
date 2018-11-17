@@ -184,7 +184,7 @@ namespace Logica
 
         public List<VOHorarioDisponible> horasLibresProfesional (DateTime fecha, long cedula)
         {
-            return daoh.horasLibresProfesional(fecha, cedula);
+            return daoh.horasLibresProfesional(cedula);
         }
 
         // requerimiento 1

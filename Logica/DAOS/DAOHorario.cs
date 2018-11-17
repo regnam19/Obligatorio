@@ -407,7 +407,7 @@ namespace Logica
                 int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
                 dia = Convert.ToDateTime(myReader["dia"]);
 
-                VOHorarioDisponible vohd = new VOHorarioDisponible(idHorario, hora, idConsultorio,);
+                VOHorarioDisponible vohd = new VOHorarioDisponible(idHorario, hora, idConsultorio,dia);
 
                 horarios.Add(vohd);
             }
