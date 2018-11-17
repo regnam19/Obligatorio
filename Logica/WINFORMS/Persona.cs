@@ -53,44 +53,51 @@ namespace Logica.WINFORMS
 
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            if (checkBoxSi.Checked)
+            try
             {
-                if (radioButtonPaciente.Checked)
+                if (checkBoxSi.Checked)
                 {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
-                    f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    if (radioButtonPaciente.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
+                        f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    }
+                    else if (radioButton1.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
+                        f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    }
+                    else if (radioButton2.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
+                        f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                    }
                 }
-                else if (radioButton1.Checked)
+                else
                 {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
-                    f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
-                }
-                else if (radioButton2.Checked)
-                {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
-                    f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
-                }
-            }else
-            {
-                if (radioButtonPaciente.Checked)
-                {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
-                    f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
-                }
-                else if (radioButton1.Checked)
-                {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
-                    f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
-                }
-                else if (radioButton2.Checked)
-                {
-                    f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
-                    f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                    if (radioButtonPaciente.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
+                        f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    }
+                    else if (radioButton1.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
+                        f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    }
+                    else if (radioButton2.Checked)
+                    {
+                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, "2018-9-1", textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
+                        f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+
+                    }
 
                 }
-
             }
-
+            catch
+            {
+                MessageBox.Show("The calculations are complete", "My Application", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
           
            
            

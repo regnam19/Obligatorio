@@ -58,7 +58,10 @@ namespace Logica
         
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
-            daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
+            if (!daope.Member(ci))
+                daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
+            else
+                throw new Exception("Usuario ya existe");
         }
         public void ingresarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
         {

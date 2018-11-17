@@ -13,6 +13,33 @@ namespace Logica
         Consultas consulta = new Consultas();
         VOPersona vope = new VOPersona();
 
+        public Boolean Member(long ci)
+        {
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.buscarPersona(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                existe = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
+        }
         public VOPersona find (long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
