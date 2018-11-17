@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class DAOPersona
+    public class DAOPersona
     {
         Consultas consulta = new Consultas();
         VOPersona vope = new VOPersona();
