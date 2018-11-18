@@ -184,7 +184,12 @@ namespace Logica
             return daoh.horarioDisponibleParaProfesional(idConsultorio, dia, hora);
         }
 
-        public List<VOHorarioDisponible> horasLibresProfesional (DateTime fecha, long cedula)
+        /*public List<VOHorarioDisponible> horasLibresProfesional (DateTime fecha, long cedula)
+        {
+            return daoh.horasLibresProfesional(cedula);
+        }*/
+
+        public List <VOHorarioDisponible> horasLibresProfesional(long cedula)
         {
             return daoh.horasLibresProfesional(cedula);
         }

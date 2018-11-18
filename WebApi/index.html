@@ -28,9 +28,13 @@
         <div id="myGrid" class="ag-theme-balham" style="height: calc(100% - 30px);"></div>
     </div>
     <script src="main.js"></script>
+
+
+
+
     <div>
-        <input type="text" id="cedulaProfesional" size="20" />
-        <input type="button" value="buscar" onclick="traerProfesional();" />
+       <!-- <input type="text" id="cedulaProfesional" size="20" /> -->
+        <input type="button" value="buscar" onclick="traerHorariosLibres();" />
     </div>
     <ul id="tirar"></ul>
 
@@ -75,27 +79,38 @@
         }
 
         function traerProfesional() {
-            $.getJSON('api/Profesional/' + cedulaProfesional.value)
+            $.getJSON('api/Profesional/' + obtenerIdProfesional())
                 .done(function (data) {
                     $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
                 });
         }
 
+        function traerHorariosLibres() {
+            $.getJSON('api/Horario/' + obtenerIdProfesional())
+                .done(function (data) {
+                    $('<li>', { text: formatearHorasLibres(data) }).appendTo($('#tirar'));
+                });
+        }
 
 
-        $(document).ready(function () {
+
+        /*$(document).ready(function () {
             $.getJSON(url)
                 .done(function (data) {
                     $.each(data, function (key, item) {
                         $('<li>', { text: formatear(item) }).appendTo($('#profesionales'));
                     });
                 });
-        });
+        });*/
 
 
 
         function formatear(item) {
             return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
+        }
+
+        function formatearHorasLibres(item) {
+            return item.Idhorario + ' ' + item.hora + ' ' + item.Idconsultorio;
         }
 
 

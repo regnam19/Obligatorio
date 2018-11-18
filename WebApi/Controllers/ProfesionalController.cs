@@ -21,6 +21,7 @@ namespace WebApi.Controllers
             foreach(var prof in fach.listaProfesionales())
             {
                 profesionales[i] = new Models.Profesional();
+                profesionales[i].cedula = prof.Cedula;
                 profesionales[i].nombre = prof.Nombre;
                 profesionales[i].apellido = prof.Apellido;
                 profesionales[i].fechaNacimiento = prof.FechaNac;

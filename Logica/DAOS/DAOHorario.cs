@@ -380,7 +380,8 @@ namespace Logica
         {
             List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
 
-            DateTime dia = DateTime.Today;
+            //DateTime dia = DateTime.Today;
+            DateTime dia = new DateTime(2018, 02, 02);
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -390,8 +391,9 @@ namespace Logica
             SqlCommand myCommand = new SqlCommand(consulta.horariosLibresProfesional(), myConnection);
 
 
-            myCommand.Parameters.AddWithValue("@ci", ciProfesional);
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
             myCommand.Parameters.AddWithValue("@dia", dia);
+
 
             myCommand.ExecuteNonQuery();
 
