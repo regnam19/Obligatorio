@@ -5,28 +5,33 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Logica;
+
 
 namespace WebApi.Controllers
 {
     public class HorarioController : ApiController
     {
         // GET api/values
-        public IEnumerable<WebApi.Models.Horario> GetHorario(long id)
-        {
-            Fachada fach = new Fachada();
 
-            WebApi.Models.Horario[] horarios = new WebApi.Models.Horario[fach.horasLibresProfesional(id).LongCount()];
+
+        public IEnumerable<Horario> GetHorario(long id)
+        {
+            
+            Logica.Fachada fach = new Logica.Fachada();
+
+            Horario[] horarios = new Horario[fach.horasLibresProfesional(id).LongCount()];
             int i = 0;
             foreach (var hor in fach.horasLibresProfesional(id))
             {
-                horarios[i] = new Models.Horario();
+                horarios[i] = new Horario();
                 horarios[i].IdHorario = hor.IdHorario;
                 horarios[i].Hora = hor.Hora;
                 horarios[i].IdConsultorio = hor.IdConsultorio;
                 horarios[i].Dia = hor.dia;
+                horarios[i].Cedula = id;
                 i++;
             }
+            
             return horarios;
 
         }

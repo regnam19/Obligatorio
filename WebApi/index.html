@@ -33,7 +33,7 @@
 
 
     <div>
-       <!-- <input type="text" id="cedulaProfesional" size="20" /> -->
+        <!-- <input type="text" id="cedulaProfesional" size="20" /> -->
         <input type="button" value="buscar" onclick="traerHorariosLibres();" />
     </div>
     <ul id="tirar"></ul>
@@ -45,12 +45,42 @@
         <input type="text" id="fecha" />
         <input type="button" value="Reservar" onclick="reservarHora(); " />
     </div>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+     <!---<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>-->
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 
 
+    <!--- agregado mateo -->
+    <h2>Buscar por ciProfesional </h2>
+    <input type="text" id="prodId" size="5" />
+    <input type="button" value="Search" onclick="find();" />
+    <p id="product" />
 
 
+ 
     <script>
+
+        // agregado mateo
+        var uri = 'api/Horario';
+        function find() {
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    for (var h in data)
+                        alert(data[h].IdHorario);
+                    $('#product').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#product').text('Error: ' + err);
+                });
+        }
+
+        function formatItem(item) {
+            return item[0].IdConsultorio + ': $' + item[0].IdHorario;
+        }
+
+
+
+
 
         var url = '/api/Profesional';
 
@@ -88,7 +118,10 @@
         function traerHorariosLibres() {
             $.getJSON('api/Horario/' + obtenerIdProfesional())
                 .done(function (data) {
-                    $('<li>', { text: formatearHorasLibres(data) }).appendTo($('#tirar'));
+                    var cantidad = Object.keys(data).length;
+                    var i;
+                    for (i = 0; i < cantidad; i++)
+                        $('<li>', { text: formatearHorasLibres(data,i) }).appendTo($('#tirar'));
                 });
         }
 
@@ -109,8 +142,8 @@
             return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
         }
 
-        function formatearHorasLibres(item) {
-            return item.Idhorario + ' ' + item.hora + ' ' + item.Idconsultorio;
+        function formatearHorasLibres(item,i) {
+            return 'IdHorario: ' + item[i].IdHorario + '  Hora:  ' + item[i].Hora + '  IdConsultorio: ' + item[i].IdConsultorio;
         }
 
 
