@@ -120,6 +120,7 @@
                 .done(function (data) {
                     var cantidad = Object.keys(data).length;
                     var i;
+                    $('#tirar').empty();
                     for (i = 0; i < cantidad; i++)
                         $('<li>', { text: formatearHorasLibres(data,i) }).appendTo($('#tirar'));
                 });
