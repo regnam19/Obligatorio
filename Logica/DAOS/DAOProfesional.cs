@@ -152,6 +152,7 @@ namespace Logica
 
             return lista;
         }
+        /*
         public void delete(long ci)
         {
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
@@ -166,7 +167,7 @@ namespace Logica
             myCommand.ExecuteNonQuery();
 
             myConnection.Close();
-
-        }
+            
+        }*/
     }
 }

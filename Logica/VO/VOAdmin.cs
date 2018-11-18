@@ -12,16 +12,18 @@ namespace Logica
         public String Nombre { get; set; }
         public String Apellido { get; set; }
         public DateTime FechaNac { get; set; }
+        public String Direccion { get; set; }
         public String Celular { get; set; }
         public bool Habilitado { get; set; }
 
-        public VOAdmin(long ci, String nombre, String apellido, DateTime fecha, String celular, bool habilitado)
+        public VOAdmin(long ci, String nombre, String apellido, DateTime fecha, String celular, String direccion, bool habilitado)
         {
             this.Ci = ci;
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.FechaNac = fecha;
             this.Celular = celular;
+            this.Direccion = direccion;
             this.Habilitado = habilitado;
        
         }

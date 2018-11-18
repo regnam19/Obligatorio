@@ -123,21 +123,6 @@ namespace Logica
             Console.WriteLine("Nombre {0}", dicc.Find(pr4.Ci).Nombre);
             Console.ReadLine();
              */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
 

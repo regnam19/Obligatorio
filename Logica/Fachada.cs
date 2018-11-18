@@ -53,32 +53,15 @@ namespace Logica
         }
          public void eliminarPersona(long ci)
         {
-            if (!daop.Member(ci)&& (!daoad.member(ci)))
-                daope.delete(ci);
-            else if (daoad.member(ci))
-            {
-                daoad.delete(ci);
-                daope.delete(ci);
-            } else if (!daoh.ProfesionalTieneHorario(ci))
-            {
-                if (daop.Member(ci))
-                {
-                    daop.delete(ci);
-                    daope.delete(ci);
-                }
-
-            } else if (daop.Member(ci))
-                {
-                    daoh.deleteHorarioProfesional(ci);
-                    daop.delete(ci);
-                    daope.delete(ci);
-                }
-            
-         }     
+            daope.delete(ci); 
+        }     
         
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
-            daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
+            if (!daope.Member(ci))
+                daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
+            else
+                throw new Exception("Usuario ya existe");
         }
         public void ingresarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
         {
@@ -123,6 +106,11 @@ namespace Logica
         public VOPaciente darPaciente(long ced)
         {
             return daopa.Find(ced);
+        }
+
+        public VOAdmin darAdmin(long ced)
+        {
+            return daoad.find(ced);
         }
 
         public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
