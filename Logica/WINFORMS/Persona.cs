@@ -515,6 +515,19 @@ namespace Logica.WINFORMS
         {
 
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void consultoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Consultorios c = new Consultorios();
+            c.ShowDialog();
+            this.ShowDialog();
+        }
     }
 
 }
