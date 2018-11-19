@@ -41,6 +41,7 @@ namespace Logica.WINFORMS
                     textBoxApellido.Text = vope.Apellido;
                     textBoxCelular.Text = vope.Celular;
                     textBoxDireccion.Text = vope.Direccion;
+                    dateTimePickerFechaNacimiento.Value = vope.FechaNac;
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
@@ -53,6 +54,7 @@ namespace Logica.WINFORMS
                     textBoxApellido.Text = vope.Apellido;
                     textBoxCelular.Text = vope.Celular;
                     textBoxDireccion.Text = vope.Direccion;
+                    dateTimePickerFechaNacimiento.Value = vope.FechaNac;
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
@@ -68,6 +70,7 @@ namespace Logica.WINFORMS
                     textBoxApellido.Text = vope.Apellido;
                     textBoxCelular.Text = vope.Celular;
                     textBoxDireccion.Text = vope.Direccion;
+                    dateTimePickerFechaNacimiento.Value = vope.FechaNac;
                     if (vope.Habilitado)
                         checkBoxSi.Checked = true;
                     else
@@ -508,7 +511,10 @@ namespace Logica.WINFORMS
 
         }
 
-       
+        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

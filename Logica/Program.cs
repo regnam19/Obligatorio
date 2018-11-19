@@ -16,7 +16,7 @@ namespace Logica
         static void Main(string[] args)
         {
 
-            //
+            
             Application.Run(new WINFORMS.Persona());
             // conexion funcionando
 
@@ -35,12 +35,7 @@ namespace Logica
 
             Fachada f = new Fachada();
 
-            foreach(var hor in f.horasLibresProfesional(11111111))
-            {
-                Console.WriteLine("{0}",hor.IdHorario);
-            
-            }
-            Console.ReadLine();
+
             /*var pa = f.darProfesional(11111111);
             Console.WriteLine(pa.Nombre);
             Console.WriteLine(pa.Apellido);
