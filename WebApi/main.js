@@ -1,8 +1,8 @@
 ﻿
 var columnDefs = [
-    { headerName: "Nombre", field: "nombre", width: 90 },
-    { headerName: "Apellido", field: "apellido", width: 120 },
-    { headerName: "Especialidad", field: "especialidad", width: 90 }
+    { headerName: "Nombre", field: "nombre", width: 150 },
+    { headerName: "Apellido", field: "apellido", width: 150 },
+    { headerName: "Especialidad", field: "especialidad", width: 200 }
 ];
 
 var gridOptions = {
