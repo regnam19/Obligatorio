@@ -16,7 +16,7 @@ namespace Logica
         static void Main(string[] args)
         {
 
-            
+          
             Application.Run(new WINFORMS.Registros());
             // conexion funcionando
 

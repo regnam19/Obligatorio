@@ -35,13 +35,13 @@
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.textBoxHoraInicio = new System.Windows.Forms.TextBox();
             this.textBoxHoraFin = new System.Windows.Forms.TextBox();
-            this.labelId = new System.Windows.Forms.Label();
-            this.textBoxId = new System.Windows.Forms.TextBox();
             this.buttonInsertar = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.content = new System.Windows.Forms.Panel();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.labelId = new System.Windows.Forms.Label();
             this.content.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             // 
             this.labelDireccion.AutoSize = true;
             this.labelDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.labelDireccion.Location = new System.Drawing.Point(62, 146);
+            this.labelDireccion.Location = new System.Drawing.Point(98, 118);
             this.labelDireccion.Name = "labelDireccion";
             this.labelDireccion.Size = new System.Drawing.Size(71, 17);
             this.labelDireccion.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             this.labelHoraInicio.AutoSize = true;
             this.labelHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.labelHoraInicio.Location = new System.Drawing.Point(61, 183);
+            this.labelHoraInicio.Location = new System.Drawing.Point(97, 155);
             this.labelHoraInicio.Name = "labelHoraInicio";
             this.labelHoraInicio.Size = new System.Drawing.Size(79, 17);
             this.labelHoraInicio.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.labelHoraFin.AutoSize = true;
             this.labelHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.labelHoraFin.Location = new System.Drawing.Point(61, 220);
+            this.labelHoraFin.Location = new System.Drawing.Point(97, 192);
             this.labelHoraFin.Name = "labelHoraFin";
             this.labelHoraFin.Size = new System.Drawing.Size(66, 17);
             this.labelHoraFin.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             // textBoxDireccion
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(153, 146);
+            this.textBoxDireccion.Location = new System.Drawing.Point(189, 118);
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(100, 20);
             this.textBoxDireccion.TabIndex = 4;
@@ -98,39 +98,23 @@
             // 
             // textBoxHoraInicio
             // 
-            this.textBoxHoraInicio.Location = new System.Drawing.Point(153, 183);
+            this.textBoxHoraInicio.Location = new System.Drawing.Point(189, 155);
+            this.textBoxHoraInicio.MaxLength = 2;
             this.textBoxHoraInicio.Name = "textBoxHoraInicio";
             this.textBoxHoraInicio.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraInicio.TabIndex = 5;
             this.textBoxHoraInicio.Visible = false;
+            this.textBoxHoraInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraInicio_KeyPress);
             // 
             // textBoxHoraFin
             // 
-            this.textBoxHoraFin.Location = new System.Drawing.Point(153, 220);
+            this.textBoxHoraFin.Location = new System.Drawing.Point(189, 192);
+            this.textBoxHoraFin.MaxLength = 2;
             this.textBoxHoraFin.Name = "textBoxHoraFin";
             this.textBoxHoraFin.Size = new System.Drawing.Size(100, 20);
             this.textBoxHoraFin.TabIndex = 6;
             this.textBoxHoraFin.Visible = false;
-            this.textBoxHoraFin.TextChanged += new System.EventHandler(this.textBoxHoraFin_TextChanged);
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.labelId.Location = new System.Drawing.Point(61, 106);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(23, 17);
-            this.labelId.TabIndex = 7;
-            this.labelId.Text = "Id:";
-            this.labelId.Visible = false;
-            // 
-            // textBoxId
-            // 
-            this.textBoxId.Location = new System.Drawing.Point(153, 106);
-            this.textBoxId.Name = "textBoxId";
-            this.textBoxId.Size = new System.Drawing.Size(100, 20);
-            this.textBoxId.TabIndex = 8;
-            this.textBoxId.Visible = false;
+            this.textBoxHoraFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraFin_KeyPress);
             // 
             // buttonInsertar
             // 
@@ -164,7 +148,7 @@
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(309, 104);
+            this.buttonBuscar.Location = new System.Drawing.Point(309, 95);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 12;
@@ -194,6 +178,25 @@
             this.content.Size = new System.Drawing.Size(726, 457);
             this.content.TabIndex = 14;
             // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(72, 95);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.Size = new System.Drawing.Size(44, 20);
+            this.textBoxId.TabIndex = 8;
+            this.textBoxId.Visible = false;
+            // 
+            // labelId
+            // 
+            this.labelId.AutoSize = true;
+            this.labelId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelId.Location = new System.Drawing.Point(43, 95);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(23, 17);
+            this.labelId.TabIndex = 7;
+            this.labelId.Text = "Id:";
+            this.labelId.Visible = false;
+            // 
             // Consultorios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,12 +221,12 @@
         private System.Windows.Forms.TextBox textBoxDireccion;
         private System.Windows.Forms.TextBox textBoxHoraInicio;
         private System.Windows.Forms.TextBox textBoxHoraFin;
-        private System.Windows.Forms.Label labelId;
-        private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Button buttonInsertar;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Panel content;
+        private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.Label labelId;
     }
 }

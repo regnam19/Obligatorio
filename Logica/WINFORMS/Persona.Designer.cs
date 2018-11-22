@@ -1,6 +1,6 @@
 ﻿namespace Logica.WINFORMS
 {
-    partial class Persona
+    partial class groupBoxTipoPersona
     {
         /// <summary>
         /// Required designer variable.
@@ -46,9 +46,6 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dateTimePickerFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxSi = new System.Windows.Forms.CheckBox();
-            this.checkBoxNo = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.textBoxMutualista = new System.Windows.Forms.TextBox();
             this.textBoxEmergenciaMovil = new System.Windows.Forms.TextBox();
             this.textBoxContactoEmergencia = new System.Windows.Forms.TextBox();
@@ -73,7 +70,13 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.errorProviderPersona = new System.Windows.Forms.ErrorProvider(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.TipoPersona = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonNo = new System.Windows.Forms.RadioButton();
+            this.radioButtonSi = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).BeginInit();
+            this.TipoPersona.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,6 +102,7 @@
             // textBoxCedula
             // 
             this.textBoxCedula.Location = new System.Drawing.Point(181, 68);
+            this.textBoxCedula.MaxLength = 8;
             this.textBoxCedula.Name = "textBoxCedula";
             this.textBoxCedula.Size = new System.Drawing.Size(98, 20);
             this.textBoxCedula.TabIndex = 2;
@@ -118,9 +122,11 @@
             // textBoxCelular
             // 
             this.textBoxCelular.Location = new System.Drawing.Point(529, 106);
+            this.textBoxCelular.MaxLength = 9;
             this.textBoxCelular.Name = "textBoxCelular";
             this.textBoxCelular.Size = new System.Drawing.Size(98, 20);
             this.textBoxCelular.TabIndex = 5;
+            this.textBoxCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCelular_KeyPress);
             this.textBoxCelular.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCelular_Validating);
             // 
             // labelCelular
@@ -234,37 +240,6 @@
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(188, 20);
             this.dateTimePickerFechaNacimiento.TabIndex = 19;
-            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
-            // 
-            // checkBoxSi
-            // 
-            this.checkBoxSi.AutoSize = true;
-            this.checkBoxSi.Location = new System.Drawing.Point(144, 175);
-            this.checkBoxSi.Name = "checkBoxSi";
-            this.checkBoxSi.Size = new System.Drawing.Size(35, 17);
-            this.checkBoxSi.TabIndex = 20;
-            this.checkBoxSi.Text = "Si";
-            this.checkBoxSi.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNo
-            // 
-            this.checkBoxNo.AutoSize = true;
-            this.checkBoxNo.Location = new System.Drawing.Point(144, 198);
-            this.checkBoxNo.Name = "checkBoxNo";
-            this.checkBoxNo.Size = new System.Drawing.Size(40, 17);
-            this.checkBoxNo.TabIndex = 21;
-            this.checkBoxNo.Text = "No";
-            this.checkBoxNo.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(61, 186);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Habilitado";
             // 
             // textBoxMutualista
             // 
@@ -286,9 +261,11 @@
             // 
             this.textBoxContactoEmergencia.Enabled = false;
             this.textBoxContactoEmergencia.Location = new System.Drawing.Point(156, 292);
+            this.textBoxContactoEmergencia.MaxLength = 9;
             this.textBoxContactoEmergencia.Name = "textBoxContactoEmergencia";
             this.textBoxContactoEmergencia.Size = new System.Drawing.Size(100, 20);
             this.textBoxContactoEmergencia.TabIndex = 64;
+            this.textBoxContactoEmergencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxContactoEmergencia_KeyPress);
             // 
             // textBoxEspecialidad
             // 
@@ -342,7 +319,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(508, 240);
+            this.label6.Location = new System.Drawing.Point(488, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
             this.label6.TabIndex = 51;
@@ -352,7 +329,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(63, 238);
+            this.label5.Location = new System.Drawing.Point(43, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 48;
@@ -362,7 +339,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(289, 240);
+            this.label4.Location = new System.Drawing.Point(269, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 47;
@@ -385,6 +362,7 @@
             this.textBoxCelularEmergencia.Name = "textBoxCelularEmergencia";
             this.textBoxCelularEmergencia.Size = new System.Drawing.Size(100, 20);
             this.textBoxCelularEmergencia.TabIndex = 76;
+            this.textBoxCelularEmergencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCelularEmergencia_KeyPress);
             // 
             // label12
             // 
@@ -435,7 +413,7 @@
             // radioButtonPaciente
             // 
             this.radioButtonPaciente.AutoSize = true;
-            this.radioButtonPaciente.Location = new System.Drawing.Point(144, 241);
+            this.radioButtonPaciente.Location = new System.Drawing.Point(124, 26);
             this.radioButtonPaciente.Name = "radioButtonPaciente";
             this.radioButtonPaciente.Size = new System.Drawing.Size(14, 13);
             this.radioButtonPaciente.TabIndex = 83;
@@ -454,7 +432,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(386, 240);
+            this.radioButton1.Location = new System.Drawing.Point(366, 25);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(14, 13);
             this.radioButton1.TabIndex = 87;
@@ -465,7 +443,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(576, 241);
+            this.radioButton2.Location = new System.Drawing.Point(556, 26);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(14, 13);
             this.radioButton2.TabIndex = 88;
@@ -481,19 +459,66 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(717, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(727, 24);
             this.menuStrip1.TabIndex = 89;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // Persona
+            // TipoPersona
+            // 
+            this.TipoPersona.Controls.Add(this.label4);
+            this.TipoPersona.Controls.Add(this.radioButton2);
+            this.TipoPersona.Controls.Add(this.label5);
+            this.TipoPersona.Controls.Add(this.radioButton1);
+            this.TipoPersona.Controls.Add(this.label6);
+            this.TipoPersona.Controls.Add(this.radioButtonPaciente);
+            this.TipoPersona.Location = new System.Drawing.Point(35, 232);
+            this.TipoPersona.Name = "TipoPersona";
+            this.TipoPersona.Size = new System.Drawing.Size(661, 54);
+            this.TipoPersona.TabIndex = 90;
+            this.TipoPersona.TabStop = false;
+            this.TipoPersona.Text = "TipoPersona";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonNo);
+            this.groupBox1.Controls.Add(this.radioButtonSi);
+            this.groupBox1.Location = new System.Drawing.Point(54, 175);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(161, 59);
+            this.groupBox1.TabIndex = 91;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Habilitado";
+            // 
+            // radioButtonNo
+            // 
+            this.radioButtonNo.AutoSize = true;
+            this.radioButtonNo.Location = new System.Drawing.Point(97, 22);
+            this.radioButtonNo.Name = "radioButtonNo";
+            this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonNo.TabIndex = 1;
+            this.radioButtonNo.TabStop = true;
+            this.radioButtonNo.Text = "No";
+            this.radioButtonNo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSi
+            // 
+            this.radioButtonSi.AutoSize = true;
+            this.radioButtonSi.Location = new System.Drawing.Point(32, 22);
+            this.radioButtonSi.Name = "radioButtonSi";
+            this.radioButtonSi.Size = new System.Drawing.Size(34, 17);
+            this.radioButtonSi.TabIndex = 0;
+            this.radioButtonSi.TabStop = true;
+            this.radioButtonSi.Text = "Si";
+            this.radioButtonSi.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxTipoPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 550);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(727, 539);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.TipoPersona);
             this.Controls.Add(this.textBoxContraseñaAdmin);
-            this.Controls.Add(this.radioButtonPaciente);
             this.Controls.Add(this.textBoxContraseñaPaciente);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBoxContraseñaProfesional);
@@ -509,12 +534,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBoxNo);
-            this.Controls.Add(this.checkBoxSi);
             this.Controls.Add(this.dateTimePickerFechaNacimiento);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.buttonModificar);
@@ -535,10 +554,13 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Persona";
+            this.Name = "groupBoxTipoPersona";
             this.Text = "Persona";
-            this.Load += new System.EventHandler(this.Persona_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).EndInit();
+            this.TipoPersona.ResumeLayout(false);
+            this.TipoPersona.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,9 +585,6 @@
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaNacimiento;
-        private System.Windows.Forms.CheckBox checkBoxSi;
-        private System.Windows.Forms.CheckBox checkBoxNo;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxMutualista;
         private System.Windows.Forms.TextBox textBoxEmergenciaMovil;
         private System.Windows.Forms.TextBox textBoxContactoEmergencia;
@@ -590,5 +609,9 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.ErrorProvider errorProviderPersona;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.GroupBox TipoPersona;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonNo;
+        private System.Windows.Forms.RadioButton radioButtonSi;
     }
 }

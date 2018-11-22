@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Consultorio
+    public class Consultorio
     {
         private int idConsultorio;
         private String direccion;
@@ -26,4 +26,15 @@ namespace Logica
             this.HoraFin = horaFin;
         }
     }
-}
+    [Serializable]
+    class ConsultorioInvalido : Exception
+    {
+        public ConsultorioInvalido()
+        {
+
+        }
+
+        }
+
+    }
+
