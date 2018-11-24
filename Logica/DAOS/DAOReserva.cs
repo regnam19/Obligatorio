@@ -39,11 +39,11 @@ namespace Logica.DAOS
 
             while (myReader.Read())
             {
-
+                long idReserva = Convert.ToInt64(myReader["idReserva"]);
                 long idHorario = Convert.ToInt64(myReader["idHorario"]);
-                String estado = Convert.ToString(myReader["estado"]);
+                sbyte estado = Convert.ToSByte(myReader["estado"]);
 
-                VOReserva vohd = new VOReserva(idHorario, ciPaciente, estado);
+                VOReserva vohd = new VOReserva(idReserva,idHorario, ciPaciente, estado);
 
                 lista.Add(vohd);
             }
@@ -93,11 +93,11 @@ namespace Logica.DAOS
 
             while (myReader.Read())
             {
-
+                long idReserva = Convert.ToInt64(myReader["idReserva"]);
                 long idHorario = Convert.ToInt64(myReader["idHorario"]);
-                String estado = Convert.ToString(myReader["estado"]);
+                sbyte estado = Convert.ToSByte(myReader["estado"]);
 
-                VOReserva vohd = new VOReserva(idHorario, ciPaciente, estado);
+                VOReserva vohd = new VOReserva(idReserva,idHorario, ciPaciente, estado);
 
                 lista.Add(vohd);
             }

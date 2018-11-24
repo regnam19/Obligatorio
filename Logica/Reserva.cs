@@ -8,19 +8,20 @@ namespace Logica
 {
     public class Reserva
     {
-    
+        private long idReserva;
         private long idHorario;
         private long ciPaciente;
 
         public long IdHorario { get { return this.idHorario; } }
         public long CiPaciente { get { return this.ciPaciente; } }
 
-        public String Estado { get; set; }
+        public sbyte Estado { get; set; }
         
         public Reserva() { }
 
-        public Reserva(long idHorario,long ciPaciente,String estado)
+        public Reserva(long idReserva,long idHorario,long ciPaciente,sbyte estado)
         {
+            this.idReserva = idReserva;
             this.idHorario = idHorario;
             this.ciPaciente = ciPaciente;
             this.Estado = estado;

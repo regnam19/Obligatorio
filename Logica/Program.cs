@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using Logica.WINFORMS;
-
+using Logica.DAOS;
 
 namespace Logica
 {
@@ -17,7 +17,7 @@ namespace Logica
         {
 
           
-            Application.Run(new WINFORMS.Registros());
+            //Application.Run(new WINFORMS.Registros());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -35,7 +35,13 @@ namespace Logica
 
             Fachada f = new Fachada();
 
+            DAOReserva daor = new DAOReserva();
 
+            foreach (var re in daor.historialRservasPaciente(12345678)){
+                Console.WriteLine("Idhorario: {0}", re.IdHorario);
+            }
+
+            Console.ReadLine();
             
         }
 
