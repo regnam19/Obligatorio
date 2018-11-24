@@ -36,17 +36,17 @@ namespace WebApi.Controllers
 
         }
 
-        /*public IHttpActionResult PostHorario(WebApi.Models.Horario horario)
+        public IHttpActionResult PostHorario(Horario horario)
         {
             
             Console.WriteLine("Estoy2");
-            Fachada fach = new Fachada();
-            long cedula = horario.cedula;
-            long idHorario = horario.fecha;
-            VOHorarioInsertarPaciente vo = new VOHorarioInsertarPaciente(idHorario, cedula);
+            Logica.Fachada fach = new Logica.Fachada();
+            long cedula = horario.Cedula;
+            long idHorario = horario.IdHorario;
+            Logica.VOHorarioInsertarPaciente vo = new Logica.VOHorarioInsertarPaciente(idHorario, cedula);
             fach.reservaProfesional(vo);
             return Ok();
-        }*/
+        }
 
         //Horarios libres
         

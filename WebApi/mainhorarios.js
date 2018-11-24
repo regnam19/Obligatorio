@@ -23,6 +23,10 @@ function obtenerIdProfesional() {
     return selectedRowsString;
 };
 
+
+
+
+
 function onSelectionChanged2() {
     var selectedRows = gridOptions2.api.getSelectedRows();
     var selectedRowsString = '';
