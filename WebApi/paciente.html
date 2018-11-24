@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PACIENTE</title>
+    <script>var __basePath = '';</script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="https://unpkg.com/ag-grid-community@19.1.2/dist/ag-grid-community.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <h1>Profesionales</h1>
+                <div id="myGrid" class="ag-theme-balham" style="height: calc(100% - 30px)"></div>
+                <ul id="tirar"></ul>
+
+                <div>
+                    <h3>Cedula paciente</h3>
+                    <input type="text" id="paciente" size="20" />
+                    <h3>Id Horario</h3>
+                    <input type="text" id="fecha" />
+                    <input type="button" value="Reservar" onclick="reservarHora(); " />
+                </div>
+                <!---<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>-->
+                <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+
+                <!--- agregado mateo -->
+                <h2>Buscar por ciProfesional </h2>
+                <input type="text" id="prodId" size="5" />
+                <input type="button" value="Search" onclick="find();" />
+                <p id="product" />
+            </div>
+            <div class="col-md-2">
+                <br /><br /><br /><br /><br /><br /><br /><br />
+                <input type="button" value="buscar >>" onclick="cargarHorarios();" />
+            </div>
+            <div class="col-md-5">
+                <h1>Horarios</h1>
+                <div id="myGridHorarios" class="ag-theme-balham" style="height: calc(100% - 30px)"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="main.js"></script>
+
+
+    <!-- <input type="text" id="cedulaProfesional" size="20" /> -->
+
+
+
+
+
+    <script src="mainhorarios.js"></script>
+
+
+
+
+
+
+    <script>
+
+        // agregado mateo
+        var uri = 'api/Horario';
+        function find() {
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    for (var h in data)
+                        alert(data[h].IdHorario);
+                    $('#product').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#product').text('Error: ' + err);
+                });
+        }
+
+        function formatItem(item) {
+            return item[0].IdConsultorio + ': $' + item[0].IdHorario;
+        }
+
+
+
+
+
+        var url = '/api/Profesional';
+
+        function reservarHora() {
+            var cedulaPaciente = document.getElementById("paciente").value;//$('#paciente').text();
+            var fecha = document.getElementById("fecha").value;//$('#fecha').text();
+
+            var Horario = {
+                cedula: cedulaPaciente,
+                fecha: fecha
+            };
+
+            var info_reserva = JSON.stringify(Horario);
+            $.ajax({
+                url: 'api/Horario',
+                cache: false,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: info_reserva,
+                dataType: 'json',
+                success: function (data) {
+                    alert('Se agrego el horario');
+                    location.reload;
+                }
+            });
+        }
+
+        function traerProfesional() {
+            $.getJSON('api/Profesional/' + obtenerIdProfesional())
+                .done(function (data) {
+                    $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
+                });
+        }
+
+        function traerHorariosLibres() {
+            $.getJSON('api/Horario/' + obtenerIdProfesional())
+                .done(function (data) {
+                    var cantidad = Object.keys(data).length;
+                    var i;
+                    $('#tirar').empty();
+                    for (i = 0; i < cantidad; i++)
+                        $('<li>', { text: formatearHorasLibres(data, i) }).appendTo($('#tirar'));
+                });
+        }
+
+
+
+        /*$(document).ready(function () {
+            $.getJSON(url)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('<li>', { text: formatear(item) }).appendTo($('#profesionales'));
+                    });
+                });
+        });*/
+
+
+
+        function formatear(item) {
+            return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
+        }
+
+        function formatearHorasLibres(item, i) {
+            return 'IdHorario: ' + item[i].IdHorario + '  Hora:  ' + item[i].Hora + '  IdConsultorio: ' + item[i].IdConsultorio;
+        }
+
+
+    </script>
+</body>
+</html>

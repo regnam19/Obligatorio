@@ -95,6 +95,8 @@
     <Content Include="js\bootstrap.min.js" />
     <Content Include="main.js" />
     <Content Include="mainhorarios.js" />
+    <Content Include="paciente.html" />
+    <Content Include="profesional.html" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
