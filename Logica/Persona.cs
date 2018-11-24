@@ -36,4 +36,13 @@ namespace Logica
         }
 
     }
+    [Serializable]
+    class CedulaPersonaInvalida : Exception
+    {
+        public CedulaPersonaInvalida()
+        {
+
+        }
+
+    }
 }

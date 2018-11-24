@@ -16,6 +16,7 @@ namespace Logica
         DAOPersona daope = new DAOPersona();
         DAOPaciente daopa = new DAOPaciente();
         DAOAdmin daoad = new DAOAdmin();
+
         //prueba git
         //singleton
         private static Fachada instancia = null;
@@ -31,7 +32,10 @@ namespace Logica
 
         public VOPersona darPersona(long ci)
         {
-            return daope.find(ci);
+            if (daope.Member(ci))
+                return daope.find(ci);
+            else
+                throw new CedulaPersonaInvalida();
         }
 
         /*public VOUsuario darUsuario(long ci)
@@ -41,44 +45,70 @@ namespace Logica
 
         public Boolean esAdmin (long ci)
         {
-            return daoad.member(ci);
+            if (daope.Member(ci))
+                return daoad.member(ci);
+            else
+                throw new CedulaPersonaInvalida();
         }
+
         public Boolean esPaciente (long ci)
         {
-            return daopa.Member(ci);
+            if (daope.Member(ci))
+                return daopa.Member(ci);
+             else
+                throw new CedulaPersonaInvalida();
         }
+
         public Boolean esProfesional (long ci)
         {
-            return daop.Member(ci);
+            if (daope.Member(ci))
+                return daop.Member(ci);
+            else
+                throw new CedulaPersonaInvalida();
         }
-         public void eliminarPersona(long ci)
+
+        public void eliminarPersona(long ci)
         {
-            daope.delete(ci); 
-        }     
-        
-        public void ingresarPersona(long ci, String nombre, String apellido, String celular, String fechaNacimiento, String direccion, String contraseña, bool habilitado)
+            if (daope.Member(ci))
+                daope.delete(ci);
+            else
+                throw new CedulaPersonaInvalida();
+        }
+
+        public void ingresarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
             if (!daope.Member(ci))
                 daope.insert(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
             else
-                throw new Exception("Usuario ya existe");
+                throw new CedulaPersonaInvalida();
         }
+
         public void ingresarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
         {
             daopa.insert(ci, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista);
         }
+
         public void ingresarProfesional(long ci, String especialidad)
         {
             daop.insert(ci, especialidad);
         }
+
+        public void ingresarConsultorio (String direccion, int fechaInicio, int fechaFin)
+        {
+                 daoc.insert(direccion, fechaInicio, fechaFin);
+        }
+
         public void ingresarAdmin(long ci)
         {
             daoad.insert(ci);
         }
 
-        public void modificarPersona(long ci, String nombre, String apellido, String celular, String direccion, bool habilitado)
+        public void modificarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, bool habilitado)
         {
-            daope.update(ci, nombre, apellido, celular, direccion, habilitado);
+            if (daope.Member(ci))
+                daope.update(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado);
+            else
+                throw new CedulaPersonaInvalida();
         }
 
         public void modificarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
@@ -90,14 +120,28 @@ namespace Logica
         {
             daop.update(ci, especialidad);
         }
-       
+
+        public void modificarConsultorio (long idConsultorio, String direccion, int fechaInicio, int fechaFin)
+        {
+            if (daoc.Member(idConsultorio))
+                daoc.update(idConsultorio, direccion, fechaInicio, fechaFin);
+            else
+                throw new ConsultorioInvalido();
+        }
+
+        public void eliminarConsultorio (long idConsultorio)
+        {
+            if (daoc.Member(idConsultorio))
+                daoc.delete(idConsultorio);
+            else
+                throw new ConsultorioInvalido();
+        }
 
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
             return daoh.horariosReservadosConsultorios(dia, idConsultorio);
         }
-
-        //FUNCIONA
+     
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
@@ -111,6 +155,14 @@ namespace Logica
         public VOAdmin darAdmin(long ced)
         {
             return daoad.find(ced);
+        }
+
+        public VOConsultorio darConsultorio (long idConsultorio)
+        {
+            if (daoc.Member(idConsultorio))
+                return daoc.Find(idConsultorio);
+            else
+                throw new ConsultorioInvalido();
         }
 
         public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
@@ -142,8 +194,6 @@ namespace Logica
 
             return horariosLibres;        }
 
-
-
         public List<int> HorariosLibresConsultorioDiaParaPaciente(int idConsultorio, DateTime dia)
         {
             List<int> horariosLibres = new List<int>();
@@ -155,13 +205,12 @@ namespace Logica
 
             return horariosLibres;       
         }
-
-
-        //FUNCIONA
+        
         public List<VOListarProfesional> listaProfesionales()
         {
             return daop.listarProfesionales();
         }
+
         public List<VOPaciente> listarPacientes()
         {
             return daopa.listarPacientes();
@@ -187,7 +236,6 @@ namespace Logica
         {
             daoh.insertarHorarioPaciente(vohip);
         }
-
 
         // requerimiento 2
         public void cancelarHoraPaciente(long idHorario)

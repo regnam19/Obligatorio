@@ -77,11 +77,70 @@ namespace Logica
             myConnection.Close();
 
             return voc;
+        }
+
+        public void insert(String direccion, int horaInicio, int horaFin)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.insertarConsultorio(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@direccion", direccion);
+            myCommand.Parameters.AddWithValue("@horaInicio", horaInicio);
+            myCommand.Parameters.AddWithValue("@horaFin", horaFin);
 
 
 
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
 
         }
+
+        public void update(long idConsultorio, String direccion, int horaInicio, int horaFin)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.modificarConsultorio(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idConsultorio", idConsultorio);
+            myCommand.Parameters.AddWithValue("@direccion", direccion);
+            myCommand.Parameters.AddWithValue("@horaInicio", horaInicio);
+            myCommand.Parameters.AddWithValue("@horaFin", horaFin);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
+        public void delete(long idConsultorio)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarConsultorio(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idConsultorio", idConsultorio);
+
+
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+        }
+
 
     }
 }
