@@ -8,6 +8,7 @@ namespace Logica.VO
 {
     public class VOReserva
     {
+        
         public long IdHorario { get; set; }
         public long CiPaciente { get; set; }
         public String Estado { get; set; }
