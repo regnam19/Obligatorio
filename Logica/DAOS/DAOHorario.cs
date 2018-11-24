@@ -435,7 +435,6 @@ namespace Logica
     
             myCommand.Parameters.AddWithValue("@idHorario", vho.IdHorario);
             myCommand.Parameters.AddWithValue("@ciPaciente", vho.CiPaciente);
-            myCommand.Parameters.AddWithValue("@estado", "reservado");
 
             myCommand.ExecuteNonQuery();
 

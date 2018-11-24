@@ -32,7 +32,7 @@ function onSelectionChanged() {
         }
         selectedRowsString += selectedRow.nombre ;
     });
-    document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+    window.onload = function () { document.querySelector('#selectedRows').innerHTML = selectedRowsString };
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -47,3 +47,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
 });
+
