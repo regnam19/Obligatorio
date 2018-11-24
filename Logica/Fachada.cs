@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Logica.DAOS;
+using Logica.VO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +18,7 @@ namespace Logica
         DAOPersona daope = new DAOPersona();
         DAOPaciente daopa = new DAOPaciente();
         DAOAdmin daoad = new DAOAdmin();
+        DAOReserva daore = new DAOReserva();
 
         //prueba git
         //singleton
@@ -247,6 +250,11 @@ namespace Logica
         public List<VOHorarioPaciente> horariosPaciente(long ciPaciente)
         {
            return  daoh.horariosPaciente(ciPaciente);
+        }
+
+        public List<VOReserva> horasReservadasPaciente(long ciPaciente)
+        {
+            return daore.reservasPaciente(ciPaciente);
         }
     }
 }
