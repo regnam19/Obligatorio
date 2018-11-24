@@ -8,6 +8,7 @@ namespace Logica
 {
     public class Reserva
     {
+    
         private long idHorario;
         private long ciPaciente;
 
