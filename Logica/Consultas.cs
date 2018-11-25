@@ -234,7 +234,7 @@ namespace Logica
         //FUNCIONA
         public String insertarHorarioPaciente()
         {
-            String consulta = "insert into reserva (idHorario,ciPaciente,estado) values (@idHorario, @ciPaciente, 0)";
+            String consulta = "insert into reserva (idHorario,ciPaciente,estado) values (@idHorario, @ciPaciente, 'reservado')";
             return consulta;
         }
 
