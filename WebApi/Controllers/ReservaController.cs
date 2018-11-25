@@ -30,5 +30,12 @@ namespace WebApi.Controllers
 
             return reservas;
         }
+        public IHttpActionResult PostCancelarReserva(Reserva reserva)
+        {
+            Logica.Fachada fach = new Logica.Fachada();
+            long idReserva = reserva.IdReserva;
+            fach.cancelarReservaPaciente(idReserva);
+            return Ok();
+        }
     }
 }

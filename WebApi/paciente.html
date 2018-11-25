@@ -55,20 +55,8 @@
 
     </div>
 
-
-
     <script src="main.js"></script>
-
-
-    <!-- <input type="text" id="cedulaProfesional" size="20" /> -->
-
-
-
-
-
     <script src="mainhorarios.js"></script>
-
-
 
     <!---<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>-->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
@@ -102,7 +90,7 @@
         var url = '/api/Profesional';
 
         function reservarHora() {
-            var cedulaPaciente = document.getElementById("paciente").value;//$('#paciente').text();
+            var cedulaPaciente = document.getElementById("paciente").value
             var fecha = obtenerIdHorario();
 
             var Horario = {
@@ -124,6 +112,7 @@
                 }
             });
         }
+
 
         function traerProfesional() {
             $.getJSON('api/Profesional/' + obtenerIdProfesional())
@@ -161,7 +150,24 @@
         }
 
         function borrarReserva() {
-            
+            var reserva = obtenerIdReserva();
+            var Reserva = {
+                IdReserva: reserva
+            };
+
+            var info_boradoreserva = JSON.stringify(Reserva);
+            $.ajax({
+                url: 'api/Reserva',
+                cache: false,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: info_boradoreserva,
+                dataType: 'json',
+                success: function (data) {
+                    alert('Se borro la reserva');
+                    location.reload;
+                }
+            });
         }
 
         
@@ -178,6 +184,18 @@
                     selectedRowsString += ', ';
                 }
                 selectedRowsString += selectedRow.IdHorario;
+            });
+            return selectedRowsString;
+        };
+
+        function obtenerIdReserva() {
+            var selectedRows = gridOptions3.api.getSelectedRows();
+            var selectedRowsString = '';
+            selectedRows.forEach(function (selectedRow, index) {
+                if (index !== 0) {
+                    selectedRowsString += ', ';
+                }
+                selectedRowsString += selectedRow.IdReserva;
             });
             return selectedRowsString;
         };
