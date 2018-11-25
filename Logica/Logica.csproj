@@ -80,6 +80,7 @@
     <Compile Include="VO\VOPersona.cs" />
     <Compile Include="VO\VOProfesional.cs" />
     <Compile Include="VO\VOReserva.cs" />
+    <Compile Include="VO\VOReservasPaciente.cs" />
     <Compile Include="WINFORMS\Consultorios.cs">
       <SubType>Form</SubType>
     </Compile>

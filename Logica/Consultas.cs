@@ -203,7 +203,7 @@ namespace Logica
 
         public String reservasPaciente()
         {
-            String consulta = "select r.idHorario,r.estado from reserva r , horario h where r.idhorario = h.idHorario and h.dia > @dia and r.ciPaciente = @ciPaciente";
+            String consulta = "select r.idreserva,r.idHorario,r.estado from reserva r , horario h where r.idhorario = h.idHorario and h.dia > @dia and r.ciPaciente = @ciPaciente";
             return consulta;
         }
 
