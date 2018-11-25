@@ -14,7 +14,7 @@ namespace Logica
 
         public long IdHorario { get { return this.idHorario; } }
         public long CiPaciente { get { return this.ciPaciente; } }
-
+       
         public String Estado { get; set; }
         
         public Reserva() { }
