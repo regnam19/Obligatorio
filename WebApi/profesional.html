@@ -3,8 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <title>PROFESIONAL</title>
+    <script>var __basePath = '';</script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>SOY PROFESIONAL</h1>
 </body>
 </html>
+
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+    <ul>
+        <li ng-repeat="x in myData">
+            {{ x.IdReserva + ', ' + x.NombrePaciente }}
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function ($scope, $http) {
+        $http.get("/api/ReservasXconfirmar/GetReservasXconfirmar/11111111").then(function (response) {
+            $scope.myData = response.data;
+        });
+    });
+
+
+</script>
