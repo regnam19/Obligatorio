@@ -287,5 +287,11 @@ namespace Logica
             String consulta = "delete from reserva where idReserva = @idReserva";
             return consulta;
         }
+
+        public String reservasXconfirmar()
+        {
+            String consulta = "select h.hora, h.dia, c.direccion, r.idReserva,  pe.nombre, pe.apellido from horario h, reserva r, consultorio c, persona pe , profesional pr where h.idHorario = r.idHorario and r.estado = 'reservado' and pe.ci = r.ciPaciente and pr.ciProfesional = @ciProfesional";
+            return consulta;
+        }
     }
 }

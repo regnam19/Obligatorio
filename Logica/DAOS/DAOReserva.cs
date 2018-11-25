@@ -128,11 +128,52 @@ namespace Logica.DAOS
 
             myConnection.Close();
         }
-        /*
-   public List<VOHorario> reservasXconfirmar(long ciProfesional)
-   {
+     
 
-   }*/
+        public List<VOReservaXconfirmar> reservasXconfirmar(long ciProfesional)
+        {
+
+             List<VOReservaXconfirmar> lista = new List<VOReservaXconfirmar>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.reservasXconfirmar(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
+
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                long idReserva = Convert.ToInt64(myReader["idReserva"]);
+                int hora = Convert.ToInt32(myReader["hora"]);
+                DateTime dia = Convert.ToDateTime(myReader["dia"]);
+                String consultorio = Convert.ToString(myReader["direccion"]);
+                String nombrePaciente = Convert.ToString(myReader["nombre"]);
+                String apellidoPaciente = Convert.ToString(myReader["apellido"]);
+
+                VOReservaXconfirmar vo = new VOReservaXconfirmar(idReserva, hora, dia, consultorio,nombrePaciente,apellidoPaciente);
+
+                lista.Add(vo);
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+
+            return lista;
+
+        }
+
+
+
     }
 
 

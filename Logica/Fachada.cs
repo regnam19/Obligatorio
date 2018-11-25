@@ -291,6 +291,11 @@ namespace Logica
         {
             daore.cancelarReservaPaciente(idReserva);
         }
+
+        public List<VOReservaXconfirmar> reservasXconfirmar(long ciProfesional)
+        {
+            return daore.reservasXconfirmar(ciProfesional);
+        }
     }
 
     
