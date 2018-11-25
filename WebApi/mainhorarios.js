@@ -18,7 +18,7 @@ var columnDefs3 = [
     { headerName: "Nombre Profesional", field: "NombreProfesional", width: 150 },
     { headerName: "Apellido Profesional", field: "ApellidoProfesional", width: 150 },
     { headerName: "Consultorio", field: "Consultorio", width: 240 },
-    { headerName: "Estado", field: estadoReserva(0), width: 100 }
+    { headerName: "Estado", field: "Estado", width: 100 }
 ];
 
 var gridOptions3 = {
@@ -85,14 +85,3 @@ function cargarReservas() {
 
 
 };
-
-function estadoReserva(e) {
-    var estado;
-    if (e == 0) {
-        estado = "Reservado";
-    }
-    else {
-        estado = "Confirmado";
-    }
-    return estado;
-}

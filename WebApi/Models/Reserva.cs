@@ -13,6 +13,6 @@ namespace WebApi.Models
         public String NombreProfesional { get; set; }
         public String ApellidoProfesional { get; set; }
         public String Consultorio { get; set; }
-        public sbyte Estado { get; set; }
+        public String Estado { get; set; }
     }
 }
