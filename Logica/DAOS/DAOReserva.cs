@@ -1,4 +1,5 @@
 ﻿using Logica.VO;
+using Logica;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -111,5 +112,28 @@ namespace Logica.DAOS
 
             return lista;
         }
+
+        public void cancelarReservaPaciente(long idReserva)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.cancelarReservaPaciente(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idReserva", idReserva);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
+        /*
+   public List<VOHorario> reservasXconfirmar(long ciProfesional)
+   {
+
+   }*/
     }
+
+
 }

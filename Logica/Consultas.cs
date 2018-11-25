@@ -281,5 +281,11 @@ namespace Logica
             String consulta = "select idHorario, hora, dia, idConsultorio, ciPaciente from horario where ciProfesional = @ciProfesional and dia > @dia and estado = @estado order by dia,idConsultorio;";
             return consulta;
         }
+
+        public String cancelarReservaPaciente()
+        {
+            String consulta = "delete from reserva where idReserva = @idReserva";
+            return consulta;
+        }
     }
 }

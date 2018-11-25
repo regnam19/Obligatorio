@@ -285,5 +285,13 @@ namespace Logica
 
             return listaFinal;
         }
+
+
+        public void cancelarReservaPaciente(long idReserva)
+        {
+            daore.cancelarReservaPaciente(idReserva);
+        }
     }
+
+    
 }
