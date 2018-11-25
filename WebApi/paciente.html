@@ -33,11 +33,13 @@
                 <input type="text" id="pacId" size="5" />
                 <input type="button" value="buscar Reservas" onclick="cargarReservas();" />
                 <div id="myGridReservasFuturas" class="ag-theme-balham" style="height: calc(100% - 30px)"></div>
+                <input type="button" value="Borrar reserva" onclick="borrarReserva();" />
 
             </div>
             <div class="col-md-2">
                 <br /><br /><br /><br /><br /><br /><br /><br />
                 <input type="button" value="buscar >>" onclick="cargarHorarios();" />
+                
             </div>
             <div class="col-md-5">
                 <h1>Horarios</h1>
@@ -158,6 +160,12 @@
             return item.nombre + ' ' + item.apellido + ' ' + item.especialidad;
         }
 
+        function borrarReserva() {
+            
+        }
+
+        
+
         function formatearHorasLibres(item, i) {
             return 'IdHorario: ' + item[i].IdHorario + '  Hora:  ' + item[i].Hora + '  IdConsultorio: ' + item[i].IdConsultorio;
         }
@@ -172,6 +180,21 @@
                 selectedRowsString += selectedRow.IdHorario;
             });
             return selectedRowsString;
+        };
+
+        function cargarHorarios() {
+            var gridDiv = document.querySelector('#myGridHorarios');
+            $('#myGridHorarios').empty();
+            new agGrid.Grid(gridDiv, gridOptions2);
+
+            $.getJSON('api/Horario/' + obtenerIdProfesional())
+                .done(function (data) {
+                    $.each(data, function () {
+                        gridOptions2.api.setRowData(data);
+                    });
+                });
+
+
         };
     </script>
 </body>

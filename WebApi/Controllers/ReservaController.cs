@@ -19,12 +19,12 @@ namespace WebApi.Controllers
             {
                 reservas[i] = new Reserva();
                 reservas[i].IdReserva = res.IdReserva;
-                reservas[i].Hora = res.;
-                reservas[i].Fecha = res.;
-                reservas[i].NombreProfesional = res.;
-                reservas[i].ApellidoProfesional = res.;
-                reservas[i].Consultorio = res.;
-                reservas[i].Estado = res.;
+                reservas[i].Hora = res.Hora;
+                reservas[i].Fecha = res.Fecha;
+                reservas[i].NombreProfesional = res.NombreProfesional;
+                reservas[i].ApellidoProfesional = res.ApellidoProfesional;
+                reservas[i].Consultorio = res.DireccionConsultorio;
+                reservas[i].Estado = res.Estado;
                 i++;
             }
 
