@@ -48,7 +48,11 @@
                     <h3>Cedula paciente</h3>
                     <input type="text" id="paciente" size="20" />
                     <input type="button" value="Reservar" onclick="reservarHora(); " />
+                    <br />
+
                 </div>
+                <input type="button" value="Historico de reservas" onclick="listarHistricoReservas(); " />
+                <div id="myGridHistoricoReservas" class="ag-theme-balham" style="height: calc(100% - 30px)"></div>
             </div>
 
         </div>
@@ -87,7 +91,7 @@
 
 
 
-        var url = '/api/Profesional';
+        var url = 'api/Profesional/GetProfesioales';
 
         function reservarHora() {
             var cedulaPaciente = document.getElementById("paciente").value
@@ -100,7 +104,7 @@
 
             var info_reserva = JSON.stringify(Horario);
             $.ajax({
-                url: 'api/Horario',
+                url: 'api/Horario/PostReservarHorarioProfesional/',
                 cache: false,
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
@@ -115,14 +119,14 @@
 
 
         function traerProfesional() {
-            $.getJSON('api/Profesional/' + obtenerIdProfesional())
+            $.getJSON('api/Profesional/GetProfesioales/' + obtenerIdProfesional())
                 .done(function (data) {
                     $('<li>', { text: formatear(data) }).appendTo($('#tirar'));
                 });
         }
 
         function traerHorariosLibres() {
-            $.getJSON('api/Horario/' + obtenerIdProfesional())
+            $.getJSON('api/Horario/GetHorario/' + obtenerIdProfesional())
                 .done(function (data) {
                     var cantidad = Object.keys(data).length;
                     var i;
@@ -157,7 +161,7 @@
 
             var info_boradoreserva = JSON.stringify(Reserva);
             $.ajax({
-                url: 'api/Reserva',
+                url: 'api/Reserva/PostBorrarReserva/',
                 cache: false,
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
@@ -205,7 +209,7 @@
             $('#myGridHorarios').empty();
             new agGrid.Grid(gridDiv, gridOptions2);
 
-            $.getJSON('api/Horario/' + obtenerIdProfesional())
+            $.getJSON('api/Horario/GetHorario/' + obtenerIdProfesional())
                 .done(function (data) {
                     $.each(data, function () {
                         gridOptions2.api.setRowData(data);

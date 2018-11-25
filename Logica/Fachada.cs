@@ -297,9 +297,36 @@ namespace Logica
             return daore.reservasXconfirmar(ciProfesional);
         }
 
-        public List <VOReservasPaciente> historialReservaPaciente()
+        public List <VOReservasPaciente> historialReservaPaciente(long ciPaciente)
         {
-            return null;
+            List<VOReservasPaciente> listaFinal = new List<VOReservasPaciente>();
+
+
+            List<VOReserva> listaReserva = new List<VOReserva>();
+
+            listaReserva = daore.historialRservasPaciente(ciPaciente);
+
+            foreach (var reserva in listaReserva)
+            {
+                VOHorario voh = new VOHorario();
+
+                voh = daoh.Find(reserva.IdHorario);
+
+                VOReservasPaciente vorp = new VOReservasPaciente();
+
+                vorp.IdReserva = reserva.IdReserva;
+                vorp.Hora = voh.Hora;
+                vorp.Fecha = voh.Dia;
+                vorp.Estado = reserva.Estado;
+                vorp.NombreProfesional = daop.Find(voh.CiProfesional).Nombre;
+                vorp.ApellidoProfesional = daop.Find(voh.CiProfesional).Apellido; ;
+                vorp.DireccionConsultorio = daoc.Find(voh.IdConsultorio).Direccion;
+
+                listaFinal.Add(vorp);
+            }
+
+
+            return listaFinal;
         }
     }
 

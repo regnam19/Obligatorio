@@ -215,7 +215,7 @@ namespace Logica
 
         public String historialReservasPaciente()
         {
-            String consulta = "select * from reserva where ciPaciente = @ciPaciente";
+            String consulta = "select r.idreserva,r.idHorario,r.estado from reserva r , horario h where r.idhorario = h.idHorario and r.ciPaciente = @ciPaciente";
             return consulta;
         }
 
