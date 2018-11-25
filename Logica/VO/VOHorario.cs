@@ -12,19 +12,16 @@ namespace Logica
         public int Hora { get; set; }
         public DateTime Dia { get; set; }
         public int IdConsultorio { get; set; }
-        public long Profesional { get; set; }
-        public String Estado { get; set; }
-        public long Paciente { get; set; }
+        public long CiProfesional { get; set; }
 
-        public VOHorario(long idHorario, int hora, DateTime dia, int idConsultorio, long ciProfesional, String estado, long ciPaciente)
+
+        public VOHorario(long idHorario, int hora, DateTime dia, int idConsultorio, long ciProfesional)
         {
             this.IdHorario = idHorario;
             this.Hora = hora;
             this.Dia = dia;
             this.IdConsultorio = idConsultorio;
-            this.Estado = estado;
-            this.Profesional = ciProfesional;
-            this.Paciente = ciPaciente;
+            this.CiProfesional = ciProfesional;
         }
 
         public VOHorario() { }

@@ -16,9 +16,12 @@ namespace Logica.DAOS
         //devuelve horarios de un paciente
         public List<VOReserva> reservasPaciente(long ciPaciente)
         {
+          
             List<VOReserva> lista = new List<VOReserva>();
 
-            DateTime dia = DateTime.Today;
+            // cambiar cambio pendiente error fecha dia 
+            //DateTime dia = DateTime.Today;
+            DateTime dia = new DateTime(2017, 01, 01);
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
@@ -43,14 +46,14 @@ namespace Logica.DAOS
                 long idHorario = Convert.ToInt64(myReader["idHorario"]);
                 sbyte estado = Convert.ToSByte(myReader["estado"]);
 
-                VOReserva vohd = new VOReserva(idReserva,idHorario, ciPaciente, estado);
+               
+                VOReserva vor = new VOReserva(idReserva,idHorario,ciPaciente,estado);
 
-                lista.Add(vohd);
+                lista.Add(vor);
             }
 
             myReader.Close();
             myConnection.Close();
-
 
             return lista;
         }

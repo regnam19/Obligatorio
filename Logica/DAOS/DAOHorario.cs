@@ -132,6 +132,8 @@ namespace Logica
 
         public VOHorario Find (long idHorario)
         {
+            VOHorario voh = new VOHorario(); 
+
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             SqlConnection myConnection = new SqlConnection(connectionString);
 
@@ -154,12 +156,11 @@ namespace Logica
                 DateTime dia = Convert.ToDateTime(myReader["dia"]);
                 int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
                 long ciProfesional = Convert.ToInt64(myReader["ciProfesional"]);
-                String estado = Convert.ToString(myReader["estado"]);
-                long ciPaciente = Convert.ToInt64(myReader["ciPaciente"]);
-                VOHorario voh = new VOHorario(idHorario,hora,dia,idConsultorio,ciProfesional,estado,ciPaciente);
-
+                voh = new VOHorario(idHorario,hora,dia,idConsultorio,ciProfesional);
+                
 
             }
+
             myReader.Close();
             myConnection.Close();
 

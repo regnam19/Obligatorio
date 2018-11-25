@@ -37,10 +37,17 @@ namespace Logica
 
             DAOReserva daor = new DAOReserva();
 
-            foreach (var re in daor.historialRservasPaciente(12345678)){
-                Console.WriteLine("Idhorario: {0}", re.IdHorario);
+            
+            foreach (var re in f.horasReservadasPaciente(12345678)){
+                Console.WriteLine("idreserva: {0}", re.IdReserva);
+                Console.WriteLine("fecha: {0}", re.Fecha);
+                Console.WriteLine("hora: {0}", re.Hora);
+                Console.WriteLine("direccion: {0}", re.DireccionConsultorio);
+                Console.WriteLine("nombre: {0}", re.NombreProfesional);
+                Console.WriteLine("apellido: {0}", re.ApellidoProfesional);
+                Console.WriteLine("***************************");
             }
-
+          
             Console.ReadLine();
             
         }

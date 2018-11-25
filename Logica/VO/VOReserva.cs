@@ -17,8 +17,9 @@ namespace Logica.VO
 
         public VOReserva(long idReserva,long idHorario,long ciPaciente,sbyte estado)
         {
+            this.IdReserva = idReserva;
             this.IdHorario = idHorario;
-            this.CiPaciente = CiPaciente;
+            this.CiPaciente = ciPaciente;
             this.Estado = estado;
         }
     }

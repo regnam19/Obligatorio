@@ -252,9 +252,40 @@ namespace Logica
            return  daoh.horariosPaciente(ciPaciente);
         }
 
-        public List<VOReserva> horasReservadasPaciente(long ciPaciente)
+        // funciona 
+        public List<VOReservasPaciente> horasReservadasPaciente(long ciPaciente)
         {
-            return daore.reservasPaciente(ciPaciente);
+            
+            List<VOReservasPaciente> listaFinal = new List<VOReservasPaciente>();
+
+
+            List<VOReserva> listaReserva = new List<VOReserva>();
+
+            listaReserva = daore.reservasPaciente(ciPaciente);
+
+            foreach(var reserva in listaReserva)
+            {
+                VOHorario voh = new VOHorario();
+
+                // reserva trae bien los datos
+                
+                voh = daoh.Find(reserva.IdHorario); // no trae nada 
+
+                VOReservasPaciente vorp = new VOReservasPaciente();
+
+                vorp.IdReserva = reserva.IdReserva;
+                vorp.Hora = voh.Hora;
+                vorp.Fecha = voh.Dia;
+                vorp.Estado = reserva.Estado;
+                vorp.NombreProfesional = daop.Find(voh.CiProfesional).Nombre;
+                vorp.ApellidoProfesional = daop.Find(voh.CiProfesional).Apellido; ;
+                vorp.DireccionConsultorio = daoc.Find(voh.IdConsultorio).Direccion;
+
+                listaFinal.Add(vorp);
+            }
+
+
+            return listaFinal;
         }
     }
 }
