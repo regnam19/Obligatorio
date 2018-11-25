@@ -12,13 +12,13 @@ var gridOptions2 = {
 };
 
 var columnDefs3 = [
-    { headerName: "Id Reserva", field: "IdReserva", width: 150 },
-    { headerName: "Hora", field: "Hora", width: 150 },
-    { headerName: "Fecha", field: "Fecha", width: 200 }
-    { headerName: "Nombre Profesional", field: "NombreProfesional", width: 200 }
-    { headerName: "Apellido Profesional", field: "ApellidoProfesional", width: 200 }
-    { headerName: "Consultorio", field: "Consultorio", width: 200 }
-    { headerName: "Estado", field: "Estado", width: 200 }
+    { headerName: "Id Reserva", field: "IdReserva", width: 100 },
+    { headerName: "Hora", field: "Hora", width: 70 },
+    { headerName: "Fecha", field: "Fecha", width: 140 },
+    { headerName: "Nombre Profesional", field: "NombreProfesional", width: 150 },
+    { headerName: "Apellido Profesional", field: "ApellidoProfesional", width: 150 },
+    { headerName: "Consultorio", field: "Consultorio", width: 240 },
+    { headerName: "Estado", field: estadoReserva(0), width: 100 }
 ];
 
 var gridOptions3 = {
@@ -56,21 +56,20 @@ function onSelectionChanged2() {
     document.querySelector('#selectedRows').innerHTML = selectedRowsString;
 }
 
+function onSelectionChanged3() {
+    var selectedRows = gridOptions3.api.getSelectedRows();
+    var selectedRowsString = '';
+    selectedRows.forEach(function (selectedRow, index) {
+        if (index !== 0) {
+            selectedRowsString += ', ';
+        }
+        selectedRowsString += selectedRow.nombre;
+    });
+    document.querySelector('#selectedRows').innerHTML = selectedRowsString;
+}
 
-function cargarHorarios() {
-    var gridDiv = document.querySelector('#myGridHorarios');
-    $('#myGridHorarios').empty();
-    new agGrid.Grid(gridDiv, gridOptions2);
-
-    $.getJSON('api/Horario/' + obtenerIdProfesional())
-        .done(function (data) {
-            $.each(data, function () {
-                gridOptions2.api.setRowData(data);
-            });
-        });
 
 
-};
 
 function cargarReservas() {
     var gridDiv = document.querySelector('#myGridReservasFuturas');
@@ -86,3 +85,14 @@ function cargarReservas() {
 
 
 };
+
+function estadoReserva(e) {
+    var estado;
+    if (e == 0) {
+        estado = "Reservado";
+    }
+    else {
+        estado = "Confirmado";
+    }
+    return estado;
+}
