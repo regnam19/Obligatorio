@@ -252,7 +252,7 @@ namespace Logica
            return  daoh.horariosPaciente(ciPaciente);
         }
 
-        // funciona 
+        // funciona trae reservas de paciente 
         public List<VOReservasPaciente> horasReservadasPaciente(long ciPaciente)
         {
             
@@ -266,10 +266,8 @@ namespace Logica
             foreach(var reserva in listaReserva)
             {
                 VOHorario voh = new VOHorario();
-
-                // reserva trae bien los datos
-                
-                voh = daoh.Find(reserva.IdHorario); // no trae nada 
+         
+                voh = daoh.Find(reserva.IdHorario); 
 
                 VOReservasPaciente vorp = new VOReservasPaciente();
 

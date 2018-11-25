@@ -24,10 +24,10 @@ namespace Logica
 
 
 
-        public sbyte Estado { get; set; }
+        public String Estado { get; set; }
         public long Paciente { get; set; }
 
-        public Horario (long idHorario, int hora, DateTime dia,int idConsultorio,long ciProfesional,sbyte estado)
+        public Horario (long idHorario, int hora, DateTime dia,int idConsultorio,long ciProfesional,String estado)
         {
             this.idHorario = idHorario;
             this.hora = hora;

@@ -45,6 +45,8 @@ namespace Logica
                 Console.WriteLine("direccion: {0}", re.DireccionConsultorio);
                 Console.WriteLine("nombre: {0}", re.NombreProfesional);
                 Console.WriteLine("apellido: {0}", re.ApellidoProfesional);
+                Console.WriteLine("estado: {0}", re.Estado);
+
                 Console.WriteLine("***************************");
             }
           

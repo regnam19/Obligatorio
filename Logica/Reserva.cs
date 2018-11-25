@@ -15,11 +15,11 @@ namespace Logica
         public long IdHorario { get { return this.idHorario; } }
         public long CiPaciente { get { return this.ciPaciente; } }
 
-        public sbyte Estado { get; set; }
+        public String Estado { get; set; }
         
         public Reserva() { }
 
-        public Reserva(long idReserva,long idHorario,long ciPaciente,sbyte estado)
+        public Reserva(long idReserva,long idHorario,long ciPaciente,String estado)
         {
             this.idReserva = idReserva;
             this.idHorario = idHorario;
