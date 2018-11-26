@@ -36,7 +36,7 @@ namespace WebApi.Controllers
 
         }
 
-        public IHttpActionResult PostHorario(Horario horario)
+        public IHttpActionResult PostReservarHorarioProfesional(Horario horario)
         {
             
             Console.WriteLine("Estoy2");

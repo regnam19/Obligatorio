@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var gridDiv = document.querySelector('#myGrid');
     new agGrid.Grid(gridDiv, gridOptions);
 
-    $.getJSON('/api/Profesional')
+    $.getJSON('api/Profesional/GetProfesioales')
         .done(function (data) {
             $.each(data, function () {
                     gridOptions.api.setRowData(data);
