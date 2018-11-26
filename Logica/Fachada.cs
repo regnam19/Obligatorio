@@ -296,6 +296,11 @@ namespace Logica
         {
             return daore.reservasXconfirmar(ciProfesional);
         }
+
+        public List <VOReservasPaciente> historialReservaPaciente()
+        {
+            return null;
+        }
     }
 
     
