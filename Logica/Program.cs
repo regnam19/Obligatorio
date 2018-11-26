@@ -38,7 +38,7 @@ namespace Logica
             DAOReserva daor = new DAOReserva();
 
             
-            foreach (var re in f.reservasXconfirmar(11111111)){
+            foreach (var re in f.reservasXconfirmar(111111)){
                 Console.WriteLine("idreserva: {0}", re.IdReserva);
                 Console.WriteLine("dia: {0}", re.Dia);
                 Console.WriteLine("hora: {0}", re.Hora);
