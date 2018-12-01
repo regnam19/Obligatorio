@@ -328,6 +328,28 @@ namespace Logica
 
             return listaFinal;
         }
+
+        public void aceptarReserva(long idReserva)
+        {
+            daore.aceptarReserva(idReserva);
+        }
+
+        public void rechazarReserva(long idReserva)
+        {
+            daore.rechazarReserva(idReserva);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     

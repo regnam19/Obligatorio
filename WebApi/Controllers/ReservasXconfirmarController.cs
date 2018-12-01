@@ -28,8 +28,26 @@ namespace WebApi.Controllers
                 reservas[i].ApellidoPaciente = r.ApellidoPaciente;
                 i++;
             }
-            
             return reservas;
+        }
+
+        
+        [Route("~/api/ReservasXconfirmar/ConfirmarReserva/{idReserva:long}")]
+        [HttpGet]
+        public IHttpActionResult GetConfirmarReserva(long idReserva)
+        {
+            Logica.Fachada fach = new Logica.Fachada();
+            fach.aceptarReserva(idReserva);
+            return Ok();
+        }
+
+        [Route("~/api/ReservasXconfirmar/RechazarReserva/{idReserva:long}")]
+        [HttpGet]
+        public IHttpActionResult GetRechazarReserva(long idReserva)
+        {
+            Logica.Fachada fach = new Logica.Fachada();
+            fach.rechazarReserva(idReserva);
+            return Ok();
         }
     }
 }

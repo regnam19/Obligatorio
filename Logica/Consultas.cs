@@ -290,7 +290,19 @@ namespace Logica
 
         public String reservasXconfirmar()
         {
-            String consulta = "select h.hora, h.dia, c.direccion, r.idReserva,  pe.nombre, pe.apellido from horario h, reserva r, consultorio c, persona pe , profesional pr where h.idHorario = r.idHorario and r.estado = 'reservado' and pe.ci = r.ciPaciente and pr.ciProfesional = @ciProfesional";
+            String consulta = "select h.hora, h.dia, c.direccion, r.idReserva,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'reservado' and h.ciProfesional = @ciProfesional;";
+            return consulta;
+        }
+
+        public String aceptarReserva()
+        {
+            String consulta = "update reserva set estado='confirmado' where idReserva=@idReserva;";
+            return consulta;
+        }
+
+        public String rechazarReserva()
+        {
+            String consulta = "delete from reserva where idReserva = @idReserva;";
             return consulta;
         }
     }

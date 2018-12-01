@@ -171,9 +171,57 @@ namespace Logica.DAOS
 
         }
 
+        public void aceptarReserva(long idReserva)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(consulta.aceptarReserva(), myConnection);
+
+                myCommand.Parameters.AddWithValue("@idReserva", idReserva);
+
+                myCommand.ExecuteNonQuery();
+
+                myConnection.Close();
+
+        }
+
+        
+         public void rechazarReserva(long idReserva)
+         {
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+
+            myConnection.Open();
+            SqlCommand myCommand = new SqlCommand(consulta.rechazarReserva(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idReserva", idReserva);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+
+         }
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
 
 
+
 }
+
+  
