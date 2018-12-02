@@ -36,6 +36,27 @@ namespace WebApi.Controllers
 
         }
 
+        public IEnumerable<int> PostHorariosDisponibles(Horario horario)
+        {
+           
+            
+            Logica.Fachada fach = new Logica.Fachada();
+
+            int[] horarios = new int[fach.horariosDisponiblesConsultorio(horario.IdConsultorio,horario.Dia).LongCount()];
+            int i = 0;
+            foreach (var hor in fach.horariosDisponiblesConsultorio(horario.IdConsultorio, horario.Dia))
+            {
+                horarios[i] = new int();
+                horarios[i] = hor;
+                i++;
+            }
+
+            return horarios;
+
+        }
+
+
+
         public IHttpActionResult PostReservarHorarioProfesional(Horario horario)
         {
             
@@ -48,7 +69,23 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        //Horarios libres
-        
+        public IHttpActionResult PostReservarHorario(Horario horario)
+        {
+            System.Diagnostics.Debug.WriteLine("Dia: {0}", horario.Dia);
+            System.Diagnostics.Debug.WriteLine("Profesional: {0}", horario.Cedula);
+            System.Diagnostics.Debug.WriteLine("Hora: {0}", horario.Hora);
+            System.Diagnostics.Debug.WriteLine("Consultorio: {0}", horario.IdConsultorio);
+
+
+            Logica.Fachada fach = new Logica.Fachada();
+            long ciProfesional = horario.Cedula;
+            int hora = horario.Hora;
+            DateTime dia = horario.Dia;
+            int consultorio = horario.IdConsultorio;
+            Logica.VOInsertarHorario voih = new Logica.VOInsertarHorario(hora, dia, consultorio, ciProfesional);
+            fach.insertarHorario(voih);
+            return Ok();
+        }
+
     }
 }

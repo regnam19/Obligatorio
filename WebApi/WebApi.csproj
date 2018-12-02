@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="consultorios.html" />
     <Content Include="css\bootstrap-grid.css" />
     <Content Include="css\bootstrap-grid.min.css" />
     <Content Include="css\bootstrap-reboot.css" />
@@ -97,19 +98,24 @@
     <Content Include="mainhorarios.js" />
     <Content Include="paciente.html" />
     <Content Include="profesional.html" />
+    <Content Include="profesionalmisp.html" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
+    <Compile Include="Controllers\PacienteXatenderController.cs" />
     <Compile Include="Controllers\ProfesionalController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\ReservasXconfirmarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Consultorio.cs" />
     <Compile Include="Models\Horario.cs" />
+    <Compile Include="Models\PacienteXatender.cs" />
     <Compile Include="Models\Profesional.cs" />
     <Compile Include="Models\Reserva.cs" />
     <Compile Include="Models\ReservasXconfirmar.cs" />

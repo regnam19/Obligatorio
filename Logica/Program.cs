@@ -17,7 +17,7 @@ namespace Logica
         {
 
           
-            Application.Run(new WINFORMS.Registros());
+           // Application.Run(new WINFORMS.Registros());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -37,16 +37,15 @@ namespace Logica
 
             DAOReserva daor = new DAOReserva();
 
-            
-            foreach (var re in f.reservasXconfirmar(33333333)){
-                Console.WriteLine("idreserva: {0}", re.IdReserva);
-                Console.WriteLine("dia: {0}", re.Dia);
-                Console.WriteLine("hora: {0}", re.Hora);
-                Console.WriteLine("direccion: {0}", re.Consultorio);
-                Console.WriteLine("nombre: {0}", re.NombrePaciente);
-                Console.WriteLine("apellido: {0}", re.ApellidoPaciente);
-                Console.WriteLine("***************************");
+
+            DateTime dia = new DateTime(2018, 09, 01);
+
+            foreach(var horario in f.horariosDisponiblesConsultorio(1, dia))
+            {
+                Console.WriteLine("Hora disponible: {0}",horario);
             }
+
+
           
             Console.ReadLine();
             

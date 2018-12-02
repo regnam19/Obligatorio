@@ -141,6 +141,40 @@ namespace Logica
 
         }
 
+        public List<VOConsultorio> listarConsultorios()
+        {
+            List<VOConsultorio> lista = new List<VOConsultorio>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.consultorios(), myConnection);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+                int horaInicio = Convert.ToInt32(myReader["horaInicio"]);
+                int horaFin = Convert.ToInt32(myReader["horaFin"]);
+                String direccion = Convert.ToString(myReader["direccion"]);
+
+
+                VOConsultorio voc = new VOConsultorio(idConsultorio, direccion, horaInicio, horaFin);
+
+                lista.Add(voc);
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+            return lista;
+        }
 
     }
 }

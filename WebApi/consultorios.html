@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Consultorios</title>
+    <script>var __basePath = '';</script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>Consultorios</h1>
+
+    <div class="container" ng-app="myApp" ng-controller="customersCtrl">
+        <h2>Reservas consultorios</h2>
+        <p>Seleccione un consultorio y una fecha para ver los horarios disponibles</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Direccion</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in myData">
+                    <td>{{x.Direccion}}</td>
+                    <td>{{x.HoraInicio}}</td>
+                    <td>{{x.HoraFin}}</td>
+                    <td><input type="radio" name="consultorio" value="{{x.IdConsultorio}}"> </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="date" name="dia">
+
+
+
+        <div ng-controller="controlHoras">
+            <button ng-click="myFunc()">Consultar</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Horas disponibles</th>
+                        <th>seleccione 1 o mas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in Horarios">
+                        <td>{{x}}</td>
+                        <td><input type="checkbox" name="hora" value="{{x}}"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <input type="button" value="Reservar" onclick="reservar();" />
+    </div>
+
+ 
+
+</body>
+</html>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+
+
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function ($scope, $http) {
+        $http.get("/api/Consultorio/GetConsultorios/").then(function (response) {
+            $scope.myData = response.data;
+        });
+    });
+    app.controller('controlHoras', ['$scope', function ($scope) {
+         $scope.myFunc = function () {
+             var consultorios = document.getElementsByName("consultorio");
+             var consultorio;
+             for (var i = 0; i < consultorios.length; i++) {
+                 if (consultorios[i].checked)
+                     consultorio = consultorios[i].value;
+             }
+             var dias = document.getElementsByName("dia");
+             var dia = dias[0].value;
+
+             var Horario = {
+                 dia: dia,
+                 idConsultorio: consultorio
+             };
+
+             var info_reserva = JSON.stringify(Horario);
+             $.ajax({
+                 url: 'api/Horario/PostHorariosDisponibles/',
+                 cache: false,
+                 type: 'POST',
+                 contentType: 'application/json; charset=utf-8',
+                 data: info_reserva,
+                 dataType: 'json',
+                 success: function (data) {
+                     $scope.Horarios = data;
+             
+                 }
+             });
+            
+        };
+    }]);
+
+     
+    function reservar() {
+
+        var uri = 'api/Horario/PostReservarHorario/';
+
+        var horas = document.getElementsByName('hora');
+
+        var consultorios = document.getElementsByName("consultorio");
+        var consultorio;
+        for (var i = 0; i < consultorios.length; i++) {
+            if (consultorios[i].checked)
+                consultorio = consultorios[i].value;
+        }
+        var dias = document.getElementsByName("dia");
+        var dia = dias[0].value;
+
+        for (var i = 0; i < horas.length; i++) {
+            if (horas[i].checked) {
+
+                var Horario = {
+                    dia: dia,
+                    idConsultorio: consultorio,
+                    cedula: 11111111,
+                    hora: horas[i].value
+                };
+                var info_reserva = JSON.stringify(Horario);
+                $.ajax({
+                    url: 'api/Horario/PostReservarHorario/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_reserva,
+                    dataType: 'json',
+                    success: function (data) {
+                        
+                    }
+                });
+
+            }
+        }
+        location.reload();
+        
+
+       
+    }
+
+    
+    
+       
+
+
+
+
+</script>

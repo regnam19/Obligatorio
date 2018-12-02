@@ -77,6 +77,7 @@
     <Compile Include="VO\VOInsertarHorario.cs" />
     <Compile Include="VO\VOListarProfesional.cs" />
     <Compile Include="VO\VOPaciente.cs" />
+    <Compile Include="VO\VOPacienteXatender.cs" />
     <Compile Include="VO\VOPersona.cs" />
     <Compile Include="VO\VOProfesional.cs" />
     <Compile Include="VO\VOReserva.cs" />

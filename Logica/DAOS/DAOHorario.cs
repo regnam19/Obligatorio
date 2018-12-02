@@ -170,7 +170,7 @@ namespace Logica
         }
 
         // sirve para ver los horarios que ya fueron reservados por profesionales
-        public List<int> horariosReservadosConsultorios(DateTime dia,int idConsultorio)
+        public List<int> horariosReservadosConsultorio(DateTime dia,int idConsultorio)
         {
             List<int> horarios = new List<int>();
 
@@ -178,6 +178,7 @@ namespace Logica
             SqlConnection myConnection = new SqlConnection(connectionString);
 
             myConnection.Open();
+
 
             SqlCommand myCommand = new SqlCommand(consulta.horarioDia(), myConnection);
 
@@ -204,41 +205,7 @@ namespace Logica
 
 
 
-        // trae todos los horarios que ya estan reservados o confirmados, para un dia y consultorio 
-        // en particular (todos los no disponibles)
-        // HAY QUE VER PARA QUE SIRVE
-        public List<int> horariosReservadosDiaXPaciente(DateTime dia,int idConsultorio)
-        {
-            List<int> horarios = new List<int>();
-
-            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            myConnection.Open();
-
-            SqlCommand myCommand = new SqlCommand(consulta.horariosDiaPacienteReservado(), myConnection);
-
-            myCommand.Parameters.AddWithValue("@dia", dia);
-            myCommand.Parameters.AddWithValue("@id", idConsultorio);
-            myCommand.Parameters.AddWithValue("@estado", "disponible");
-
-            myCommand.ExecuteNonQuery();
-
-            SqlDataReader myReader = myCommand.ExecuteReader();
-
-
-            while (myReader.Read())
-            {
-                int horario = Convert.ToInt32(myReader["hora"]);
-
-                horarios.Add(horario);
-            }
-            myReader.Close();
-            myConnection.Close();
-
-            horarios.Sort();
-            return horarios;
-        }
+        
 
         // trae los horarios que estan disponibles para los pacientes, en determinado dia en un consultorio
         public List<int> horariosLibresDiaXPaciente(DateTime dia,int idConsultorio)
@@ -596,12 +563,10 @@ namespace Logica
            
             SqlCommand myCommand = new SqlCommand(consulta.insertarHorario(), myConnection);
 
-            myCommand.Parameters.AddWithValue("@idHorario", idHorario);
             myCommand.Parameters.AddWithValue("@hora", voih.Hora);
             myCommand.Parameters.AddWithValue("@dia", voih.Dia);
             myCommand.Parameters.AddWithValue("@idConsultorio", voih.IdConsultorio);
             myCommand.Parameters.AddWithValue("@ciProfesional", voih.Profesional);
-            myCommand.Parameters.AddWithValue("@estado", "disponible");
             
             myCommand.ExecuteNonQuery();
 

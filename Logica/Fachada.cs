@@ -142,7 +142,7 @@ namespace Logica
 
         public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
         {
-            return daoh.horariosReservadosConsultorios(dia, idConsultorio);
+            return daoh.horariosReservadosConsultorio(dia, idConsultorio);
         }
      
         public VOProfesional darProfesional(long ced)
@@ -168,10 +168,7 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
-        public List<int> HorariosReservadosConsultorioDiaXPaciente(int idConsultorio, DateTime dia)
-        {
-            return daoh.horariosReservadosDiaXPaciente(dia, idConsultorio);
-        }
+       
 
         public List<int> HorariosLibresConsultorioDiaParaProfesional(int idConsultorio, DateTime dia)
         {
@@ -180,7 +177,7 @@ namespace Logica
 
             List<int> horariosOcupados = new List<int>();
 
-            horariosOcupados = daoh.horariosReservadosConsultorios(dia, idConsultorio);
+            horariosOcupados = daoh.horariosReservadosConsultorio(dia, idConsultorio);
 
             VOConsultorio voc = new VOConsultorio();
 
@@ -292,6 +289,7 @@ namespace Logica
             daore.cancelarReservaPaciente(idReserva);
         }
 
+        // trae las reservas que tiene para confirmar o cancelar un profesional en particular
         public List<VOReservaXconfirmar> reservasXconfirmar(long ciProfesional)
         {
             return daore.reservasXconfirmar(ciProfesional);
@@ -329,24 +327,53 @@ namespace Logica
             return listaFinal;
         }
 
+        // profesional acepta reserva
         public void aceptarReserva(long idReserva)
         {
             daore.aceptarReserva(idReserva);
         }
 
+        // profeisonal rechaza reserva
         public void rechazarReserva(long idReserva)
         {
             daore.rechazarReserva(idReserva);
         }
 
 
+        public List<VOConsultorio> listarConsultorios()
+        {
+            return daoc.listarConsultorios();
+        }
 
 
+        public List<int> horariosDisponiblesConsultorio(int idConsultorio, DateTime fecha)
+        {
+            List<int> reservados = new List<int>();
+            List<int> disponibles = new List<int>();
+
+            reservados = daoh.horariosReservadosConsultorio(fecha, idConsultorio);
+
+            int horaInicio = daoc.Find(idConsultorio).HoraInicio;
+            int horaFin = daoc.Find(idConsultorio).HoraFin;
+
+            for(int i = horaInicio;i<horaFin;i++)
+            {
+                if (!reservados.Contains(i))
+                    disponibles.Add(i);
+            }
+            return disponibles;
+        }
 
 
+        public void insertarHorario(VOInsertarHorario voih)
+        {
+            daoh.insertarHorarioProfesional(voih);
+        }
 
-
-
+        public List<VOPacienteXatender> pacientesXatender (long ciProfeisonal)
+        {
+            return daore.pacientesXatender(ciProfeisonal);
+        }
 
 
 
