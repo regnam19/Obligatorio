@@ -375,6 +375,15 @@ namespace Logica
             return daore.pacientesXatender(ciProfeisonal);
         }
 
+        public List<VOPacienteXatender> pacientesAtendidos(long ciProfeisonal)
+        {
+            return daore.pacientesAtendido(ciProfeisonal);
+        }
+
+        public List<VOHorarioDisponible> listarHorariosLibresProfeisonal(long ciProfeisonal)
+        {
+            return daoh.horariosLibresProfesional(ciProfeisonal);
+        }
 
 
     }

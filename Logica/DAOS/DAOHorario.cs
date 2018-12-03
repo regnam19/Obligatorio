@@ -647,6 +647,45 @@ namespace Logica
 
             return horarios;
         }
+        public List<VOHorarioDisponible> horariosLibresProfesional(long ciProfesional)
+        {
+            List<VOHorarioDisponible> horarios = new List<VOHorarioDisponible>();
+
+            //String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            DateTime dia = DateTime.Today;
+
+            //DateTime dia = new DateTime(2018, 1, 1);
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.horasLibresProfesional());
+
+            myCommand.Parameters.AddWithValue("@dia", dia);
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
+           
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int hora = Convert.ToInt32(myReader["hora"]);
+                dia = Convert.ToDateTime(myReader["dia"]);
+                int idConsultorio = Convert.ToInt32(myReader["idConsultorio"]);
+
+                VOHorarioDisponible vo = new VOHorarioDisponible(idHorario, hora, idConsultorio, dia);
+                horarios.Add(vo);
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return horarios;
+        }
 
         /*
         public List<VOHorario> horariosProfesional(long ci)
@@ -692,7 +731,7 @@ namespace Logica
 
 
 
-        
+
     }
 
 }

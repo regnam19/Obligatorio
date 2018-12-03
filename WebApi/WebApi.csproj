@@ -98,6 +98,8 @@
     <Content Include="mainhorarios.js" />
     <Content Include="paciente.html" />
     <Content Include="profesional.html" />
+    <Content Include="profesionalhistorial.html" />
+    <Content Include="profesionalhorarioslibres.html" />
     <Content Include="profesionalmisp.html" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
@@ -106,6 +108,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
+    <Compile Include="Controllers\HorarioDisponibleController.cs" />
     <Compile Include="Controllers\PacienteXatenderController.cs" />
     <Compile Include="Controllers\ProfesionalController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
@@ -115,6 +118,7 @@
     </Compile>
     <Compile Include="Models\Consultorio.cs" />
     <Compile Include="Models\Horario.cs" />
+    <Compile Include="Models\HorarioDisponible.cs" />
     <Compile Include="Models\PacienteXatender.cs" />
     <Compile Include="Models\Profesional.cs" />
     <Compile Include="Models\Reserva.cs" />

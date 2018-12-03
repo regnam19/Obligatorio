@@ -36,6 +36,28 @@ namespace WebApi.Controllers
 
         }
 
+        public IEnumerable<Horario> GetHorariosLibres(long id)
+        {
+
+            Logica.Fachada fach = new Logica.Fachada();
+
+            Horario[] horarios = new Horario[fach.listarHorariosLibresProfeisonal(id).LongCount()];
+            int i = 0;
+            foreach (var hor in fach.listarHorariosLibresProfeisonal(id))
+            {
+                horarios[i] = new Horario();
+                horarios[i].IdHorario = hor.IdHorario;
+                horarios[i].Hora = hor.Hora;
+                horarios[i].IdConsultorio = hor.IdConsultorio;
+                horarios[i].Dia = hor.dia;
+                horarios[i].Cedula = id;
+                i++;
+            }
+
+            return horarios;
+
+        }
+
         public IEnumerable<int> PostHorariosDisponibles(Horario horario)
         {
            

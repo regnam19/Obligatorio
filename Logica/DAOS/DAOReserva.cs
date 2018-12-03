@@ -252,6 +252,51 @@ namespace Logica.DAOS
 
         }
 
+        public List<VOPacienteXatender> pacientesAtendido(long ciProfesional)
+        {
+
+            List<VOPacienteXatender> lista = new List<VOPacienteXatender>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            DateTime hoy = DateTime.Today;
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.pacientesAtendido(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ciProfesional", ciProfesional);
+            myCommand.Parameters.AddWithValue("@dia", hoy);
+
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+
+                int hora = Convert.ToInt32(myReader["hora"]);
+                DateTime dia = Convert.ToDateTime(myReader["dia"]);
+                String consultorio = Convert.ToString(myReader["direccion"]);
+                String nombrePaciente = Convert.ToString(myReader["nombre"]);
+                String apellidoPaciente = Convert.ToString(myReader["apellido"]);
+
+                VOPacienteXatender vo = new VOPacienteXatender(dia, hora, consultorio, nombrePaciente, apellidoPaciente);
+
+                lista.Add(vo);
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+
+            return lista;
+
+        }
+
 
 
 

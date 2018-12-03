@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PROFESIONAL</title>
+    <script>var __basePath = '';</script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>SOY PROFESIONAL</h1>
+
+    <div class="container" ng-app="myApp" ng-controller="customersCtrl">
+        <h2>Reservas</h2>
+        <p>Reservas pendientes, seleccione para confirmar o rechazar</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Hora</th>
+                    <th>Consultorio</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in myData">
+                    <td>{{x.Dia | date}}</td>
+                    <td>{{x.Hora}}</td>
+                    <td>{{x.Consultorio}}</td>
+                    <td>{{x.NombrePaciente}}</td>
+                    <td>{{x.ApellidoPaciente}}</td>
+                    <td> <input type="checkbox" name="reserva" value="{{x.IdReserva}}"></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <input type="button" value="Confirmar" onclick="confirmar();" />
+        <input type="button" value="Rechazar" onclick="rechazar();" />
+
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+<script>
+
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function ($scope, $http) {
+        // $scope.home = "hola mundo";
+        $http.get("/api/ReservasXconfirmar/GetHorariosLibres/11111111").then(function (response) {
+            $scope.myData = response.data;
+        });
+    });
+
+    function rechazar() {
+
+        var uri = '/api/ReservasXconfirmar/RechazarReserva/';
+        var reservas = document.getElementsByName('reserva');
+
+        for (var i = 0; i < reservas.length; i++) {
+            if (reservas[i].checked) {
+                $.getJSON(uri + reservas[i].value)
+                    .done(function (data) {
+                        console.log("Borrado exitoso");
+
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        console.log("NO exitoso");
+
+                    });
+            }
+        }
+        location.reload();
+    }
+
+
+
+</script>

@@ -183,11 +183,7 @@ namespace Logica
         }
 
       
-        public String horariosLibreProfesional()
-        {
-            String consulta = "select * from horario where dia > @dia and ciProfesional = @ci";
-            return consulta;
-        }
+       
 
         public String horariosLibresPacienteTotales()
         {
@@ -317,6 +313,18 @@ namespace Logica
             String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia >= @dia; ";
             return consulta;
         }
-       
+
+        public String pacientesAtendido()
+        {
+            String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia < @dia; ";
+            return consulta;
+        }
+
+        public String horasLibresProfesional()
+        {
+            String consulta = "select h.hora, h.dia, c.direccion from horario h left join consultorio c on c.idConsultorio = h.idConsultorio where h.ciProfesional = @ciProfesional and h.dia >= @dia order by dia; ";
+            return consulta;
+        }
+        
     }
 }
