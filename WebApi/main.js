@@ -9,6 +9,7 @@ var gridOptions = {
     columnDefs: columnDefs,
     rowSelection: 'single',
     onSelectionChanged: onSelectionChanged
+
 };
 
 function obtenerIdProfesional() {
