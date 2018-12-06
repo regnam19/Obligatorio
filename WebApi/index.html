@@ -1,19 +1,40 @@
 ﻿<!DOCTYPE html>
-<html>
+<html  ng-app="myApp">
 <head>
+   
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+    <link rel="stylesheet" href="styles.css">
+   
     <meta charset="utf-8" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
     <title>INICIO</title>
 
 </head>
+
 <body>
-    <a href="http://localhost:50781/paciente.html">PACIENTE</a>
-    <br>
-    <a href="http://localhost:50781/profesional.html">Aceptar cancelar reservas profesional 11111111</a>
-    <br>
-    <a href="http://localhost:50781/profesionalhistorial.html">Historico del profesional 11111111</a>
-    <br>
-    <a href="http://localhost:50781/profesionalmisp.html">Pacientes a atender para el profesional 11111111</a>
-    <br>
-    <a href="http://localhost:50781/consultorios.html">reservar un consultorio para el profesional 11111111</a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="app.js"></script>
+
+
+    <ul>
+        <li><a class="active"  ng-href="#!profesional">Profesional</a></li>
+        <li><a ng-href="#!profesionalhistorial">Profesional Historial</a></li>
+        <li><a ng-href="#!profesionalmisp">Profesional mis pacientes</a></li>
+        <li><a ng-href="#!profesionalhorarioslibres">Profesional horarioslibres</a></li>
+        <li><a ng-href="#!consultorios">Consultorios</a></li>
+    </ul>
+    <div ng-view>
+
+
+    </div>
+
+
+
+
 </body>
 </html>
