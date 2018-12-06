@@ -8,7 +8,10 @@ var columnDefs2 = [
 var gridOptions2 = {
     columnDefs: columnDefs2,
     rowSelection: 'single',
-    onSelectionChanged: onSelectionChanged2
+    onSelectionChanged: onSelectionChanged2,
+
+    overlayNoRowsTemplate: '<span>This is a custom overlay</span>'
+   // localeText = {noRowsToShow: 'No hay horarios disponibles para ese Profesional'}
 };
 
 var columnDefs3 = [

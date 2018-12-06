@@ -207,6 +207,7 @@
 
         function cargarHorarios() {
             var gridDiv = document.querySelector('#myGridHorarios');
+            var empty = true;
             $('#myGridHorarios').empty();
             new agGrid.Grid(gridDiv, gridOptions2);
 
@@ -214,10 +215,15 @@
                 .done(function (data) {
                     $.each(data, function () {
                         gridOptions2.api.setRowData(data);
+                        empty = false;
+                    
                     });
+                    if (empty == true) {
+                        gridOptions2.api.showNoRowsOverlay()
+                    } 
                 });
 
-
+            
         };
     </script>
 </body>
