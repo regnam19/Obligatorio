@@ -385,6 +385,26 @@ namespace Logica
             return daoh.horariosLibresProfesional(ciProfeisonal);
         }
 
+        public Boolean verificarUsuario(long ci,String pass)
+        {
+            if (!daope.Member(ci))
+                return  false;
+            if (!daope.verificarContrasena(ci, pass))
+                return false;
+
+            return true;
+        }
+
+        public Boolean verificarProfesional(long ci)
+        {
+            return daop.Member(ci);
+        }
+
+        public Boolean usuarioHabilitado(long ci)
+        {
+            return daope.find(ci).Habilitado;
+        }
+
 
     }
 

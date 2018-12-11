@@ -325,6 +325,14 @@ namespace Logica
             String consulta = "select h.hora, h.dia, c.direccion from horario h left join consultorio c on c.idConsultorio = h.idConsultorio where h.ciProfesional = @ciProfesional and h.dia >= @dia order by dia; ";
             return consulta;
         }
+
+        public String verificarContrasena()
+        {
+            String consulta = "select ci, contrasena from persona where ci=@ci ";
+            return consulta;
+        }
+
         
+
     }
 }

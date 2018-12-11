@@ -132,5 +132,34 @@ namespace Logica
             myConnection.Close();
 
         }
+
+        public Boolean verificarContrasena(long ci, String pass)
+        {
+            Boolean passvalida = false;
+            
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.verificarContrasena(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+               String contrasena = Convert.ToString(myReader["contrasena"]);
+                if (contrasena.Equals(pass))
+                    passvalida = true;
+            }
+            
+            return passvalida;
+        }
+
+       
     }
 }
