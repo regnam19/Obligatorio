@@ -100,6 +100,7 @@
     <Content Include="main.js" />
     <Content Include="mainhorarios.js" />
     <Content Include="paciente.html" />
+    <Content Include="pacienteangular.html" />
     <Content Include="profesional.html" />
     <Content Include="profesionalhistorial.html" />
     <Content Include="profesionalhorarioslibres.html" />

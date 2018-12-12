@@ -1,0 +1,45 @@
+﻿<h1>Paciente</h1>
+
+<div class="container" ng-controller="controllerpaciente">
+    <h2>Reservas Profesional</h2>
+    <p>Seleccione un Profesional</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>    </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in profesionales">
+                <td>{{x.nombre}}</td>
+                <td>{{x.apellido}}</td>
+                <td>{{x.especialidad}}</td>
+                <td><input type="radio" name="cedulaProfesional" value="{{x.cedula}}"> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div ng-controller="controllerBuscarHorasLibresProfesional">
+        <button ng-click="myFunc()">Buscar</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Direccion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in horariosLibres">
+                    <td>{{x.Hora}}</td>
+                    <td>{{x.Direccion}}</td>
+                    <td><input type="checkbox" name="hora" value="{{x.IdHorario}}"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <input type="button" value="Reservar" onclick="reservar();" />
+</div>
