@@ -68,6 +68,7 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="VO\VOAdmin.cs" />
     <Compile Include="VO\VOConsultorio.cs" />
+    <Compile Include="VO\VOConsultorioReservado.cs" />
     <Compile Include="VO\VOHorario.cs" />
     <Compile Include="VO\VOHorarioDisponible.cs" />
     <Compile Include="VO\VOHorarioInsertarPaciente.cs" />
