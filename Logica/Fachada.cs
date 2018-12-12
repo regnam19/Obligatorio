@@ -226,9 +226,30 @@ namespace Logica
             return daoh.horasLibresProfesional(cedula);
         }*/
 
-        public List <VOHorarioDisponible> horasLibresProfesional(long cedula)
+        public List <VOHorarioDisponibleProfesional> horasLibresProfesional(long cedula)
         {
-            return daoh.horasLibresProfesional(cedula);
+            List<VOHorarioDisponibleProfesional> listaFinal = new List<VOHorarioDisponibleProfesional>();
+
+
+            List<VOHorarioDisponible> listaDisponible = new List<VOHorarioDisponible>();
+
+            listaDisponible = daoh.horasLibresProfesional(cedula);
+
+            foreach (var disponible in listaDisponible)
+            {
+                VOHorarioDisponibleProfesional vohd = new VOHorarioDisponibleProfesional();
+
+                vohd.IdHorario = disponible.IdHorario;
+                vohd.Hora = disponible.Hora;
+                vohd.IdConsultorio = disponible.IdConsultorio;
+                vohd.dia = disponible.dia;
+                vohd.Direccion = daoc.Find(disponible.IdConsultorio).Direccion;
+
+                listaFinal.Add(vohd);
+            }
+            
+            return listaFinal;
+            
         }
 
         // requerimiento 1

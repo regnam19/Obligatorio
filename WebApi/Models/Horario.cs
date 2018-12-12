@@ -12,5 +12,6 @@ namespace WebApi.Models
         public int IdConsultorio { get; set; }
         public DateTime Dia { get; set; }
         public long Cedula { get; set; }
+        public String Direccion { get; set; }
     }
 }
