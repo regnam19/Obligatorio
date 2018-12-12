@@ -69,6 +69,18 @@ app.config(['$routeProvider',
                 controller: 'controlconsultorios',
                 controllerAs: 'controlconsultorios'
             })
+            .when('/paciente', {
+                resolve: {
+                    "check": function ($location, $rootScope) {
+                        if (!$rootScope.paciente) {
+                            $location.path('/');
+                        }
+                    }
+                },
+                templateUrl: "pacienteangular.html",
+                controller: 'controllerpaciente',
+                controllerAs: 'controllerpaciente'
+            })
         
             .otherwise({
                 redirecTo: 'index.html'
@@ -100,7 +112,12 @@ app.controller('controlLogin', function ($scope, $location, $rootScope) {
                         $rootScope.profesional = data.Profesional;
                         $rootScope.paciente = data.Paciente;
                         $rootScope.habilitado = data.Habilitado;
-                        $location.path('/profesional');
+                        if (data.Profesional) {
+                            $location.path('/profesional');
+                        }
+                        if (data.Paciente) {
+                            $location.path('/paciente');
+                        }
                     }
                     else {
                         alert("Atencion, su usuario no esta habilitado");
@@ -150,6 +167,28 @@ app.controller('controlconsultorios', function ($scope, $http, $location) {
     $http.get("/api/Consultorio/GetConsultorios/").then(function (response) {
         $scope.myData = response.data;
     });
+});
+
+app.controller('controllerpaciente', function ($scope, $http, $location) {
+    $http.get("/api/Profesional/GetProfesioales").then(function (response) {
+        $scope.profesionales = response.data;
+    });
+});
+
+app.controller('controllerBuscarHorasLibresProfesional', function ($scope, $http) {
+    
+    $scope.myFunc = function () {
+        var profesionales = document.getElementsByName("cedulaProfesional");
+        var profesional;
+        for (var i = 0; i < profesionales.length; i++) {
+            if (profesionales[i].checked)
+                profesional = profesionales[i].value;
+        }
+        $http.get("api/Horario/GetHorario/" + profesional).then(function (response) {
+            $scope.horariosLibres = response.data;
+        });
+    };
+    
 });
 
 app.controller('controlHoras', ['$scope', function ($scope) {
