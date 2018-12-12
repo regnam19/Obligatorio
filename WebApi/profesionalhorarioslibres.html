@@ -23,7 +23,6 @@
             </tbody>
         </table>
 
-        <input type="button" value="Confirmar" onclick="confirmar();" />
         <input type="button" value="Rechazar" onclick="rechazar();" />
 
     </div>
@@ -32,28 +31,7 @@
 <script>
 
 
-    function confirmar() {
-
-        var uri = '/api/ReservasXconfirmar/ConfirmarReserva/';
-        var reservas = document.getElementsByName('reserva');
-
-        for (var i = 0; i < reservas.length; i++) {
-            if (reservas[i].checked) {
-                $.getJSON(uri + reservas[i].value)
-                    .done(function (data) {
-                        console.log("Borrado exitoso");
-
-                    })
-                    .fail(function (jqXHR, textStatus, err) {
-                        console.log("NO exitoso");
-
-                    });
-            }
-        }
-        location.reload();
-    }
-
-
+    
     function rechazar() {
 
         var uri = '/api/Co/RechazarReserva/';
