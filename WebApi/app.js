@@ -11,7 +11,7 @@ app.config(['$routeProvider',
             .when('/profesionalhistorial', {
                 resolve: {
                     "check": function ($location, $rootScope) {
-                        if (!$rootScope.paciente) {
+                        if (!$rootScope.profesional) {
                             $location.path('/');
                         }
                     }
@@ -36,7 +36,7 @@ app.config(['$routeProvider',
             .when('/profesionalmisp', {
                 resolve: {
                     "check": function ($location, $rootScope) {
-                        if (!$rootScope.logeado) {
+                        if (!$rootScope.profesional) {
                             $location.path('/');
                         }
                     }
@@ -223,4 +223,5 @@ app.controller('controlHoras', ['$scope', function ($scope) {
 
     };
 }]);
-    
+
+
