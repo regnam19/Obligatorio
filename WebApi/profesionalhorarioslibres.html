@@ -2,26 +2,22 @@
     <h1>SOY PROFESIONAL</h1>
 
     <div class="container" ng-controller="controlprofesionalhorarioslibres">
-        <h2>Reservas</h2>
-        <p>Reservas pendientes, seleccione para confirmar o rechazar</p>
+        <h2>Consultorios reservados</h2>
+        <p>Consultorios reservados, disponibles para los pacientes.</p>
         <table class="table">
             <thead>
                 <tr>
                     <th>Dia</th>
+                    <th>Direccion</th>
                     <th>Hora</th>
-                    <th>Consultorio</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="x in myData">
                     <td>{{x.Dia | date}}</td>
+                    <td>{{x.Direccion}}</td>
                     <td>{{x.Hora}}</td>
-                    <td>{{x.Consultorio}}</td>
-                    <td>{{x.NombrePaciente}}</td>
-                    <td>{{x.ApellidoPaciente}}</td>
-                    <td> <input type="checkbox" name="reserva" value="{{x.IdReserva}}"></td>
+                    <td> <input type="checkbox" name="reserva" value="{{x.IdHorario}}"></td>
                 </tr>
 
             </tbody>
@@ -35,9 +31,32 @@
 
 <script>
 
+
+    function confirmar() {
+
+        var uri = '/api/ReservasXconfirmar/ConfirmarReserva/';
+        var reservas = document.getElementsByName('reserva');
+
+        for (var i = 0; i < reservas.length; i++) {
+            if (reservas[i].checked) {
+                $.getJSON(uri + reservas[i].value)
+                    .done(function (data) {
+                        console.log("Borrado exitoso");
+
+                    })
+                    .fail(function (jqXHR, textStatus, err) {
+                        console.log("NO exitoso");
+
+                    });
+            }
+        }
+        location.reload();
+    }
+
+
     function rechazar() {
 
-        var uri = '/api/ReservasXconfirmar/RechazarReserva/';
+        var uri = '/api/Co/RechazarReserva/';
         var reservas = document.getElementsByName('reserva');
 
         for (var i = 0; i < reservas.length; i++) {

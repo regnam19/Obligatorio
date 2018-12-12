@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica.VO;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -176,6 +177,41 @@ namespace Logica
             return lista;
         }
 
-        
+        public List<VOConsultorioReservado> consultoriosReservados(long ci)
+        {
+            List<VOConsultorioReservado> lista = new List<VOConsultorioReservado>();
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.consultorioReservado(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@ci", ci);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                long idHorario = Convert.ToInt64(myReader["idHorario"]);
+                int hora  = Convert.ToInt32(myReader["hora"]);
+                String direccion = Convert.ToString(myReader["direccion"]);
+                DateTime dia = Convert.ToDateTime(myReader["dia"]);
+
+
+                VOConsultorioReservado voc = new VOConsultorioReservado(dia,direccion,hora,idHorario);
+
+                lista.Add(voc);
+            }
+
+            myReader.Close();
+            myConnection.Close();
+
+            return lista;
+        }
     }
 }

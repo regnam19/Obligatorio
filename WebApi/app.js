@@ -158,7 +158,7 @@ app.controller('controlprofesionalmisp', function ($scope, $http) {
 });
 
 app.controller('controlprofesionalhorarioslibres', function ($scope, $http) {
-    $http.get("/api/ReservasXconfirmar/GetHorariosLibres/11111111").then(function (response) {
+    $http.get("/api/ConsultorioReservado/GetConsultorioReservado/11111111").then(function (response) {
         $scope.myData = response.data;
     });
 });

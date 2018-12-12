@@ -332,7 +332,11 @@ namespace Logica
             return consulta;
         }
 
-        
+        public String consultorioReservado()
+        {
+            String consulta = "select h.idHorario, h.dia,h.hora, c.direccion from horario h left join reserva r on h.idHorario = r.idHorario left join consultorio c on h.idConsultorio = c.idConsultorio where r.idHorario is null and h.ciProfesional=@ci";
+            return consulta;
+        }
 
     }
 }

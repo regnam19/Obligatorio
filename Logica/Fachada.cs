@@ -405,7 +405,10 @@ namespace Logica
             return daope.find(ci).Habilitado;
         }
 
-
+        public List<VOConsultorioReservado> consultorioReservado(long ci)
+        {
+           return daoc.consultoriosReservados(ci);
+        }
 
     }
 
