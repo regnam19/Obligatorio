@@ -105,6 +105,7 @@
     <Content Include="profesionalhistorial.html" />
     <Content Include="profesionalhorarioslibres.html" />
     <Content Include="profesionalmisp.html" />
+    <Content Include="reservasPaciente.html" />
     <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
