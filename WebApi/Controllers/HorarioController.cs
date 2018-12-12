@@ -28,6 +28,7 @@ namespace WebApi.Controllers
                 horarios[i].Hora = hor.Hora;
                 horarios[i].IdConsultorio = hor.IdConsultorio;
                 horarios[i].Dia = hor.dia;
+                horarios[i].Direccion = hor.Direccion;
                 horarios[i].Cedula = id;
                 i++;
             }

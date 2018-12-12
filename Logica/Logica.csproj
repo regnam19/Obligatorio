@@ -71,6 +71,7 @@
     <Compile Include="VO\VOConsultorioReservado.cs" />
     <Compile Include="VO\VOHorario.cs" />
     <Compile Include="VO\VOHorarioDisponible.cs" />
+    <Compile Include="VO\VOHorarioDisponibleProfesional.cs" />
     <Compile Include="VO\VOHorarioInsertarPaciente.cs" />
     <Compile Include="VO\VOHorarioPaciente.cs" />
     <Compile Include="VO\VOHorarioProfesional.cs" />
