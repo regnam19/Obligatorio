@@ -7,5 +7,6 @@ namespace WebApi.Models
 {
     public class HorarioDisponible
     {
+
     }
 }

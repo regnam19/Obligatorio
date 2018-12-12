@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConsultorioController.cs" />
+    <Compile Include="Controllers\ConsultorioReservadoController.cs" />
     <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\HorarioDisponibleController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -123,6 +124,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Consultorio.cs" />
+    <Compile Include="Models\ConsultorioReservado.cs" />
     <Compile Include="Models\Horario.cs" />
     <Compile Include="Models\HorarioDisponible.cs" />
     <Compile Include="Models\Login.cs" />
