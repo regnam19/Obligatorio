@@ -21,32 +21,33 @@
             </tr>
         </tbody>
     </table>
-
     <div ng-controller="controllerBuscarHorasLibresProfesional">
         <button ng-click="myFunc()">Buscar</button>
         <table class="table">
             <thead>
                 <tr>
+                    <th>Dia</th>
                     <th>Hora</th>
                     <th>Direccion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="x in horariosLibres">
+                    <td>{{x.Dia|date}}</td>
                     <td>{{x.Hora}}</td>
                     <td>{{x.Direccion}}</td>
                     <td><input type="checkbox" name="hora" value="{{x.IdHorario}}"> </td>
                 </tr>
             </tbody>
         </table>
+        
     </div>
-
-    <input type="button" value="Reservar" onclick="reservar();" /> 
-</div>
-
+    <button ng-click="myFunc()">Reservar</button>
+    <!-- <input type="button" value="Reservar" onclick="reservar();" /> -->
+    </div>
 <script>
 
-    function reservar($location) {
+    function reservar($location, $rootScope) {
 
         var uri = 'api/Horario/PostReservarHorarioProfesional/';
         var horas = document.getElementsByName('hora');
@@ -54,7 +55,7 @@
             if (horas[i].checked) {
 
                 var Horario = {
-                    cedula: 12345678,
+                    cedula: $rootScope.idUsuario,
                     IdHorario: horas[i].value
                 };
                 var info_reserva = JSON.stringify(Horario);

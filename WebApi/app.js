@@ -136,6 +136,7 @@ app.controller('controlLogin', function ($scope, $location, $rootScope, $window)
                 if (data.Correcto) {
                     if (data.Habilitado) {
                         $window.sessionStorage.setItem("SavedString", user);
+                        $rootScope.idUsuario = user;
                         $rootScope.profesional = data.Profesional;
                         $rootScope.paciente = data.Paciente;
                         $rootScope.habilitado = data.Habilitado;
@@ -196,10 +197,42 @@ app.controller('controlconsultorios', function ($scope, $http, $location, $rootS
     });
 });
 
-app.controller('controllerpaciente', function ($scope, $http, $location) {
+
+
+app.controller('controllerpaciente', function ($scope, $http, $location, $rootScope) {
+    var usuario = $rootScope.idUsuario;
     $http.get("/api/Profesional/GetProfesioales").then(function (response) {
         $scope.profesionales = response.data;
     });
+
+    $scope.myFunc = function ($location) {
+        var uri = 'api/Horario/PostReservarHorarioProfesional/';
+        var horas = document.getElementsByName('hora');
+        for (var i = 0; i < horas.length; i++) {
+            if (horas[i].checked) {
+
+                var Horario = {
+                    cedula: usuario,
+                    IdHorario: horas[i].value
+                };
+                var info_reserva = JSON.stringify(Horario);
+                $.ajax({
+                    url: 'api/Horario/PostReservarHorarioProfesional/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_reserva,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert('Se agrego el horario');
+                    }
+                });
+
+            }
+        }
+        alert("Horario Reservado")
+        window.location.replace("#!paciente");
+    }
 });
 
 app.controller('controllerreservaspaciente', function ($scope, $http, $location) {
@@ -215,7 +248,6 @@ app.controller('controllerhistorialreservaspaciente', function ($scope, $http, $
 });
 
 app.controller('controllerBuscarHorasLibresProfesional', function ($scope, $http) {
-    
     $scope.myFunc = function () {
         var profesionales = document.getElementsByName("cedulaProfesional");
         var profesional;
