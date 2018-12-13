@@ -286,7 +286,7 @@ namespace Logica
 
         public String reservasXconfirmar()
         {
-            String consulta = "select h.hora, h.dia, c.direccion, r.idReserva,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'reservado' and h.ciProfesional = @ciProfesional;";
+            String consulta = "select h.hora, h.dia, c.direccion, r.idReserva,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'reservado' and h.ciProfesional = @ciProfesional order by h.dia;";
             return consulta;
         }
 
@@ -310,13 +310,13 @@ namespace Logica
 
         public String pacientesParaAtender()
         {
-            String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia >= @dia; ";
+            String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia >= @dia order by h.dia; ";
             return consulta;
         }
 
         public String pacientesAtendido()
         {
-            String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia < @dia; ";
+            String consulta = " select h.hora, h.dia, c.direccion,  pe.nombre, pe.apellido from horario h left join reserva r on r.idHorario = h.idHorario left join consultorio c on c.idConsultorio = h.idConsultorio left join persona pe on pe.ci = r.ciPaciente where r.estado = 'confirmado' and h.ciProfesional = @ciProfesional and h.dia < @dia; order by h.dia";
             return consulta;
         }
 

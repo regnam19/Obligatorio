@@ -52,21 +52,19 @@ namespace WebApi.Controllers
         }
 
 
-        [Route("~/api/ReservasXconfirmar/ConfirmarReserva/{idReserva:long}")]
-        [HttpGet]
-        public IHttpActionResult GetConfirmarReserva(long idReserva)
+        
+        public IHttpActionResult PostConfirmarReserva(ReservasXconfirmar reserva)
         {
             Logica.Fachada fach = new Logica.Fachada();
-            fach.aceptarReserva(idReserva);
+            fach.aceptarReserva(reserva.IdReserva);
             return Ok();
         }
 
-        [Route("~/api/ReservasXconfirmar/RechazarReserva/{idReserva:long}")]
-        [HttpGet]
-        public IHttpActionResult GetRechazarReserva(long idReserva)
+
+        public IHttpActionResult PostRechazarReserva(ReservasXconfirmar reserva)
         {
             Logica.Fachada fach = new Logica.Fachada();
-            fach.rechazarReserva(idReserva);
+            fach.rechazarReserva(reserva.IdReserva);
             return Ok();
         }
     }
