@@ -33,21 +33,28 @@
 
     
     function rechazar() {
-
-        var uri = '/api/Co/RechazarReserva/';
+       
+        
         var reservas = document.getElementsByName('reserva');
 
         for (var i = 0; i < reservas.length; i++) {
             if (reservas[i].checked) {
-                $.getJSON(uri + reservas[i].value)
-                    .done(function (data) {
-                        console.log("Borrado exitoso");
 
-                    })
-                    .fail(function (jqXHR, textStatus, err) {
-                        console.log("NO exitoso");
+                var ConsultorioReservado = {
+                    IdHorario: reservas[i].value,
+                };
+                var info_reserva = JSON.stringify(ConsultorioReservado);
+                $.ajax({
+                    url: 'api/ConsultorioReservado/PostEliminarHorario/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_reserva,
+                    dataType: 'json',
+                    success: function (data) {
 
-                    });
+                    }
+                });
             }
         }
         window.location.replace("#!profesionalhorarioslibres"); 

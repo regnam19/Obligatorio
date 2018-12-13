@@ -431,6 +431,10 @@ namespace Logica
            return daoc.consultoriosReservados(ci);
         }
 
+        public void eliminarHorarioProfeisonal(long idHorario)
+        {
+            daoh.elimiarHorarioProfesional(idHorario);
+        }
     }
 
     
