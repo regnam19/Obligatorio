@@ -51,7 +51,7 @@
 
 <script>
 
-    function reservar($location) {
+    function reservar($location,$root) {
 
         var uri = 'api/Horario/PostReservarHorario/';
 
@@ -90,8 +90,10 @@
 
             }
         }
-        alert("respuesta FUERA funcion");
-        window.location.replace("#!profesionalhorarioslibres"); 
+        var variable = sessionStorage.getItem('logeo');
+        alert(variable);
+        //window.location.replace("#!profesionalhorarioslibres"); 
+        
     }
 
    

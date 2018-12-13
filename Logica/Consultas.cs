@@ -334,7 +334,7 @@ namespace Logica
 
         public String consultorioReservado()
         {
-            String consulta = "select h.idHorario, h.dia,h.hora, c.direccion from horario h left join reserva r on h.idHorario = r.idHorario left join consultorio c on h.idConsultorio = c.idConsultorio where r.idHorario is null and h.ciProfesional=@ci";
+            String consulta = "select h.idHorario, h.dia,h.hora, c.direccion from horario h left join reserva r on h.idHorario = r.idHorario left join consultorio c on h.idConsultorio = c.idConsultorio where r.idHorario is null and h.ciProfesional=@ci order by h.dia";
             return consulta;
         }
 

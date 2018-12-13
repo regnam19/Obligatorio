@@ -111,7 +111,7 @@ app.config(['$routeProvider',
             })
     }]);
 
-app.controller('controlLogin', function ($scope, $location, $rootScope) {
+app.controller('controlLogin', function ($scope, $location, $rootScope,$window) {
     $scope.submit = function () {
         var user = $scope.ciUsuario;
         var pass = $scope.passUsuario;
@@ -131,6 +131,8 @@ app.controller('controlLogin', function ($scope, $location, $rootScope) {
             data: info_reserva,
             dataType: 'json',
             success: function (data) {
+                sessionStorage.setItem('logeo', 'true');
+               
                 if (data.Correcto) {
                     if (data.Habilitado) {
                         $rootScope.profesional = data.Profesional;
