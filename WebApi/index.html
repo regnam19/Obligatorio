@@ -1,28 +1,25 @@
 ﻿<!DOCTYPE html>
 <html  ng-app="myApp">
 <head>
-   
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
-    <link rel="stylesheet" href="styles.css">
-   
-    <meta charset="utf-8" />
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
 
+    <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
+     <link rel="stylesheet" href="styles.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <title>INICIO</title>
 
 </head>
 
 <body>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="app.js"></script>
 
-
-    <ul>
-        <li><a class="active" ng-href="#!profesional">Profesional</a></li>
+    <ul class="nav nav-pills">
+        <li class="active"><a ng-href="#!profesional">Profesional</a></li>
         <li><a ng-href="#!profesionalhistorial">Profesional Historial</a></li>
         <li><a ng-href="#!profesionalmisp">Profesional mis pacientes</a></li>
         <li><a ng-href="#!profesionalhorarioslibres">Profesional horarioslibres</a></li>
@@ -31,6 +28,16 @@
         <li><a ng-href="#!reservaspaciente">Reservas Paciente</a></li>
         <li><a ng-href="#!historialreservaspaciente">Historial de Reservas Paciente</a></li>
     </ul>
+    <!--<ul>
+        <li><a class="active" ng-href="#!profesional">Profesional</a></li>
+        <li><a ng-href="#!profesionalhistorial">Profesional Historial</a></li>
+        <li><a ng-href="#!profesionalmisp">Profesional mis pacientes</a></li>
+        <li><a ng-href="#!profesionalhorarioslibres">Profesional horarioslibres</a></li>
+        <li><a ng-href="#!consultorios">Consultorios</a></li>
+        <li><a ng-href="#!paciente">Paciente</a></li>
+        <li><a ng-href="#!reservaspaciente">Reservas Paciente</a></li>
+        <li><a ng-href="#!historialreservaspaciente">Historial de Reservas Paciente</a></li>
+    </ul>-->
     <div ng-view>
 
 

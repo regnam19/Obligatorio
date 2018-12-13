@@ -24,4 +24,36 @@
             </tr>
         </tbody>
     </table>
-    </div>
+    <input type="button" value="Borrar Reserva" onclick="borrarReserva();" />
+</div>
+
+<script>
+
+    function borrarReserva($location) {
+        var reservas = document.getElementsByName("idReserva");
+        var reserva;
+        for (var i = 0; i < reservas.length; i++) {
+            if (reservas[i].checked)
+                reserva = reservas[i].value;
+        }
+        var BorrarReserva = {
+                    IdReserva: reserva
+                };
+        var info_boradoreserva = JSON.stringify(BorrarReserva);
+                $.ajax({
+                    url: 'api/Reserva/PostBorrarReserva/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_boradoreserva,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert('Se borro la reserva');
+                    }
+                });
+
+        alert("respuesta FUERA funcion");
+        window.location.replace("#!profesionalhorarioslibres");
+    }
+
+</script>
