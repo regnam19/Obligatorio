@@ -81,6 +81,30 @@ app.config(['$routeProvider',
                 controller: 'controllerpaciente',
                 controllerAs: 'controllerpaciente'
             })
+            .when('/reservaspaciente', {
+                resolve: {
+                    "check": function ($location, $rootScope) {
+                        if (!$rootScope.paciente) {
+                            $location.path('/');
+                        }
+                    }
+                },
+                templateUrl: "reservasPaciente.html",
+                controller: 'controllerreservaspaciente',
+                controllerAs: 'controllerreservaspaciente'
+            })
+            .when('/historialreservaspaciente', {
+                resolve: {
+                    "check": function ($location, $rootScope) {
+                        if (!$rootScope.paciente) {
+                            $location.path('/');
+                        }
+                    }
+                },
+                templateUrl: "historialReservasPaciente.html",
+                controller: 'controllerhistorialreservaspaciente',
+                controllerAs: 'controllerhistorialreservaspaciente'
+            })
         
             .otherwise({
                 redirecTo: 'index.html'
@@ -172,6 +196,18 @@ app.controller('controlconsultorios', function ($scope, $http, $location) {
 app.controller('controllerpaciente', function ($scope, $http, $location) {
     $http.get("/api/Profesional/GetProfesioales").then(function (response) {
         $scope.profesionales = response.data;
+    });
+});
+
+app.controller('controllerreservaspaciente', function ($scope, $http, $location) {
+    $http.get("api/Reserva/GetReserva/12345678").then(function (response) {
+        $scope.reservas = response.data;
+    });
+});
+
+app.controller('controllerhistorialreservaspaciente', function ($scope, $http, $location) {
+    $http.get("api/Reserva/GetHistorialReserva/12345678").then(function (response) {
+        $scope.historialreservas = response.data;
     });
 });
 

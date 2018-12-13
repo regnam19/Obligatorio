@@ -90,6 +90,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="historialReservasPaciente.html" />
     <Content Include="index.html" />
     <Content Include="Initial.html" />
     <Content Include="js\bootstrap.bundle.js" />
