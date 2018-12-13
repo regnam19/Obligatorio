@@ -687,6 +687,23 @@ namespace Logica
             return horarios;
         }
 
+        public void elimiarHorarioProfesional(long idHorario)
+        {
+
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.eliminarConsultorioReservado(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idHorario", idHorario);
+
+            myCommand.ExecuteNonQuery();
+
+            myConnection.Close();
+        }
+
         /*
         public List<VOHorario> horariosProfesional(long ci)
         {

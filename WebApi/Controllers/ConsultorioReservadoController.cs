@@ -31,5 +31,12 @@ namespace WebApi.Controllers
             return horarios;
 
         }
+
+        public IHttpActionResult PostEliminarHorario(ConsultorioReservado c)
+        {
+            Logica.Fachada fach = new Logica.Fachada();
+            fach.eliminarHorarioProfeisonal(c.IdHorario);
+            return Ok();
+        }
     }
 }

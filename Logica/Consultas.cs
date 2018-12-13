@@ -338,5 +338,11 @@ namespace Logica
             return consulta;
         }
 
+        public String eliminarConsultorioReservado()
+        {
+            String consulta = "delete from horario  where idHorario = @idHorario;";
+            return consulta;
+        }
+
     }
 }
