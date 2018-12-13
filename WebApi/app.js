@@ -167,14 +167,14 @@ app.controller('controlLogin', function ($scope, $location, $rootScope, $window)
     
 });
 
-app.controller('controlprofesionalhistorial', function ($scope, $http) {
-    $http.get("/api/PacienteXatender/GetPacienteAtendido/11111111").then(function (response) {
+app.controller('controlprofesionalhistorial', function ($scope, $http, $rootScope) {
+    $http.get("/api/PacienteXatender/GetPacienteAtendido/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
 
-app.controller('controlprofesional', function ($scope, $http) {
-    $http.get("/api/ReservasXconfirmar/GetReservasXconfirmar/11111111").then(function (response) {
+app.controller('controlprofesional', function ($scope, $http, $rootScope) {
+    $http.get("/api/ReservasXconfirmar/GetReservasXconfirmar/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
