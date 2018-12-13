@@ -135,7 +135,7 @@ app.controller('controlLogin', function ($scope, $location, $rootScope, $window)
                
                 if (data.Correcto) {
                     if (data.Habilitado) {
-                        $window.sessionStorage.setItem("SavedString", user);
+                        $rootScope.idUsuario = user;
                         $rootScope.profesional = data.Profesional;
                         $rootScope.paciente = data.Paciente;
                         $rootScope.habilitado = data.Habilitado;
@@ -166,26 +166,26 @@ app.controller('controlLogin', function ($scope, $location, $rootScope, $window)
     
 });
 
-app.controller('controlprofesionalhistorial', function ($scope, $http) {
-    $http.get("/api/PacienteXatender/GetPacienteAtendido/11111111").then(function (response) {
+app.controller('controlprofesionalhistorial', function ($scope, $http,$rootScope) {
+    $http.get("/api/PacienteXatender/GetPacienteAtendido/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
 
-app.controller('controlprofesional', function ($scope, $http) {
-    $http.get("/api/ReservasXconfirmar/GetReservasXconfirmar/11111111").then(function (response) {
+app.controller('controlprofesional', function ($scope, $http, $rootScope) {
+    $http.get("/api/ReservasXconfirmar/GetReservasXconfirmar/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
 
-app.controller('controlprofesionalmisp', function ($scope, $http) {
-    $http.get("/api/PacienteXatender/GetPacienteXatender/11111111").then(function (response) {
+app.controller('controlprofesionalmisp', function ($scope, $http, $rootScope) {
+    $http.get("/api/PacienteXatender/GetPacienteXatender/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
 
-app.controller('controlprofesionalhorarioslibres', function ($scope, $http) {
-    $http.get("/api/ConsultorioReservado/GetConsultorioReservado/11111111").then(function (response) {
+app.controller('controlprofesionalhorarioslibres', function ($scope, $http, $rootScope) {
+    $http.get("/api/ConsultorioReservado/GetConsultorioReservado/" + $rootScope.idUsuario).then(function (response) {
         $scope.myData = response.data;
     });
 });
@@ -261,13 +261,13 @@ app.controller('controllerBuscarHorasLibresProfesional', function ($scope, $http
 });
 
 // funciona rootscope
-app.controller('controlHoras', function ($scope, $rootScope) {
+app.controller('controlHoras', function ($scope, $rootScope, $location) {
 
     $scope.reservar = function () {
        
         //alert($rootScope.profesional);
         var uri = 'api/Horario/PostReservarHorario/';
-
+        var usuario = $rootScope.idUsuario;
         var horas = document.getElementsByName('hora');
 
         var consultorios = document.getElementsByName("consultorio");
@@ -285,7 +285,7 @@ app.controller('controlHoras', function ($scope, $rootScope) {
                 var Horario = {
                     dia: dia,
                     idConsultorio: consultorio,
-                    cedula: 11111111,
+                    cedula: usuario,
                     hora: horas[i].value
                 };
                 var info_reserva = JSON.stringify(Horario);
@@ -297,13 +297,13 @@ app.controller('controlHoras', function ($scope, $rootScope) {
                     data: info_reserva,
                     dataType: 'json',
                     success: function (data) {
-
+                        window.location.replace("#!profesionalhorarioslibres"); 
                     }
                 });
 
             }
         }
-        window.location.replace("#!profesionalHorariosLibres"); 
+        window.location.replace("#!profesionalhorarioslibres"); 
 
     }
 
