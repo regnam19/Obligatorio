@@ -27,12 +27,14 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Dia</th>
                     <th>Hora</th>
                     <th>Direccion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="x in horariosLibres">
+                    <td>{{x.Dia|date}}</td>
                     <td>{{x.Hora}}</td>
                     <td>{{x.Direccion}}</td>
                     <td><input type="checkbox" name="hora" value="{{x.IdHorario}}"> </td>
@@ -40,8 +42,8 @@
             </tbody>
         </table>
     </div>
-
-    <input type="button" value="Reservar" onclick="reservar();" /> 
+    <button ng-click="myFunc()">Reservar</button>
+    <!-- <input type="button" value="Reservar" onclick="reservar();" /> -->
 </div>
 
 <script>
