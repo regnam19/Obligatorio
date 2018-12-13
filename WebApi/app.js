@@ -111,7 +111,7 @@ app.config(['$routeProvider',
             })
     }]);
 
-app.controller('controlLogin', function ($scope, $location, $rootScope,$window) {
+app.controller('controlLogin', function ($scope, $location, $rootScope, $window) {
     $scope.submit = function () {
         var user = $scope.ciUsuario;
         var pass = $scope.passUsuario;
@@ -135,6 +135,7 @@ app.controller('controlLogin', function ($scope, $location, $rootScope,$window) 
                
                 if (data.Correcto) {
                     if (data.Habilitado) {
+                        $window.sessionStorage.setItem("SavedString", user);
                         $rootScope.profesional = data.Profesional;
                         $rootScope.paciente = data.Paciente;
                         $rootScope.habilitado = data.Habilitado;
@@ -189,7 +190,7 @@ app.controller('controlprofesionalhorarioslibres', function ($scope, $http) {
     });
 });
 
-app.controller('controlconsultorios', function ($scope, $http, $location) {
+app.controller('controlconsultorios', function ($scope, $http, $location, $rootScope) {
     $http.get("/api/Consultorio/GetConsultorios/").then(function (response) {
         $scope.myData = response.data;
     });
@@ -229,7 +230,56 @@ app.controller('controllerBuscarHorasLibresProfesional', function ($scope, $http
     
 });
 
-app.controller('controlHoras', ['$scope', function ($scope) {
+// funciona rootscope
+app.controller('controlHoras', function ($scope, $rootScope, $window) {
+
+    $scope.reservar = function () {
+        alert($window.sessionStorage.getItem("SavedString"));
+        //alert($rootScope.profesional);
+        var uri = 'api/Horario/PostReservarHorario/';
+
+        var horas = document.getElementsByName('hora');
+
+        var consultorios = document.getElementsByName("consultorio");
+        var consultorio;
+        for (var i = 0; i < consultorios.length; i++) {
+            if (consultorios[i].checked)
+                consultorio = consultorios[i].value;
+        }
+        var dias = document.getElementsByName("dia");
+        var dia = dias[0].value;
+
+        for (var i = 0; i < horas.length; i++) {
+            if (horas[i].checked) {
+
+                var Horario = {
+                    dia: dia,
+                    idConsultorio: consultorio,
+                    cedula: 11111111,
+                    hora: horas[i].value
+                };
+                var info_reserva = JSON.stringify(Horario);
+                $.ajax({
+                    url: 'api/Horario/PostReservarHorario/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_reserva,
+                    dataType: 'json',
+                    success: function (data) {
+
+                    }
+                });
+
+            }
+        }
+        //var variable = sessionStorage.getItem('logeo');
+        //alert(variable);
+        //window.location.replace("#!profesionalhorarioslibres"); 
+
+    }
+
+
     $scope.myFunc = function () {
         var consultorios = document.getElementsByName("consultorio");
         var consultorio;
@@ -260,6 +310,6 @@ app.controller('controlHoras', ['$scope', function ($scope) {
         });
 
     };
-}]);
+});
 
 
