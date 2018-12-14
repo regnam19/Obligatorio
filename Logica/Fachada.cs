@@ -64,7 +64,13 @@ namespace Logica
             else
                 throw new CedulaPersonaInvalida();
         }
-
+        public Boolean consultorioExiste (long id)
+        {
+            if (daoc.Member(id))
+                return daop.Member(id);
+            else
+                throw new CedulaPersonaInvalida();
+        }
         public void eliminarPersona(long ci)
         {
             if (daope.Member(ci))

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica.wsObligatorioCliente;
 
 namespace Logica.WINFORMS
 {
@@ -16,20 +17,23 @@ namespace Logica.WINFORMS
         {
             InitializeComponent();
         }
-        Fachada f = new Fachada();
-        VOPersona vope;
-        VOProfesional vopro;
-        VOPaciente vopa;
-        VOAdmin voad;
+        Service1 ws = new Logica.wsObligatorioCliente.Service1();
+
+        
 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+            VOPersona vope;
+            VOProfesional vopro;
+            VOPaciente vopa;
+            VOAdmin voad;
             if (textBoxCedula.Text != String.Empty)
             {
                 try
                 {
+                    Fachada f = new Fachada();
                     vope = f.darPersona(Int64.Parse(textBoxCedula.Text));
                     vopro = f.darProfesional(Int64.Parse(textBoxCedula.Text));
                     vopa = f.darPaciente(Int64.Parse(textBoxCedula.Text));
@@ -103,22 +107,22 @@ namespace Logica.WINFORMS
                 {
                     if (radioButtonPaciente.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
-                        f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
+                        ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
                         limpiarTextBox();
                         MessageBox.Show("Paciente ingresado correctamente", "ABM Persona",MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton1.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
-                        f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
+                        ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
                         limpiarTextBox();
                         MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton2.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
-                        f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
+                        ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
                         limpiarTextBox();
                         MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
@@ -127,22 +131,22 @@ namespace Logica.WINFORMS
                 {
                     if (radioButtonPaciente.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
-                        f.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
+                        ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
                         limpiarTextBox();
                         MessageBox.Show("Paciente ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton1.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
-                        f.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
+                        ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
                         limpiarTextBox();
                         MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else if (radioButton2.Checked)
                     {
-                        f.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
-                        f.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
+                        ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
                         limpiarTextBox();
                         MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
 
@@ -168,21 +172,21 @@ namespace Logica.WINFORMS
             {
                 if (radioButtonPaciente.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
-                    f.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
+                    ws.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
                     limpiarTextBox();
                     MessageBox.Show("Paciente modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton1.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
-                    f.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
+                    ws.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
                     limpiarTextBox();
                     MessageBox.Show("Profesional modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton2.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, true);
                     limpiarTextBox();
                     MessageBox.Show("Admin modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
@@ -191,21 +195,21 @@ namespace Logica.WINFORMS
             {
                 if (radioButtonPaciente.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
-                    f.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
+                    ws.modificarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
                     limpiarTextBox();
                     MessageBox.Show("Paciente modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton1.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
-                    f.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
+                    ws.modificarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
                     limpiarTextBox();
                     MessageBox.Show("Profesional modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
                 else if (radioButton2.Checked)
                 {
-                    f.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
+                    ws.modificarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, false);
                     limpiarTextBox();
                     MessageBox.Show("Admin modificado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
@@ -223,7 +227,7 @@ namespace Logica.WINFORMS
         {
             try
             {
-                f.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+                ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
                 limpiarTextBox();
                 MessageBox.Show("Persona eliminada correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             } catch (CedulaPersonaInvalida)

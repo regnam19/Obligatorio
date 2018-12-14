@@ -17,7 +17,7 @@ namespace Logica
         {
 
           
-           Application.Run(new WINFORMS.Registros());
+           Application.Run(new WINFORMS.Login());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
@@ -37,13 +37,6 @@ namespace Logica
 
             DAOReserva daor = new DAOReserva();
 
-
-            DateTime dia = new DateTime(2018, 09, 01);
-
-            foreach(var horario in f.horariosDisponiblesConsultorio(1, dia))
-            {
-                Console.WriteLine("Hora disponible: {0}",horario);
-            }
 
 
           

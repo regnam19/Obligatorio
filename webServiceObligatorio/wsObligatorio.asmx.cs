@@ -16,7 +16,7 @@ namespace webServiceObligatorio
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
     // [System.Web.Script.Services.ScriptService]
-    public class wsObligatorio : System.Web.Services.WebService
+    public class Service1 : System.Web.Services.WebService
     {
         
         Fachada fach = new Fachada();
@@ -24,7 +24,6 @@ namespace webServiceObligatorio
         [WebMethod]
         public void darPersona(long ci)
         {
-
             fach.darPersona(ci);
         }
 

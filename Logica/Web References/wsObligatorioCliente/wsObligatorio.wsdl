@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="darPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="darPersonaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="esAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esAdminResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esPacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esPacienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esProfesional">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="esProfesionalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="esProfesionalResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarPersonaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ingresarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="celular" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaNacimiento" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="habilitado" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarPersonaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ingresarPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="contactoEmergencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="celularEmergencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emergenciaMovil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mutualista" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarPacienteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ingresarProfesional">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarProfesionalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ingresarConsultorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarConsultorioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ingresarAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarAdminResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="modificarPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="celular" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaNacimiento" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="habilitado" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarPersonaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="modificarPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="contactoEmergencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="celularEmergencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emergenciaMovil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mutualista" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarPacienteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="modificarProfesional">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ci" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarProfesionalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="modificarConsultorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idConsultorio" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarConsultorioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="eliminarConsultorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idConsultorio" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarConsultorioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="darProfesional">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ced" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="darProfesionalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="darProfesionalResult" type="tns:VOProfesional" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VOProfesional">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Ci" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNac" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Habilitado" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Especialidad" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="darPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ced" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="darPacienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="darPacienteResult" type="tns:VOPaciente" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VOPaciente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Ci" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNac" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Habilitado" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactoEmergencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CelularEmergencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmergenciaMovil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mutualista" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="darAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ced" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="darAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="darAdminResult" type="tns:VOAdmin" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VOAdmin">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Ci" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNac" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Celular" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Habilitado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="darConsultorio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idConsultorio" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="darConsultorioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="darConsultorioResult" type="tns:VOConsultorio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VOConsultorio">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdConsultorio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraInicio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraFin" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="darPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:darPersona" />
+  </wsdl:message>
+  <wsdl:message name="darPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:darPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="esAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:esAdmin" />
+  </wsdl:message>
+  <wsdl:message name="esAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:esAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="esPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:esPaciente" />
+  </wsdl:message>
+  <wsdl:message name="esPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:esPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="esProfesionalSoapIn">
+    <wsdl:part name="parameters" element="tns:esProfesional" />
+  </wsdl:message>
+  <wsdl:message name="esProfesionalSoapOut">
+    <wsdl:part name="parameters" element="tns:esProfesionalResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarPersona" />
+  </wsdl:message>
+  <wsdl:message name="eliminarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarPersona" />
+  </wsdl:message>
+  <wsdl:message name="ingresarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="ingresarPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarProfesionalSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarProfesional" />
+  </wsdl:message>
+  <wsdl:message name="ingresarProfesionalSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarProfesionalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarConsultorioSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarConsultorio" />
+  </wsdl:message>
+  <wsdl:message name="ingresarConsultorioSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarConsultorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarAdmin" />
+  </wsdl:message>
+  <wsdl:message name="ingresarAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarPersona" />
+  </wsdl:message>
+  <wsdl:message name="modificarPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="modificarPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarProfesionalSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarProfesional" />
+  </wsdl:message>
+  <wsdl:message name="modificarProfesionalSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarProfesionalResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarConsultorioSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarConsultorio" />
+  </wsdl:message>
+  <wsdl:message name="modificarConsultorioSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarConsultorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarConsultorioSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarConsultorio" />
+  </wsdl:message>
+  <wsdl:message name="eliminarConsultorioSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarConsultorioResponse" />
+  </wsdl:message>
+  <wsdl:message name="darProfesionalSoapIn">
+    <wsdl:part name="parameters" element="tns:darProfesional" />
+  </wsdl:message>
+  <wsdl:message name="darProfesionalSoapOut">
+    <wsdl:part name="parameters" element="tns:darProfesionalResponse" />
+  </wsdl:message>
+  <wsdl:message name="darPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:darPaciente" />
+  </wsdl:message>
+  <wsdl:message name="darPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:darPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="darAdminSoapIn">
+    <wsdl:part name="parameters" element="tns:darAdmin" />
+  </wsdl:message>
+  <wsdl:message name="darAdminSoapOut">
+    <wsdl:part name="parameters" element="tns:darAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="darConsultorioSoapIn">
+    <wsdl:part name="parameters" element="tns:darConsultorio" />
+  </wsdl:message>
+  <wsdl:message name="darConsultorioSoapOut">
+    <wsdl:part name="parameters" element="tns:darConsultorioResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="darPersona">
+      <wsdl:input message="tns:darPersonaSoapIn" />
+      <wsdl:output message="tns:darPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esAdmin">
+      <wsdl:input message="tns:esAdminSoapIn" />
+      <wsdl:output message="tns:esAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esPaciente">
+      <wsdl:input message="tns:esPacienteSoapIn" />
+      <wsdl:output message="tns:esPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="esProfesional">
+      <wsdl:input message="tns:esProfesionalSoapIn" />
+      <wsdl:output message="tns:esProfesionalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarPersona">
+      <wsdl:input message="tns:eliminarPersonaSoapIn" />
+      <wsdl:output message="tns:eliminarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPersona">
+      <wsdl:input message="tns:ingresarPersonaSoapIn" />
+      <wsdl:output message="tns:ingresarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPaciente">
+      <wsdl:input message="tns:ingresarPacienteSoapIn" />
+      <wsdl:output message="tns:ingresarPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarProfesional">
+      <wsdl:input message="tns:ingresarProfesionalSoapIn" />
+      <wsdl:output message="tns:ingresarProfesionalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarConsultorio">
+      <wsdl:input message="tns:ingresarConsultorioSoapIn" />
+      <wsdl:output message="tns:ingresarConsultorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarAdmin">
+      <wsdl:input message="tns:ingresarAdminSoapIn" />
+      <wsdl:output message="tns:ingresarAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarPersona">
+      <wsdl:input message="tns:modificarPersonaSoapIn" />
+      <wsdl:output message="tns:modificarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarPaciente">
+      <wsdl:input message="tns:modificarPacienteSoapIn" />
+      <wsdl:output message="tns:modificarPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarProfesional">
+      <wsdl:input message="tns:modificarProfesionalSoapIn" />
+      <wsdl:output message="tns:modificarProfesionalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarConsultorio">
+      <wsdl:input message="tns:modificarConsultorioSoapIn" />
+      <wsdl:output message="tns:modificarConsultorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarConsultorio">
+      <wsdl:input message="tns:eliminarConsultorioSoapIn" />
+      <wsdl:output message="tns:eliminarConsultorioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="darProfesional">
+      <wsdl:input message="tns:darProfesionalSoapIn" />
+      <wsdl:output message="tns:darProfesionalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="darPaciente">
+      <wsdl:input message="tns:darPacienteSoapIn" />
+      <wsdl:output message="tns:darPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="darAdmin">
+      <wsdl:input message="tns:darAdminSoapIn" />
+      <wsdl:output message="tns:darAdminSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="darConsultorio">
+      <wsdl:input message="tns:darConsultorioSoapIn" />
+      <wsdl:output message="tns:darConsultorioSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="darPersona">
+      <soap:operation soapAction="http://tempuri.org/darPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esAdmin">
+      <soap:operation soapAction="http://tempuri.org/esAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esPaciente">
+      <soap:operation soapAction="http://tempuri.org/esPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esProfesional">
+      <soap:operation soapAction="http://tempuri.org/esProfesional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarPersona">
+      <soap:operation soapAction="http://tempuri.org/eliminarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPersona">
+      <soap:operation soapAction="http://tempuri.org/ingresarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPaciente">
+      <soap:operation soapAction="http://tempuri.org/ingresarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarProfesional">
+      <soap:operation soapAction="http://tempuri.org/ingresarProfesional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarConsultorio">
+      <soap:operation soapAction="http://tempuri.org/ingresarConsultorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarAdmin">
+      <soap:operation soapAction="http://tempuri.org/ingresarAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarPersona">
+      <soap:operation soapAction="http://tempuri.org/modificarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarPaciente">
+      <soap:operation soapAction="http://tempuri.org/modificarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarProfesional">
+      <soap:operation soapAction="http://tempuri.org/modificarProfesional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarConsultorio">
+      <soap:operation soapAction="http://tempuri.org/modificarConsultorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarConsultorio">
+      <soap:operation soapAction="http://tempuri.org/eliminarConsultorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darProfesional">
+      <soap:operation soapAction="http://tempuri.org/darProfesional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darPaciente">
+      <soap:operation soapAction="http://tempuri.org/darPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darAdmin">
+      <soap:operation soapAction="http://tempuri.org/darAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darConsultorio">
+      <soap:operation soapAction="http://tempuri.org/darConsultorio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="darPersona">
+      <soap12:operation soapAction="http://tempuri.org/darPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esAdmin">
+      <soap12:operation soapAction="http://tempuri.org/esAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esPaciente">
+      <soap12:operation soapAction="http://tempuri.org/esPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esProfesional">
+      <soap12:operation soapAction="http://tempuri.org/esProfesional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarPersona">
+      <soap12:operation soapAction="http://tempuri.org/eliminarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPersona">
+      <soap12:operation soapAction="http://tempuri.org/ingresarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarPaciente">
+      <soap12:operation soapAction="http://tempuri.org/ingresarPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarProfesional">
+      <soap12:operation soapAction="http://tempuri.org/ingresarProfesional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarConsultorio">
+      <soap12:operation soapAction="http://tempuri.org/ingresarConsultorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarAdmin">
+      <soap12:operation soapAction="http://tempuri.org/ingresarAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarPersona">
+      <soap12:operation soapAction="http://tempuri.org/modificarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarPaciente">
+      <soap12:operation soapAction="http://tempuri.org/modificarPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarProfesional">
+      <soap12:operation soapAction="http://tempuri.org/modificarProfesional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarConsultorio">
+      <soap12:operation soapAction="http://tempuri.org/modificarConsultorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarConsultorio">
+      <soap12:operation soapAction="http://tempuri.org/eliminarConsultorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darProfesional">
+      <soap12:operation soapAction="http://tempuri.org/darProfesional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darPaciente">
+      <soap12:operation soapAction="http://tempuri.org/darPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darAdmin">
+      <soap12:operation soapAction="http://tempuri.org/darAdmin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="darConsultorio">
+      <soap12:operation soapAction="http://tempuri.org/darConsultorio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://localhost:50159/wsObligatorio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://localhost:50159/wsObligatorio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
