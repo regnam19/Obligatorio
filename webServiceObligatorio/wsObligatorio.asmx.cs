@@ -45,12 +45,18 @@ namespace webServiceObligatorio
             return fach.esProfesional(ci);
         }
 
+         [WebMethod]
+        public Boolean consultorioExiste(long id)
+        {
+            return fach.consultorioExiste(id);
+        }
+
         [WebMethod]
         public void eliminarPersona(long ci)
         {
             fach.eliminarPersona(ci);
         }
-
+      
         [WebMethod]
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {

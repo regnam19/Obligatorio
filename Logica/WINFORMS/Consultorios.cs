@@ -70,16 +70,24 @@ namespace Logica.WINFORMS
 
             if (textBoxId.Text != String.Empty && (textBoxDireccion.Text != String.Empty && (textBoxHoraInicio.Text != String.Empty) && (textBoxHoraFin.Text != String.Empty)))
                 try
-            {
-                ws.modificarConsultorio(Int64.Parse(textBoxId.Text), textBoxDireccion.Text, Int32.Parse(textBoxHoraInicio.Text), Int32.Parse(textBoxHoraFin.Text));
-                limpiarTextBox();
-                MessageBox.Show("Consultorio modificado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
-            catch (ConsultorioInvalido)
-            {
-                limpiarTextBox();
-                MessageBox.Show("Id de Consultorio no existe", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
+                {
+                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)))
+                    {
+                        ws.modificarConsultorio(Int64.Parse(textBoxId.Text), textBoxDireccion.Text, Int32.Parse(textBoxHoraInicio.Text), Int32.Parse(textBoxHoraFin.Text));
+                        limpiarTextBox();
+                        MessageBox.Show("Consultorio modificado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        limpiarTextBox();
+                        MessageBox.Show("Id de Consultorio no existe", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                }
+                catch (ConsultorioInvalido)
+                {
+                    limpiarTextBox();
+                    MessageBox.Show("Id de Consultorio no existe", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -104,9 +112,19 @@ namespace Logica.WINFORMS
             {
                 if (textBoxId.Text != String.Empty)
                 {
-                    ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
-                    limpiarTextBox();
-                    MessageBox.Show("Consultorio eliminado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)))
+                    {
+                         ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
+                         limpiarTextBox();
+                         MessageBox.Show("Consultorio eliminado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        limpiarTextBox();
+                        MessageBox.Show("Consultorio no existe", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+
+                  
                 }
             } catch (ConsultorioInvalido)
             {
@@ -114,7 +132,7 @@ namespace Logica.WINFORMS
                 MessageBox.Show("Id de Consultorio no existe", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             }
            
-
+           
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)

@@ -54,6 +54,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="consultorioExiste">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultorioExisteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="consultorioExisteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="eliminarPersona">
         <s:complexType>
           <s:sequence>
@@ -318,6 +332,12 @@
   <wsdl:message name="esProfesionalSoapOut">
     <wsdl:part name="parameters" element="tns:esProfesionalResponse" />
   </wsdl:message>
+  <wsdl:message name="consultorioExisteSoapIn">
+    <wsdl:part name="parameters" element="tns:consultorioExiste" />
+  </wsdl:message>
+  <wsdl:message name="consultorioExisteSoapOut">
+    <wsdl:part name="parameters" element="tns:consultorioExisteResponse" />
+  </wsdl:message>
   <wsdl:message name="eliminarPersonaSoapIn">
     <wsdl:part name="parameters" element="tns:eliminarPersona" />
   </wsdl:message>
@@ -425,6 +445,10 @@
       <wsdl:input message="tns:esProfesionalSoapIn" />
       <wsdl:output message="tns:esProfesionalSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="consultorioExiste">
+      <wsdl:input message="tns:consultorioExisteSoapIn" />
+      <wsdl:output message="tns:consultorioExisteSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="eliminarPersona">
       <wsdl:input message="tns:eliminarPersonaSoapIn" />
       <wsdl:output message="tns:eliminarPersonaSoapOut" />
@@ -517,6 +541,15 @@
     </wsdl:operation>
     <wsdl:operation name="esProfesional">
       <soap:operation soapAction="http://tempuri.org/esProfesional" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultorioExiste">
+      <soap:operation soapAction="http://tempuri.org/consultorioExiste" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -691,6 +724,15 @@
     </wsdl:operation>
     <wsdl:operation name="esProfesional">
       <soap12:operation soapAction="http://tempuri.org/esProfesional" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultorioExiste">
+      <soap12:operation soapAction="http://tempuri.org/consultorioExiste" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

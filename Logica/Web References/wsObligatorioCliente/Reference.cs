@@ -37,6 +37,8 @@ namespace Logica.wsObligatorioCliente {
         
         private System.Threading.SendOrPostCallback esProfesionalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback consultorioExisteOperationCompleted;
+        
         private System.Threading.SendOrPostCallback eliminarPersonaOperationCompleted;
         
         private System.Threading.SendOrPostCallback ingresarPersonaOperationCompleted;
@@ -116,6 +118,9 @@ namespace Logica.wsObligatorioCliente {
         
         /// <remarks/>
         public event esProfesionalCompletedEventHandler esProfesionalCompleted;
+        
+        /// <remarks/>
+        public event consultorioExisteCompletedEventHandler consultorioExisteCompleted;
         
         /// <remarks/>
         public event eliminarPersonaCompletedEventHandler eliminarPersonaCompleted;
@@ -274,6 +279,35 @@ namespace Logica.wsObligatorioCliente {
             if ((this.esProfesionalCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.esProfesionalCompleted(this, new esProfesionalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/consultorioExiste", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool consultorioExiste(long id) {
+            object[] results = this.Invoke("consultorioExiste", new object[] {
+                        id});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void consultorioExisteAsync(long id) {
+            this.consultorioExisteAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void consultorioExisteAsync(long id, object userState) {
+            if ((this.consultorioExisteOperationCompleted == null)) {
+                this.consultorioExisteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconsultorioExisteOperationCompleted);
+            }
+            this.InvokeAsync("consultorioExiste", new object[] {
+                        id}, this.consultorioExisteOperationCompleted, userState);
+        }
+        
+        private void OnconsultorioExisteOperationCompleted(object arg) {
+            if ((this.consultorioExisteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.consultorioExisteCompleted(this, new consultorioExisteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1217,6 +1251,32 @@ namespace Logica.wsObligatorioCliente {
         private object[] results;
         
         internal esProfesionalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void consultorioExisteCompletedEventHandler(object sender, consultorioExisteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class consultorioExisteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal consultorioExisteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

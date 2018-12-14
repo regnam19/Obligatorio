@@ -44,32 +44,32 @@ namespace Logica
         public Boolean esAdmin (long ci)
         {
             if (daope.Member(ci))
-                return daoad.member(ci);
+                return true;
             else
-                throw new CedulaPersonaInvalida();
+                return false;
         }
 
         public Boolean esPaciente (long ci)
         {
             if (daope.Member(ci))
-                return daopa.Member(ci);
-             else
-                throw new CedulaPersonaInvalida();
+                return true;
+            else
+                return false;
         }
 
         public Boolean esProfesional (long ci)
         {
             if (daope.Member(ci))
-                return daop.Member(ci);
+                return true;
             else
-                throw new CedulaPersonaInvalida();
+                return false;
         }
         public Boolean consultorioExiste (long id)
         {
             if (daoc.Member(id))
-                return daop.Member(id);
+                return true;
             else
-                throw new CedulaPersonaInvalida();
+                return false;
         }
         public void eliminarPersona(long ci)
         {

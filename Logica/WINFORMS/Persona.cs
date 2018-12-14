@@ -107,48 +107,94 @@ namespace Logica.WINFORMS
                 {
                     if (radioButtonPaciente.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
-                        ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
-                        limpiarTextBox();
-                        MessageBox.Show("Paciente ingresado correctamente", "ABM Persona",MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        if (!ws.esPaciente(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, true);
+                            ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                            limpiarTextBox();
+                            MessageBox.Show("Paciente ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        } else
+                        {
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
+
                     }
                     else if (radioButton1.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
-                        ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
-                        limpiarTextBox();
-                        MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        if (!ws.esProfesional(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, true);
+                            ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                            limpiarTextBox();
+                            MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
                     }
                     else if (radioButton2.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
-                        ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
-                        limpiarTextBox();
-                        MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+                        if (!ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, true);
+                            ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                            limpiarTextBox();
+                            MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
                     }
                 }
                 else
                 {
                     if (radioButtonPaciente.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
-                        ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
-                        limpiarTextBox();
-                        MessageBox.Show("Paciente ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+                        if (!ws.esPaciente(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaPaciente.Text, false);
+                            ws.ingresarPaciente(Int64.Parse(textBoxCedula.Text), textBoxContactoEmergencia.Text, textBoxCelularEmergencia.Text, textBoxEmergenciaMovil.Text, textBoxMutualista.Text);
+                            limpiarTextBox();
+                            MessageBox.Show("Paciente ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }else
+                        {
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
                     }
                     else if (radioButton1.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
-                        ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
-                        limpiarTextBox();
-                        MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        if (!ws.esProfesional(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaProfesional.Text, false);
+                            ws.ingresarProfesional(Int64.Parse(textBoxCedula.Text), textBoxEspecialidad.Text);
+                            limpiarTextBox();
+                            MessageBox.Show("Profesional ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
+                    
                     }
                     else if (radioButton2.Checked)
                     {
-                        ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
-                        ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
-                        limpiarTextBox();
-                        MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+                        if (!ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                        {
+                            ws.ingresarPersona(Int64.Parse(textBoxCedula.Text), textBoxNombre.Text, textBoxApellido.Text, textBoxCelular.Text, dateTimePickerFechaNacimiento.Value, textBoxDireccion.Text, textBoxContraseñaAdmin.Text, false);
+                            ws.ingresarAdmin(Int64.Parse(textBoxCedula.Text));
+                            limpiarTextBox();
+                            MessageBox.Show("Admin ingresado correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }else
+                        {
+
+                            MessageBox.Show("Ya existe una persona ingresada en el sistema con esa Cedula", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                        }
 
                     }
 
@@ -227,9 +273,18 @@ namespace Logica.WINFORMS
         {
             try
             {
-                ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
-                limpiarTextBox();
-                MessageBox.Show("Persona eliminada correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                if (ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                {
+                     ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+                     limpiarTextBox();
+                     MessageBox.Show("Persona eliminada correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    limpiarTextBox();
+                    MessageBox.Show("Cedula Ingresada Invalida", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
+            
             } catch (CedulaPersonaInvalida)
             {
                 limpiarTextBox();
