@@ -41,11 +41,6 @@ namespace Logica
                 throw new CedulaPersonaInvalida();
         }
 
-        /*public VOUsuario darUsuario(long ci)
-        {
-            return daou.Find(ci);
-        }*/
-
         public Boolean esAdmin (long ci)
         {
             if (daope.Member(ci))
@@ -140,11 +135,6 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
-        public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
-        {
-            return daoh.horariosReservadosConsultorio(dia, idConsultorio);
-        }
-     
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
@@ -168,7 +158,12 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
-       
+
+        public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
+        {
+            return daoh.horariosReservadosConsultorio(dia, idConsultorio);
+        }
+
 
         public List<int> HorariosLibresConsultorioDiaParaProfesional(int idConsultorio, DateTime dia)
         {
