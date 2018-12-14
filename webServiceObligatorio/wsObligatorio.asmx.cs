@@ -18,6 +18,7 @@ namespace webServiceObligatorio
     // [System.Web.Script.Services.ScriptService]
     public class wsObligatorio : System.Web.Services.WebService
     {
+        
         Fachada fach = new Fachada();
 
         [WebMethod]
@@ -28,97 +29,111 @@ namespace webServiceObligatorio
         }
 
         [WebMethod]
-        public void esAdmin(long ci)
+        public bool esAdmin(long ci)
         {
-            fach.esAdmin(ci);
+            return fach.esAdmin(ci);
         }
 
-        public void esPaciente(long ci)
+        [WebMethod]
+        public bool esPaciente(long ci)
         {
-            fach.esPaciente(ci);
+            return fach.esPaciente(ci);
         }
 
-        public void esProfesional(long ci)
+        [WebMethod]
+        public bool esProfesional(long ci)
         {
-            fach.esProfesional(ci);
+            return fach.esProfesional(ci);
         }
 
+        [WebMethod]
         public void eliminarPersona(long ci)
         {
             fach.eliminarPersona(ci);
         }
 
+        [WebMethod]
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
             fach.ingresarPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, contraseña, habilitado);
         }
 
+        [WebMethod]
         public void ingresarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
         {
             fach.ingresarPaciente(ci, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista);
         }
 
+        [WebMethod]
         public void ingresarProfesional(long ci, String especialidad)
         {
             fach.ingresarProfesional(ci, especialidad);
         }
 
+        [WebMethod]
         public void ingresarConsultorio(String direccion, int fechaInicio, int fechaFin)
         {
             fach.ingresarConsultorio(direccion, fechaInicio, fechaFin);
         }
 
+        [WebMethod]
         public void ingresarAdmin(long ci)
         {
             fach.ingresarAdmin(ci);
         }
 
+        [WebMethod]
         public void modificarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, bool habilitado)
         {
             fach.modificarPersona(ci, nombre, apellido, celular, fechaNacimiento, direccion, habilitado);
-
         }
 
+        [WebMethod]
         public void modificarPaciente(long ci, String contactoEmergencia, String celularEmergencia, String emergenciaMovil, String mutualista)
         {
             fach.modificarPaciente(ci, contactoEmergencia, celularEmergencia, emergenciaMovil, mutualista);
         }
 
+        [WebMethod]
         public void modificarProfesional(long ci, String especialidad)
         {
             fach.modificarProfesional(ci, especialidad);
         }
 
+        [WebMethod]
         public void modificarConsultorio(long idConsultorio, String direccion, int fechaInicio, int fechaFin)
         {
             fach.modificarConsultorio(idConsultorio, direccion, fechaInicio, fechaFin);
-
         }
 
+        [WebMethod]
         public void eliminarConsultorio(long idConsultorio)
         {
             fach.eliminarConsultorio(idConsultorio);
-
         }
 
-        public void darProfesional(long ced)
+        [WebMethod]
+        public VOProfesional darProfesional(long ced)
         {
-            fach.darProfesional(ced);
+            return fach.darProfesional(ced);
         }
 
-        public void darPaciente(long ced)
+        [WebMethod]
+        public VOPaciente darPaciente(long ced)
         {
-            fach.darPaciente(ced);
+            return fach.darPaciente(ced);
         }
 
-        public void darAdmin(long ced)
+        [WebMethod]
+        public VOAdmin darAdmin(long ced)
         {
-            fach.darAdmin(ced);
+            return fach.darAdmin(ced);
         }
 
-        public void darConsultorio(long idConsultorio)
+        [WebMethod]
+        public VOConsultorio darConsultorio(long idConsultorio)
         {
-            fach.darConsultorio(idConsultorio);
+            return fach.darConsultorio(idConsultorio);
         }
     }
    }
