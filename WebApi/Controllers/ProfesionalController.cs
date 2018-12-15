@@ -14,8 +14,9 @@ namespace WebApi.Controllers
         // GET api/values
         public IEnumerable<WebApi.Models.Profesional> GetProfesioales()
         {
-            Fachada fach = new Fachada();
-            
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
+
             WebApi.Models.Profesional[] profesionales = new WebApi.Models.Profesional[fach.listaProfesionales().LongCount()];
             int i = 0;
             foreach(var prof in fach.listaProfesionales())
@@ -33,7 +34,8 @@ namespace WebApi.Controllers
         }
         public WebApi.Models.Profesional GetProfesioales(long id)
         {
-            Fachada fach = new Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             WebApi.Models.Profesional p = new WebApi.Models.Profesional();
             p.nombre = fach.darProfesional(id).Nombre;
             p.apellido = fach.darProfesional(id).Apellido;

@@ -20,7 +20,6 @@ namespace Logica.DAOS
           
             List<VOReserva> lista = new List<VOReserva>();
 
-            // cambiar cambio pendiente error fecha dia 
             DateTime dia = DateTime.Today;
 
             String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();

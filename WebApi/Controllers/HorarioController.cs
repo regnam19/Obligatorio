@@ -16,8 +16,9 @@ namespace WebApi.Controllers
 
         public IEnumerable<Horario> GetHorario(long id)
         {
-            
-            Logica.Fachada fach = new Logica.Fachada();
+
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             Horario[] horarios = new Horario[fach.horasLibresProfesional(id).LongCount()];
             int i = 0;
@@ -40,7 +41,8 @@ namespace WebApi.Controllers
         public IEnumerable<Horario> GetHorariosLibres(long id)
         {
 
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             Horario[] horarios = new Horario[fach.listarHorariosLibresProfeisonal(id).LongCount()];
             int i = 0;
@@ -61,9 +63,10 @@ namespace WebApi.Controllers
 
         public IEnumerable<int> PostHorariosDisponibles(Horario horario)
         {
-           
-            
-            Logica.Fachada fach = new Logica.Fachada();
+
+
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             int[] horarios = new int[fach.horariosDisponiblesConsultorio(horario.IdConsultorio,horario.Dia).LongCount()];
             int i = 0;
@@ -82,9 +85,9 @@ namespace WebApi.Controllers
 
         public IHttpActionResult PostReservarHorarioProfesional(Horario horario)
         {
-            
-            Console.WriteLine("Estoy2");
-            Logica.Fachada fach = new Logica.Fachada();
+
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             long cedula = horario.Cedula;
             long idHorario = horario.IdHorario;
             Logica.VOHorarioInsertarPaciente vo = new Logica.VOHorarioInsertarPaciente(idHorario, cedula);
@@ -100,7 +103,8 @@ namespace WebApi.Controllers
             System.Diagnostics.Debug.WriteLine("Consultorio: {0}", horario.IdConsultorio);
 
 
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             long ciProfesional = horario.Cedula;
             int hora = horario.Hora;
             DateTime dia = horario.Dia;
