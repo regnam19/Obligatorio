@@ -1,7 +1,11 @@
-﻿<div ng-controller="controlLogin">
-    <form action="/" id="myLogin">
-        Ci: <input type="text" name="ciUsuario" id="ciUsuario" ng-model="ciUsuario" /><br />
-        Contrasena: <input type="password" name="passUsuario" id="passUsuario" ng-model="passUsuario" /><br />
-        <button type="button" ng-click="submit()">Login</button>
-    </form>
-</div>
+﻿    <div class="login-page" ng-controller="controlLogin">
+        <div class="form" action="/" id="myLogin">
+            <form class="login-form">
+                <input type="text" placeholder="C.I" name="ciUsuario" id="ciUsuario" ng-model="ciUsuario" />
+                <input type="password" placeholder="Contrasena" name="passUsuario" id="passUsuario" ng-model="passUsuario" />
+                <button ng-click="submit()">Login</button>
+                <p class="message">Debe estar registrado para ver el contenido</p>
+            </form>
+        </div>
+    </div>
+
