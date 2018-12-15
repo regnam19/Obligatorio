@@ -60,6 +60,7 @@
     <Compile Include="DAOS\DAOReserva.cs" />
     <Compile Include="Fachada.cs" />
     <Compile Include="Horario.cs" />
+    <Compile Include="IFachada.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="Profesional.cs" />
     <Compile Include="Profesionales.cs" />

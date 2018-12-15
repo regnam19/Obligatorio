@@ -12,7 +12,8 @@ namespace WebApi.Controllers
     {
         public Login PostLogin (Login login)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             Login log = new Login();
             log.Correcto = fach.verificarUsuario(login.Usuario, login.Contrasena);
             log.Profesional = fach.verificarProfesional(login.Usuario);

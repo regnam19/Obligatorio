@@ -13,7 +13,8 @@ namespace WebApi.Controllers
     {
         public IEnumerable<ReservasXconfirmar> GetReservasXconfirmar(long id)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             ReservasXconfirmar[] reservas = new ReservasXconfirmar[fach.reservasXconfirmar(id).LongCount()];
             int i = 0;
@@ -33,7 +34,8 @@ namespace WebApi.Controllers
 
         public IEnumerable<ReservasXconfirmar> GetPacientesPorAtender(long id)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             ReservasXconfirmar[] reservas = new ReservasXconfirmar[fach.reservasXconfirmar(id).LongCount()];
             int i = 0;
@@ -55,7 +57,8 @@ namespace WebApi.Controllers
         
         public IHttpActionResult PostConfirmarReserva(ReservasXconfirmar reserva)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             fach.aceptarReserva(reserva.IdReserva);
             return Ok();
         }
@@ -63,7 +66,8 @@ namespace WebApi.Controllers
 
         public IHttpActionResult PostRechazarReserva(ReservasXconfirmar reserva)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             fach.rechazarReserva(reserva.IdReserva);
             return Ok();
         }
