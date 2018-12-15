@@ -1,49 +1,45 @@
-﻿
-    <h1>Consultorios</h1>
-
-    <div class="container" ng-controller="controlconsultorios">
-        <h2>Reservas consultorios</h2>
-        <p>Seleccione un consultorio y una fecha para ver los horarios disponibles</p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Direccion</th>
-                    <th>Hora inicio</th>
-                    <th>Hora fin</th>
-                    <th>    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="x in myData">
-                    <td>{{x.Direccion}}</td>
-                    <td>{{x.HoraInicio}}</td>
-                    <td>{{x.HoraFin}}</td>
-                    <td><input type="radio" name="consultorio" value="{{x.IdConsultorio}}"> </td>
-                </tr>
-            </tbody>
-        </table>
-        <input type="date" name="dia">
-    </div>
+﻿<div class="container-fluid" ng-controller="controlconsultorios">
+    <h2>Reservar consultorios</h2>
+    <p>Seleccione un consultorio y una fecha para ver los horarios disponibles</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Direccion</th>
+                <th>Hora inicio</th>
+                <th>Hora fin</th>
+                <th>    </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in myData">
+                <td>{{x.Direccion}}</td>
+                <td>{{x.HoraInicio}}</td>
+                <td>{{x.HoraFin}}</td>
+                <td><input type="radio" name="consultorio" value="{{x.IdConsultorio}}"> </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="date" name="dia">
 
 
 
-        <button ng-click="myFunc()">Consultar</button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Horas disponibles</th>
-                    <th>seleccione 1 o mas</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="x in Horarios">
-                    <td>{{x}}</td>
-                    <td><input type="checkbox" name="hora" value="{{x}}"> </td>
-                </tr>
-            </tbody>
-        </table>
-        <button ng-click="reservar()">Reservar</button>
 
- 
+    <button ng-click="myFunc()">Consultar</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Horas disponibles</th>
+                <th>seleccione 1 o mas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in Horarios">
+                <td>{{x}}</td>
+                <td><input type="checkbox" name="hora" value="{{x}}"> </td>
+            </tr>
+        </tbody>
+    </table>
+    <button ng-click="reservar()">Reservar</button>
+</div>
 
  
