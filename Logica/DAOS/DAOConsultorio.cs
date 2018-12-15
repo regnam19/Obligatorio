@@ -23,9 +23,9 @@ namespace Logica
 
             myConnection.Open();
 
-            SqlCommand myCommand = new SqlCommand(consulta.consultorioObtener(), myConnection);
+            SqlCommand myCommand = new SqlCommand(consulta.consultorioExiste(), myConnection);
 
-            myCommand.Parameters.AddWithValue("@id", id);
+            myCommand.Parameters.AddWithValue("@idConsultorio", id);
 
             myCommand.ExecuteNonQuery();
 

@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica.wsObligatorioCliente;
 
 namespace Logica.WINFORMS
 {
     public partial class Login : Form
     {
+        Service1 ws = new Logica.wsObligatorioCliente.Service1();
+
         public Login()
         {
             InitializeComponent();
@@ -19,15 +22,21 @@ namespace Logica.WINFORMS
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            Fachada f = new Fachada();
+
             Principal frmPrincipal = new Principal();
-            if (f.esAdmin(Int64.Parse(textBoxUser.Text)))
+            if (ws.esAdmin(Int64.Parse(textBoxUser.Text)))
             {
-                 frmPrincipal.Show();
-                 Hide();
-            } 
-                
-          }
+                frmPrincipal.Show();
+                Hide();
+            }
+            else
+            {
+                 MessageBox.Show("Usuario y/o contraseña correcta", "ABMAdmin", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+
+
 
     }
+
+}
 }

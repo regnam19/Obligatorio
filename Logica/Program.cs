@@ -38,13 +38,6 @@ namespace Logica
             DAOReserva daor = new DAOReserva();
 
 
-            DateTime dia = new DateTime(2018, 09, 01);
-
-            foreach(var horario in f.horariosDisponiblesConsultorio(1, dia))
-            {
-                Console.WriteLine("Hora disponible: {0}",horario);
-            }
-
 
           
             Console.ReadLine();
