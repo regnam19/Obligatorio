@@ -35,12 +35,11 @@
 <script>
 
     function confirmar() {
-        
+        var checked = false;
         var reservas = document.getElementsByName('reserva');
 
         for (var i = 0; i < reservas.length; i++) {
             if (reservas[i].checked) {
-
                 var ReservasXconfirmar = {
                     IdReserva: reservas[i].value,
                 };
@@ -53,27 +52,28 @@
                     data: info_reserva,
                     dataType: 'json',
                     success: function (data) {
-                       
                     }
                 });
-
-
+                checked = true;
             }
-           
         }
-        window.location.replace("#!profesional"); 
-
+        if (checked) {
+            alert("Reserva Confirmada");
+            window.location.replace("#!profesional");
+        }
+        else {
+            alert("ERROR: Seleccione una reserva a confirmar");
+        }
     }
 
 
 
     function rechazar() {
-
+        var checked = false;
         var reservas = document.getElementsByName('reserva');
 
         for (var i = 0; i < reservas.length; i++) {
             if (reservas[i].checked) {
-
                 var ReservasXconfirmar = {
                     IdReserva: reservas[i].value,
                 };
@@ -86,16 +86,18 @@
                     data: info_reserva,
                     dataType: 'json',
                     success: function (data) {
-                       
                     }
                 });
-
-
+                checked = true;
             }
-            
         }
-        window.location.replace("#!profesional"); 
-
+        if (checked) {
+            alert("Reserva Confirmada");
+            window.location.replace("#!profesional");
+        }
+        else {
+            alert("ERROR: Seleccione una reserva a rechazar");
+        }
 
     }
 

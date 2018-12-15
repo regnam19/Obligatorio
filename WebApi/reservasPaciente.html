@@ -30,11 +30,14 @@
 <script>
 
     function borrarReserva($location) {
+        var checked = false;
         var reservas = document.getElementsByName("idReserva");
         var reserva;
         for (var i = 0; i < reservas.length; i++) {
-            if (reservas[i].checked)
+            if (reservas[i].checked) {
                 reserva = reservas[i].value;
+                checked = true;
+            }
         }
         var BorrarReserva = {
                     IdReserva: reserva
@@ -50,9 +53,14 @@
                     success: function (data) {
                         alert('Se borro la reserva');
                     }
-                });
-
-        alert("Reserva Borrada");
+        });
+        if (checked) {
+            alert("Reserva Borrada");
+        }
+        else {
+            alert("ERROR: Seleccione una reserva para borrar")
+        }
+        
         window.location.replace("#!reservaspaciente");
     }
 
