@@ -14,9 +14,10 @@ namespace WebApi.Controllers
         public IEnumerable<PacienteXatender> GetPacienteXatender(long id)
         {
             System.Diagnostics.Debug.WriteLine("id que viene: {0}", id);
-           
 
-            Logica.Fachada fach = new Logica.Fachada();
+
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             PacienteXatender[] paciente = new PacienteXatender[fach.pacientesXatender(id).LongCount()];
             int i = 0;
@@ -38,7 +39,8 @@ namespace WebApi.Controllers
             System.Diagnostics.Debug.WriteLine("id que viene: {0}", id);
 
 
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             PacienteXatender[] paciente = new PacienteXatender[fach.pacientesAtendidos(id).LongCount()];
             int i = 0;

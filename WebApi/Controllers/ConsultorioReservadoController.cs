@@ -14,7 +14,8 @@ namespace WebApi.Controllers
         public IEnumerable<ConsultorioReservado> GetConsultorioReservado(long id)
         {
 
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
 
             ConsultorioReservado[] horarios = new ConsultorioReservado[fach.consultorioReservado(id).LongCount()];
             int i = 0;
@@ -34,7 +35,8 @@ namespace WebApi.Controllers
 
         public IHttpActionResult PostEliminarHorario(ConsultorioReservado c)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             fach.eliminarHorarioProfeisonal(c.IdHorario);
             return Ok();
         }

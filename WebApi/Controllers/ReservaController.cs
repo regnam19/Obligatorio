@@ -12,7 +12,8 @@ namespace WebApi.Controllers
     {
         public IEnumerable<Reserva> GetReserva(long id)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             Reserva[] reservas = new Reserva[fach.horasReservadasPaciente(id).LongCount()];
             int i = 0;
             foreach (var res in fach.horasReservadasPaciente(id))
@@ -33,7 +34,8 @@ namespace WebApi.Controllers
 
         public IEnumerable<Reserva> GetHistorialReserva(long id)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             Reserva[] reservas = new Reserva[fach.historialReservaPaciente(id).LongCount()];
             int i = 0;
             foreach (var res in fach.historialReservaPaciente(id))
@@ -55,7 +57,8 @@ namespace WebApi.Controllers
         
         public IHttpActionResult PostBorrarReserva(Reserva reserva)
         {
-            Logica.Fachada fach = new Logica.Fachada();
+            //Logica.Fachada fach = new Logica.Fachada();
+            Logica.IFachada fach = new Logica.Fachada();
             long idReserva = reserva.IdReserva;
             fach.cancelarReservaPaciente(idReserva);
             return Ok();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Fachada
+    public class Fachada : IFachada
     {
         public Fachada() { }
 
