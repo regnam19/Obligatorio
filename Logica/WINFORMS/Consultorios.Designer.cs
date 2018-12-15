@@ -33,13 +33,13 @@
             this.labelHoraInicio = new System.Windows.Forms.Label();
             this.labelHoraFin = new System.Windows.Forms.Label();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
-            this.textBoxHoraInicio = new System.Windows.Forms.TextBox();
-            this.textBoxHoraFin = new System.Windows.Forms.TextBox();
             this.buttonInsertar = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.content = new System.Windows.Forms.Panel();
+            this.comboBoxHoraFin = new System.Windows.Forms.ComboBox();
+            this.comboBoxHoraInicio = new System.Windows.Forms.ComboBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
             this.content.SuspendLayout();
@@ -99,26 +99,6 @@
             this.textBoxDireccion.Size = new System.Drawing.Size(100, 20);
             this.textBoxDireccion.TabIndex = 4;
             this.textBoxDireccion.Visible = false;
-            // 
-            // textBoxHoraInicio
-            // 
-            this.textBoxHoraInicio.Location = new System.Drawing.Point(189, 155);
-            this.textBoxHoraInicio.MaxLength = 2;
-            this.textBoxHoraInicio.Name = "textBoxHoraInicio";
-            this.textBoxHoraInicio.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHoraInicio.TabIndex = 5;
-            this.textBoxHoraInicio.Visible = false;
-            this.textBoxHoraInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraInicio_KeyPress);
-            // 
-            // textBoxHoraFin
-            // 
-            this.textBoxHoraFin.Location = new System.Drawing.Point(189, 192);
-            this.textBoxHoraFin.MaxLength = 2;
-            this.textBoxHoraFin.Name = "textBoxHoraFin";
-            this.textBoxHoraFin.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHoraFin.TabIndex = 6;
-            this.textBoxHoraFin.Visible = false;
-            this.textBoxHoraFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHoraFin_KeyPress);
             // 
             // buttonInsertar
             // 
@@ -184,14 +164,14 @@
             // content
             // 
             this.content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.content.Controls.Add(this.comboBoxHoraFin);
+            this.content.Controls.Add(this.comboBoxHoraInicio);
             this.content.Controls.Add(this.label1);
             this.content.Controls.Add(this.textBoxId);
             this.content.Controls.Add(this.buttonInsertar);
             this.content.Controls.Add(this.labelId);
             this.content.Controls.Add(this.buttonModificar);
-            this.content.Controls.Add(this.textBoxHoraFin);
             this.content.Controls.Add(this.buttonBuscar);
-            this.content.Controls.Add(this.textBoxHoraInicio);
             this.content.Controls.Add(this.textBoxDireccion);
             this.content.Controls.Add(this.buttonEliminar);
             this.content.Controls.Add(this.labelHoraFin);
@@ -202,6 +182,76 @@
             this.content.Name = "content";
             this.content.Size = new System.Drawing.Size(726, 457);
             this.content.TabIndex = 14;
+            // 
+            // comboBoxHoraFin
+            // 
+            this.comboBoxHoraFin.FormattingEnabled = true;
+            this.comboBoxHoraFin.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"});
+            this.comboBoxHoraFin.Location = new System.Drawing.Point(189, 192);
+            this.comboBoxHoraFin.Name = "comboBoxHoraFin";
+            this.comboBoxHoraFin.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxHoraFin.TabIndex = 14;
+            this.comboBoxHoraFin.Visible = false;
+            this.comboBoxHoraFin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxHoraFin_KeyPress);
+            // 
+            // comboBoxHoraInicio
+            // 
+            this.comboBoxHoraInicio.FormattingEnabled = true;
+            this.comboBoxHoraInicio.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24"});
+            this.comboBoxHoraInicio.Location = new System.Drawing.Point(189, 155);
+            this.comboBoxHoraInicio.Name = "comboBoxHoraInicio";
+            this.comboBoxHoraInicio.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxHoraInicio.TabIndex = 13;
+            this.comboBoxHoraInicio.Visible = false;
+            this.comboBoxHoraInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxHoraInicio_KeyPress);
             // 
             // textBoxId
             // 
@@ -245,8 +295,6 @@
         private System.Windows.Forms.Label labelHoraInicio;
         private System.Windows.Forms.Label labelHoraFin;
         private System.Windows.Forms.TextBox textBoxDireccion;
-        private System.Windows.Forms.TextBox textBoxHoraInicio;
-        private System.Windows.Forms.TextBox textBoxHoraFin;
         private System.Windows.Forms.Button buttonInsertar;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonEliminar;
@@ -254,5 +302,7 @@
         private System.Windows.Forms.Panel content;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label labelId;
+        private System.Windows.Forms.ComboBox comboBoxHoraFin;
+        private System.Windows.Forms.ComboBox comboBoxHoraInicio;
     }
 }
