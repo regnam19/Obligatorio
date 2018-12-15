@@ -2,63 +2,62 @@
 <html  ng-app="myApp">
 <head>
 
-    <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-     <link rel="stylesheet" type="text/javascript" href="/js/bootstrap.min.js">
-     <link rel="stylesheet" href="styles.css">-->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
-
+    
     <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/estilos.css" rel="stylesheet">
 
 
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-    <title>INICIO</title>
+    <title>Sistema de Reserva</title>
 
 </head>
 
 <body>
 
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="app.js"></script>
 
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <h5 class="text-white h4">Collapsed content</h5>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistema de Reservas</a>
+        <img src="Imagenes/descarga.png"  style="width:50px;height:50px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <ul class="nav nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profesionales</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" ng-href="#!profesional">Aceptar / Cancelar Reservas</a>
+                            <a class="dropdown-item" ng-href="#!profesionalhistorial">Historial de pacientes</a>
+                            <a class="dropdown-item" ng-href="#!profesionalmisp">Pacientes para atender</a>
+                            <a class="dropdown-item" ng-href="#!profesionalhorarioslibres">Horarios sin pacientes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" ng-href="#!consultorios">Reservar consultorio</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" ng-href="#!paciente">Agendar consulta</a>
+                            <a class="dropdown-item" ng-href="#!reservaspaciente">Consultas a futuro</a>
+                            <a class="dropdown-item" ng-href="#!historialreservaspaciente">Historial de consultas</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div>
+    </nav>
 
-
-    <ul class="nav nav-pills">
-        <li class="active"><a ng-href="#!profesional">Profesional</a></li>
-        <li><a ng-href="#!profesionalhistorial">Profesional Historial</a></li>
-        <li><a ng-href="#!profesionalmisp">Profesional mis pacientes</a></li>
-        <li><a ng-href="#!profesionalhorarioslibres">Profesional horarioslibres</a></li>
-        <li><a ng-href="#!consultorios">Consultorios</a></li>
-        <li><a ng-href="#!paciente">Paciente</a></li>
-        <li><a ng-href="#!reservaspaciente">Reservas Paciente</a></li>
-        <li><a ng-href="#!historialreservaspaciente">Historial de Reservas Paciente</a></li>
-    </ul>
-    <!--<ul>
-        <li><a class="active" ng-href="#!profesional">Profesional</a></li>
-        <li><a ng-href="#!profesionalhistorial">Profesional Historial</a></li>
-        <li><a ng-href="#!profesionalmisp">Profesional mis pacientes</a></li>
-        <li><a ng-href="#!profesionalhorarioslibres">Profesional horarioslibres</a></li>
-        <li><a ng-href="#!consultorios">Consultorios</a></li>
-        <li><a ng-href="#!paciente">Paciente</a></li>
-        <li><a ng-href="#!reservaspaciente">Reservas Paciente</a></li>
-        <li><a ng-href="#!historialreservaspaciente">Historial de Reservas Paciente</a></li>
-    </ul>-->
-    <div ng-view>
+     
+    <div class="container-fluid"  ng-view>
 
 
     </div>

@@ -121,12 +121,6 @@
     <Compile Include="WINFORMS\Persona.Designer.cs">
       <DependentUpon>Persona.cs</DependentUpon>
     </Compile>
-    <Compile Include="WINFORMS\Principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WINFORMS\Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
-    </Compile>
     <Compile Include="WINFORMS\Registros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,9 +167,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WINFORMS\Persona.resx">
       <DependentUpon>Persona.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WINFORMS\Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WINFORMS\Registros.resx">
       <DependentUpon>Registros.cs</DependentUpon>
