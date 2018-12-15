@@ -69,7 +69,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.errorProviderPersona = new System.Windows.Forms.ErrorProvider(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.TipoPersona = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButtonNo = new System.Windows.Forms.RadioButton();
@@ -83,6 +82,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(139, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 26);
@@ -93,6 +93,7 @@
             // 
             this.labelCedula.AutoSize = true;
             this.labelCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelCedula.ForeColor = System.Drawing.Color.White;
             this.labelCedula.Location = new System.Drawing.Point(61, 68);
             this.labelCedula.Name = "labelCedula";
             this.labelCedula.Size = new System.Drawing.Size(114, 17);
@@ -110,7 +111,12 @@
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(186)))), ((int)(((byte)(20)))));
+            this.buttonBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.buttonBuscar.ForeColor = System.Drawing.Color.White;
             this.buttonBuscar.Location = new System.Drawing.Point(471, 25);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
@@ -133,6 +139,7 @@
             // 
             this.labelCelular.AutoSize = true;
             this.labelCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelCelular.ForeColor = System.Drawing.Color.White;
             this.labelCelular.Location = new System.Drawing.Point(443, 106);
             this.labelCelular.Name = "labelCelular";
             this.labelCelular.Size = new System.Drawing.Size(52, 17);
@@ -151,6 +158,7 @@
             // 
             this.labelApellido.AutoSize = true;
             this.labelApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelApellido.ForeColor = System.Drawing.Color.White;
             this.labelApellido.Location = new System.Drawing.Point(61, 106);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(58, 17);
@@ -169,6 +177,7 @@
             // 
             this.labelNombre.AutoSize = true;
             this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelNombre.ForeColor = System.Drawing.Color.White;
             this.labelNombre.Location = new System.Drawing.Point(443, 68);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(58, 17);
@@ -179,6 +188,7 @@
             // 
             this.labelFechaNacimiento.AutoSize = true;
             this.labelFechaNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.labelFechaNacimiento.ForeColor = System.Drawing.Color.White;
             this.labelFechaNacimiento.Location = new System.Drawing.Point(61, 149);
             this.labelFechaNacimiento.Name = "labelFechaNacimiento";
             this.labelFechaNacimiento.Size = new System.Drawing.Size(121, 17);
@@ -197,6 +207,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(443, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 17);
@@ -205,6 +216,11 @@
             // 
             // buttonIngresar
             // 
+            this.buttonIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(186)))), ((int)(((byte)(20)))));
+            this.buttonIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIngresar.ForeColor = System.Drawing.Color.White;
             this.buttonIngresar.Location = new System.Drawing.Point(473, 476);
             this.buttonIngresar.Name = "buttonIngresar";
             this.buttonIngresar.Size = new System.Drawing.Size(172, 39);
@@ -215,6 +231,11 @@
             // 
             // buttonModificar
             // 
+            this.buttonModificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonModificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(186)))), ((int)(((byte)(20)))));
+            this.buttonModificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.buttonModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificar.ForeColor = System.Drawing.Color.White;
             this.buttonModificar.Location = new System.Drawing.Point(66, 476);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(172, 39);
@@ -225,6 +246,11 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(274, 476);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(172, 39);
@@ -279,6 +305,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(280, 292);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 17);
@@ -289,6 +316,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(11, 399);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 17);
@@ -299,6 +327,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(11, 292);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(143, 17);
@@ -309,6 +338,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(11, 360);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 17);
@@ -319,6 +349,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(488, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 17);
@@ -329,6 +360,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(43, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 17);
@@ -339,6 +371,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(269, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 17);
@@ -349,6 +382,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(11, 327);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(131, 17);
@@ -368,6 +402,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(489, 292);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 17);
@@ -386,6 +421,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(280, 324);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 17);
@@ -404,6 +440,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(12, 433);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 17);
@@ -455,14 +492,6 @@
             // 
             this.errorProviderPersona.ContainerControl = this;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(727, 24);
-            this.menuStrip1.TabIndex = 89;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // TipoPersona
             // 
             this.TipoPersona.Controls.Add(this.label4);
@@ -471,6 +500,7 @@
             this.TipoPersona.Controls.Add(this.radioButton1);
             this.TipoPersona.Controls.Add(this.label6);
             this.TipoPersona.Controls.Add(this.radioButtonPaciente);
+            this.TipoPersona.ForeColor = System.Drawing.Color.White;
             this.TipoPersona.Location = new System.Drawing.Point(35, 232);
             this.TipoPersona.Name = "TipoPersona";
             this.TipoPersona.Size = new System.Drawing.Size(661, 54);
@@ -482,6 +512,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonNo);
             this.groupBox1.Controls.Add(this.radioButtonSi);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(54, 175);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(161, 59);
@@ -492,6 +523,7 @@
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
+            this.radioButtonNo.ForeColor = System.Drawing.Color.White;
             this.radioButtonNo.Location = new System.Drawing.Point(97, 22);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
@@ -503,6 +535,7 @@
             // radioButtonSi
             // 
             this.radioButtonSi.AutoSize = true;
+            this.radioButtonSi.ForeColor = System.Drawing.Color.White;
             this.radioButtonSi.Location = new System.Drawing.Point(32, 22);
             this.radioButtonSi.Name = "radioButtonSi";
             this.radioButtonSi.Size = new System.Drawing.Size(34, 17);
@@ -515,6 +548,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(727, 539);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TipoPersona);
@@ -551,9 +585,7 @@
             this.Controls.Add(this.textBoxCedula);
             this.Controls.Add(this.labelCedula);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "groupBoxTipoPersona";
             this.Text = "Persona";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPersona)).EndInit();
@@ -608,7 +640,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.ErrorProvider errorProviderPersona;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox TipoPersona;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonNo;

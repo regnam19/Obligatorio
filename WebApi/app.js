@@ -195,6 +195,55 @@ app.controller('controlconsultorios', function ($scope, $http, $location, $rootS
         $scope.myData = response.data;
     });
     $scope.myFunc = function () {
+        var checked = false;
+        var entre = false;
+        var consultorios = document.getElementsByName("consultorio");
+        var consultorio;
+        for (var i = 0; i < consultorios.length; i++) {
+            if (consultorios[i].checked) {
+                consultorio = consultorios[i].value;
+                checked = true;
+            }
+        }
+        var dias = document.getElementsByName("dia");
+        var dia = dias[0].value;
+        if (dia !== "") {
+            entre = true;
+            var Horario = {
+                dia: dia,
+                idConsultorio: consultorio
+            };
+
+            var info_reserva = JSON.stringify(Horario);
+            $.ajax({
+                url: 'api/Horario/PostHorariosDisponibles/',
+                cache: false,
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                data: info_reserva,
+                dataType: 'json',
+                success: function (data) {
+                    $scope.Horarios = data;
+
+                }
+            });
+        }
+        else {
+            alert("ERROR: Ingrese una fecha");
+        }
+        if (!checked && entre) {
+            alert("ERROR: Seleccione un consultorio");
+        }
+        
+
+    };
+    $scope.reservar = function () {
+
+        //alert($rootScope.profesional);
+        var uri = 'api/Horario/PostReservarHorario/';
+        var usuario = $rootScope.idUsuario;
+        var horas = document.getElementsByName('hora');
+
         var consultorios = document.getElementsByName("consultorio");
         var consultorio;
         for (var i = 0; i < consultorios.length; i++) {
@@ -204,26 +253,33 @@ app.controller('controlconsultorios', function ($scope, $http, $location, $rootS
         var dias = document.getElementsByName("dia");
         var dia = dias[0].value;
 
-        var Horario = {
-            dia: dia,
-            idConsultorio: consultorio
-        };
+        for (var i = 0; i < horas.length; i++) {
+            if (horas[i].checked) {
 
-        var info_reserva = JSON.stringify(Horario);
-        $.ajax({
-            url: 'api/Horario/PostHorariosDisponibles/',
-            cache: false,
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            data: info_reserva,
-            dataType: 'json',
-            success: function (data) {
-                $scope.Horarios = data;
+                var Horario = {
+                    dia: dia,
+                    idConsultorio: consultorio,
+                    cedula: usuario,
+                    hora: horas[i].value
+                };
+                var info_reserva = JSON.stringify(Horario);
+                $.ajax({
+                    url: 'api/Horario/PostReservarHorario/',
+                    cache: false,
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: info_reserva,
+                    dataType: 'json',
+                    success: function (data) {
+                        window.location.replace("#!profesionalhorarioslibres");
+                    }
+                });
 
             }
-        });
+        }
+        window.location.replace("#!profesionalhorarioslibres");
 
-    };
+    }
 });
 
 app.controller('controllerpaciente', function ($scope, $http, $location, $rootScope) {
@@ -232,6 +288,7 @@ app.controller('controllerpaciente', function ($scope, $http, $location, $rootSc
         $scope.profesionales = response.data;
     });
     $scope.myFunc = function ($location) {
+        var checked = false;
         var uri = 'api/Horario/PostReservarHorarioProfesional/';
         var horas = document.getElementsByName('hora');
         for (var i = 0; i < horas.length; i++) {
@@ -248,14 +305,21 @@ app.controller('controllerpaciente', function ($scope, $http, $location, $rootSc
                     contentType: 'application/json; charset=utf-8',
                     data: info_reserva,
                     dataType: 'json',
-                    success: function (data) {
+                    success: function () {
                         alert('Se agrego el horario');
                     }
                 });
+                alert("Horario Reservado");
+                checked = true;
             }
         }
-        alert("Horario Reservado");
-        window.location.replace("#!paciente");
+
+        if (!checked) {
+            alert("ERROR: Seleccione un horario");
+        }
+        else {
+            window.location.replace("#!paciente");
+        }
     }
 });
 
@@ -288,56 +352,3 @@ app.controller('controllerpaciente', function ($scope, $http, $location, $rootSc
     });
 
     // funciona rootscope
-    app.controller('controlHoras', function ($scope, $rootScope, $location) {
-
-        $scope.reservar = function () {
-
-            //alert($rootScope.profesional);
-            var uri = 'api/Horario/PostReservarHorario/';
-            var usuario = $rootScope.idUsuario;
-            var horas = document.getElementsByName('hora');
-
-            var consultorios = document.getElementsByName("consultorio");
-            var consultorio;
-            for (var i = 0; i < consultorios.length; i++) {
-                if (consultorios[i].checked)
-                    consultorio = consultorios[i].value;
-            }
-            var dias = document.getElementsByName("dia");
-            var dia = dias[0].value;
-
-            for (var i = 0; i < horas.length; i++) {
-                if (horas[i].checked) {
-
-                    var Horario = {
-                        dia: dia,
-                        idConsultorio: consultorio,
-                        cedula: usuario,
-                        hora: horas[i].value
-                    };
-                    var info_reserva = JSON.stringify(Horario);
-                    $.ajax({
-                        url: 'api/Horario/PostReservarHorario/',
-                        cache: false,
-                        type: 'POST',
-                        contentType: 'application/json; charset=utf-8',
-                        data: info_reserva,
-                        dataType: 'json',
-                        success: function (data) {
-                            window.location.replace("#!profesionalhorarioslibres");
-                        }
-                    });
-
-                }
-            }
-            window.location.replace("#!profesionalhorarioslibres");
-
-        }
-
-
-
-});
-
-$('.message a').click(function () {
-    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
-});

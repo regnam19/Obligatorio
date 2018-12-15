@@ -273,18 +273,20 @@ namespace Logica.WINFORMS
         {
             try
             {
-                if (ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                if (textBoxCedula.Text != String.Empty)
                 {
-                     ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
-                     limpiarTextBox();
-                     MessageBox.Show("Persona eliminada correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    if (ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                    {
+                        ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
+                        limpiarTextBox();
+                        MessageBox.Show("Persona eliminada correctamente", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        limpiarTextBox();
+                        MessageBox.Show("Cedula Ingresada Invalida", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
                 }
-                else
-                {
-                    limpiarTextBox();
-                    MessageBox.Show("Cedula Ingresada Invalida", "ABM Persona", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-                }
-            
             } catch (CedulaPersonaInvalida)
             {
                 limpiarTextBox();
