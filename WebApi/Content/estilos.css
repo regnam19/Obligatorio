@@ -17,8 +17,22 @@
     padding-left: 7.5rem;
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: fantasy;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #6aaedb;
+    margin-top: 29px;
+}
 
 
+th {
+    font-family: monospace;
+    text-align: inherit;
+    color: #1b6ca2;
+    font-size: x-large;
+}
 
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
