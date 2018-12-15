@@ -32,19 +32,23 @@ namespace Logica.WINFORMS
 
             textBoxId.Visible = false;
             textBoxDireccion.Visible = true;
-            textBoxHoraInicio.Visible = true;
-            textBoxHoraFin.Visible = true;
+            comboBoxHoraInicio.Visible = true;
+            comboBoxHoraFin.Visible = true;
 
             textBoxId.Enabled = false;
             textBoxDireccion.Enabled = true;
-            textBoxHoraInicio.Enabled = true;
-            textBoxHoraFin.Enabled = true;
+            comboBoxHoraInicio.Enabled = true;
+            comboBoxHoraFin.Enabled = true;
 
-            if (textBoxDireccion.Text != String.Empty && (textBoxHoraInicio.Text != String.Empty) && (textBoxHoraFin.Text != String.Empty))
+            if (textBoxDireccion.Text != String.Empty && (comboBoxHoraInicio.Text != String.Empty) && (comboBoxHoraFin.Text != String.Empty))
             {
-                ws.ingresarConsultorio(textBoxDireccion.Text, Int32.Parse(textBoxHoraInicio.Text), Int32.Parse(textBoxHoraFin.Text));
-                limpiarTextBox();
-                MessageBox.Show("Consultorio agregado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                if (Int32.Parse(comboBoxHoraInicio.Text) < Int32.Parse(comboBoxHoraFin.Text))
+                {
+                    ws.ingresarConsultorio(textBoxDireccion.Text, Int32.Parse(comboBoxHoraInicio.Text), Int32.Parse(comboBoxHoraFin.Text));
+                    limpiarTextBox();
+                    MessageBox.Show("Consultorio agregado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                } else
+                    MessageBox.Show("ERROR: Hora inicio es mayor a hora fin", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
             }
               
 
@@ -59,21 +63,21 @@ namespace Logica.WINFORMS
             labelHoraFin.Visible = true;
             textBoxId.Visible = true;
             textBoxDireccion.Visible = true;
-            textBoxHoraInicio.Visible = true;
-            textBoxHoraFin.Visible = true;
+            comboBoxHoraInicio.Visible = true;
+            comboBoxHoraFin.Visible = true;
             buttonBuscar.Visible = true;
 
             textBoxId.Enabled = true;
             textBoxDireccion.Enabled = true;
-            textBoxHoraInicio.Enabled = true;
-            textBoxHoraFin.Enabled = true;
+            comboBoxHoraInicio.Enabled = true;
+            comboBoxHoraFin.Enabled = true;
 
-            if (textBoxId.Text != String.Empty && (textBoxDireccion.Text != String.Empty && (textBoxHoraInicio.Text != String.Empty) && (textBoxHoraFin.Text != String.Empty)))
+            if (textBoxId.Text != String.Empty && (textBoxDireccion.Text != String.Empty && (comboBoxHoraInicio.Text != String.Empty) && (comboBoxHoraFin.Text != String.Empty)))
                 try
                 {
                     if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)))
                     {
-                        ws.modificarConsultorio(Int64.Parse(textBoxId.Text), textBoxDireccion.Text, Int32.Parse(textBoxHoraInicio.Text), Int32.Parse(textBoxHoraFin.Text));
+                        ws.modificarConsultorio(Int64.Parse(textBoxId.Text), textBoxDireccion.Text, Int32.Parse(comboBoxHoraInicio.Text), Int32.Parse(comboBoxHoraFin.Text));
                         limpiarTextBox();
                         MessageBox.Show("Consultorio modificado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
@@ -101,22 +105,27 @@ namespace Logica.WINFORMS
 
             textBoxId.Visible = true;
             textBoxDireccion.Visible = true;
-            textBoxHoraInicio.Visible = true;
-            textBoxHoraFin.Visible = true;
+            comboBoxHoraInicio.Visible = true;
+            comboBoxHoraFin.Visible = true;
 
             textBoxId.Enabled = true;
             textBoxDireccion.Enabled = false;
-            textBoxHoraInicio.Enabled = false;
-            textBoxHoraFin.Enabled = false;
+            comboBoxHoraInicio.Enabled = false;
+            comboBoxHoraFin.Enabled = false;
             try
             {
                 if (textBoxId.Text != String.Empty)
                 {
-                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)))
-                    {
-                         ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
-                         limpiarTextBox();
+                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)) && (!ws.ConsultorioTieneHorarios(Int64.Parse(textBoxId.Text))))
+                    { 
+                            ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
+                            limpiarTextBox();
                          MessageBox.Show("Consultorio eliminado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                    else if (ws.ConsultorioTieneHorarios(Int64.Parse(textBoxId.Text)))
+                    {
+                        limpiarTextBox();
+                        MessageBox.Show("Consultorio tiene horarios Asignados", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else
                     {
@@ -142,15 +151,18 @@ namespace Logica.WINFORMS
             labelHoraFin.Visible = true;
 
             textBoxDireccion.Visible = true;
-            textBoxHoraInicio.Visible = true;
-            textBoxHoraFin.Visible = true;
+            comboBoxHoraInicio.Visible = true;
+            comboBoxHoraFin.Visible = true;
             try
             {
                 Fachada f = new Fachada();
-                voc = f.darConsultorio(Int64.Parse(textBoxId.Text));
-                textBoxDireccion.Text = voc.Direccion;
-                textBoxHoraFin.Text = voc.HoraFin.ToString();
-                textBoxHoraInicio.Text = voc.HoraInicio.ToString();
+                if (textBoxId.Text != String.Empty)
+                {
+                    voc = f.darConsultorio(Int64.Parse(textBoxId.Text));
+                    textBoxDireccion.Text = voc.Direccion;
+                    comboBoxHoraFin.Text = voc.HoraFin.ToString();
+                    comboBoxHoraInicio.Text = voc.HoraInicio.ToString();
+                }
             } catch (ConsultorioInvalido)
             {
                 limpiarTextBox();
@@ -161,48 +173,23 @@ namespace Logica.WINFORMS
         {
             textBoxId.Text = "";
             textBoxDireccion.Text = "";
-            textBoxHoraInicio.Text = "";
-            textBoxHoraFin.Text = "";
+            comboBoxHoraInicio.Text = "";
+            comboBoxHoraFin.Text = "";
         }
 
-        private void textBoxHoraInicio_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBoxHoraInicio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            e.Handled = true;
         }
 
-        private void textBoxHoraFin_KeyPress(object sender, KeyPressEventArgs e)
+        private void comboBoxHoraFin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+            e.Handled = true;
+        }
+
+        private void comboBoxHoraInicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

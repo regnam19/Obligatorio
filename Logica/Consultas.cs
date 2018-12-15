@@ -99,6 +99,11 @@ namespace Logica
             String consulta = "select * from consultorio where idConsultorio=@id";
             return consulta;
         }
+        public String consultorioTieneHorarios()
+        {
+            String consulta = "select * from horario where idConsultorio=@idConsultorio";
+            return consulta;
+        }
 
         /* public String eliminarProfesional()
          {

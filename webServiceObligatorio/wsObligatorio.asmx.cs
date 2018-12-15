@@ -50,7 +50,11 @@ namespace webServiceObligatorio
         {
             return fach.consultorioExiste(id);
         }
-
+        [WebMethod]
+        public Boolean ConsultorioTieneHorarios(long idConsultorio)
+        {
+            return fach.ConsultorioTieneHorarios(idConsultorio);
+        }
         [WebMethod]
         public void eliminarPersona(long ci)
         {
