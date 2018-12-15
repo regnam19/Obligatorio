@@ -28,131 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Registros));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.TituloYBtns = new System.Windows.Forms.Panel();
+            this.MenuOpciones = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.bordeBtn1 = new System.Windows.Forms.Panel();
+            this.ImagenLogo = new System.Windows.Forms.PictureBox();
             this.content = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aBMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aBMToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.volverARegistrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultoriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.content.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.TituloYBtns.SuspendLayout();
+            this.MenuOpciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ImagenLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 76);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(186)))), ((int)(((byte)(20)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Corbel", 14F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(4, 146);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 117);
+            this.button1.Size = new System.Drawing.Size(216, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "Persona";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(255, 76);
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(186)))), ((int)(((byte)(20)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Corbel", 14F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 184);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(184, 117);
+            this.button2.Size = new System.Drawing.Size(217, 32);
             this.button2.TabIndex = 1;
             this.button2.Text = "Consultorios";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // TituloYBtns
+            // 
+            this.TituloYBtns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.TituloYBtns.Controls.Add(this.btnRestaurar);
+            this.TituloYBtns.Controls.Add(this.btnMinimizar);
+            this.TituloYBtns.Controls.Add(this.btnMaximizar);
+            this.TituloYBtns.Controls.Add(this.btnCerrar);
+            this.TituloYBtns.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TituloYBtns.Location = new System.Drawing.Point(0, 0);
+            this.TituloYBtns.Name = "TituloYBtns";
+            this.TituloYBtns.Size = new System.Drawing.Size(1300, 35);
+            this.TituloYBtns.TabIndex = 5;
+            this.TituloYBtns.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TituloYBtns_MouseDown);
+            // 
+            // MenuOpciones
+            // 
+            this.MenuOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.MenuOpciones.Controls.Add(this.panel1);
+            this.MenuOpciones.Controls.Add(this.bordeBtn1);
+            this.MenuOpciones.Controls.Add(this.ImagenLogo);
+            this.MenuOpciones.Controls.Add(this.button1);
+            this.MenuOpciones.Controls.Add(this.button2);
+            this.MenuOpciones.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuOpciones.Location = new System.Drawing.Point(0, 35);
+            this.MenuOpciones.Name = "MenuOpciones";
+            this.MenuOpciones.Size = new System.Drawing.Size(220, 615);
+            this.MenuOpciones.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.panel1.Location = new System.Drawing.Point(0, 184);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 32);
+            this.panel1.TabIndex = 4;
+            // 
+            // bordeBtn1
+            // 
+            this.bordeBtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(99)))), ((int)(((byte)(12)))));
+            this.bordeBtn1.Location = new System.Drawing.Point(1, 146);
+            this.bordeBtn1.Name = "bordeBtn1";
+            this.bordeBtn1.Size = new System.Drawing.Size(5, 32);
+            this.bordeBtn1.TabIndex = 3;
+            // 
+            // ImagenLogo
+            // 
+            this.ImagenLogo.Image = ((System.Drawing.Image)(resources.GetObject("ImagenLogo.Image")));
+            this.ImagenLogo.Location = new System.Drawing.Point(0, 0);
+            this.ImagenLogo.Name = "ImagenLogo";
+            this.ImagenLogo.Size = new System.Drawing.Size(220, 96);
+            this.ImagenLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImagenLogo.TabIndex = 2;
+            this.ImagenLogo.TabStop = false;
             // 
             // content
             // 
-            this.content.Controls.Add(this.button1);
-            this.content.Controls.Add(this.button2);
+            this.content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.content.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.content.Location = new System.Drawing.Point(0, 24);
+            this.content.Location = new System.Drawing.Point(220, 35);
             this.content.Name = "content";
-            this.content.Size = new System.Drawing.Size(466, 274);
-            this.content.TabIndex = 4;
+            this.content.Size = new System.Drawing.Size(1080, 615);
+            this.content.TabIndex = 7;
             // 
-            // menuStrip1
+            // btnCerrar
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aBMToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(466, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.Location = new System.Drawing.Point(1272, 4);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // aBMToolStripMenuItem
+            // btnMaximizar
             // 
-            this.aBMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aBMToolStripMenuItem1,
-            this.volverARegistrosToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.salirToolStripMenuItem});
-            this.aBMToolStripMenuItem.Name = "aBMToolStripMenuItem";
-            this.aBMToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.aBMToolStripMenuItem.Text = "Menú";
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
+            this.btnMaximizar.Location = new System.Drawing.Point(1241, 4);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
-            // aBMToolStripMenuItem1
+            // btnMinimizar
             // 
-            this.aBMToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.personaToolStripMenuItem,
-            this.consultoriosToolStripMenuItem});
-            this.aBMToolStripMenuItem1.Name = "aBMToolStripMenuItem1";
-            this.aBMToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.aBMToolStripMenuItem1.Text = "&ABM";
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(1210, 4);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 2;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
-            // volverARegistrosToolStripMenuItem
+            // btnRestaurar
             // 
-            this.volverARegistrosToolStripMenuItem.Name = "volverARegistrosToolStripMenuItem";
-            this.volverARegistrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.volverARegistrosToolStripMenuItem.Text = "&Volver a Registros";
-            this.volverARegistrosToolStripMenuItem.Click += new System.EventHandler(this.volverARegistrosToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.salirToolStripMenuItem.Text = "&Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // personaToolStripMenuItem
-            // 
-            this.personaToolStripMenuItem.Name = "personaToolStripMenuItem";
-            this.personaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
-            this.personaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.personaToolStripMenuItem.Text = "Persona";
-            this.personaToolStripMenuItem.Click += new System.EventHandler(this.personaToolStripMenuItem_Click);
-            // 
-            // consultoriosToolStripMenuItem
-            // 
-            this.consultoriosToolStripMenuItem.Name = "consultoriosToolStripMenuItem";
-            this.consultoriosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.consultoriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.consultoriosToolStripMenuItem.Text = "Consultorios";
-            this.consultoriosToolStripMenuItem.Click += new System.EventHandler(this.consultoriosToolStripMenuItem_Click);
+            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.Image")));
+            this.btnRestaurar.Location = new System.Drawing.Point(1241, 4);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
+            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRestaurar.TabIndex = 3;
+            this.btnRestaurar.TabStop = false;
+            this.btnRestaurar.Visible = false;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
             // Registros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 298);
+            this.ClientSize = new System.Drawing.Size(1300, 650);
             this.Controls.Add(this.content);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.MenuOpciones);
+            this.Controls.Add(this.TituloYBtns);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Registros";
             this.Text = "Registros";
-            this.content.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.TituloYBtns.ResumeLayout(false);
+            this.MenuOpciones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ImagenLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -160,14 +230,15 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel TituloYBtns;
+        private System.Windows.Forms.Panel MenuOpciones;
         private System.Windows.Forms.Panel content;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aBMToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aBMToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem personaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultoriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem volverARegistrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.PictureBox ImagenLogo;
+        private System.Windows.Forms.Panel bordeBtn1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox btnMaximizar;
+        private System.Windows.Forms.PictureBox btnCerrar;
+        private System.Windows.Forms.PictureBox btnMinimizar;
+        private System.Windows.Forms.PictureBox btnRestaurar;
     }
 }
