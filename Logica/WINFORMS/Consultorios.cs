@@ -147,10 +147,13 @@ namespace Logica.WINFORMS
             try
             {
                 Fachada f = new Fachada();
-                voc = f.darConsultorio(Int64.Parse(textBoxId.Text));
-                textBoxDireccion.Text = voc.Direccion;
-                textBoxHoraFin.Text = voc.HoraFin.ToString();
-                textBoxHoraInicio.Text = voc.HoraInicio.ToString();
+                if (textBoxDireccion.Text != String.Empty)
+                {
+                    voc = f.darConsultorio(Int64.Parse(textBoxId.Text));
+                    textBoxDireccion.Text = voc.Direccion;
+                    textBoxHoraFin.Text = voc.HoraFin.ToString();
+                    textBoxHoraInicio.Text = voc.HoraInicio.ToString();
+                }
             } catch (ConsultorioInvalido)
             {
                 limpiarTextBox();
