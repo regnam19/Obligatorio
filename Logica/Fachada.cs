@@ -43,7 +43,7 @@ namespace Logica
 
         public Boolean esAdmin (long ci)
         {
-            if (daope.Member(ci))
+            if (daoad.member(ci))
                 return true;
             else
                 return false;
