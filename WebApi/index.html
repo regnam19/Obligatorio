@@ -51,6 +51,9 @@
                             <a class="dropdown-item" ng-href="#!historialreservaspaciente">Historial de consultas</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="cerrarSesion()">Cerrar Sesion</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -67,3 +70,9 @@
 
 </body>
 </html>
+
+<script>
+    function cerrarSesion() {
+        window.location.reload();
+    }
+</script>

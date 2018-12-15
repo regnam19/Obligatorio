@@ -71,9 +71,9 @@ th {
     text-transform: uppercase;
     outline: 0;
     background: #6aaedb;
-    width: 100%;
+    width: 20%;
     border: 0;
-    padding: 15px;
+    padding: 5px;
     color: #FFFFFF;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
@@ -88,9 +88,9 @@ th {
     text-transform: uppercase;
     outline: 0;
     background: #9d0b19;
-    width: 100%;
+    width: 20%;
     border: 0;
-    padding: 15px;
+    padding: 5px;
     color: #FFFFFF;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
