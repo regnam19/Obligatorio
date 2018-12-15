@@ -17,7 +17,7 @@ namespace Logica
         {
 
           
-           Application.Run(new WINFORMS.Registros());
+           Application.Run(new WINFORMS.Login());
             // conexion funcionando
 
             DAOProfesional daop = new DAOProfesional();
