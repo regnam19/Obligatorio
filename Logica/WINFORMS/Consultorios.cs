@@ -116,11 +116,16 @@ namespace Logica.WINFORMS
             {
                 if (textBoxId.Text != String.Empty)
                 {
-                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)))
-                    {
-                         ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
-                         limpiarTextBox();
+                    if (ws.consultorioExiste(Int64.Parse(textBoxId.Text)) && (!ws.ConsultorioTieneHorarios(Int64.Parse(textBoxId.Text))))
+                    { 
+                            ws.eliminarConsultorio(Int64.Parse(textBoxId.Text));
+                            limpiarTextBox();
                          MessageBox.Show("Consultorio eliminado exitosamente", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    }
+                    else if (ws.ConsultorioTieneHorarios(Int64.Parse(textBoxId.Text)))
+                    {
+                        limpiarTextBox();
+                        MessageBox.Show("Consultorio tiene horarios Asignados", "ABMConsultorio", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                     }
                     else
                     {
@@ -151,7 +156,7 @@ namespace Logica.WINFORMS
             try
             {
                 Fachada f = new Fachada();
-                if (textBoxDireccion.Text != String.Empty)
+                if (textBoxId.Text != String.Empty)
                 {
                     voc = f.darConsultorio(Int64.Parse(textBoxId.Text));
                     textBoxDireccion.Text = voc.Direccion;
@@ -180,6 +185,11 @@ namespace Logica.WINFORMS
         private void comboBoxHoraFin_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void comboBoxHoraInicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

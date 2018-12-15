@@ -141,6 +141,13 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
+        public Boolean ConsultorioTieneHorarios (long idConsultorio)
+        {
+            if (daoc.TieneHorarios(idConsultorio))
+                return true;
+            else
+                return false;
+        }
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
