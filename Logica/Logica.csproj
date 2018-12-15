@@ -36,6 +36,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -64,6 +66,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Reserva.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="VO\VOAdmin.cs" />
@@ -85,6 +92,11 @@
     <Compile Include="VO\VOReserva.cs" />
     <Compile Include="VO\VOReservasPaciente.cs" />
     <Compile Include="VO\VOReservaXconfirmar.cs" />
+    <Compile Include="Web References\wsObligatorioCliente\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="WINFORMS\Consultorios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +132,27 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\VOAdmin.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\VOConsultorio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\VOPaciente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\VOProfesional.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsObligatorioCliente\wsObligatorio.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WINFORMS\Consultorios.resx">
@@ -137,6 +170,28 @@
     <EmbeddedResource Include="WINFORMS\Registros.resx">
       <DependentUpon>Registros.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:50159/wsObligatorio.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsObligatorioCliente\</RelPath>
+      <UpdateFromURL>http://localhost:50159/wsObligatorio.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Logica_wsObligatorioCliente_Service1</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\wsObligatorioCliente\wsObligatorio.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

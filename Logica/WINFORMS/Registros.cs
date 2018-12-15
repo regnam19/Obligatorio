@@ -22,7 +22,7 @@ namespace Logica.WINFORMS
             /*Persona frmPersona = new Persona();
             frmPersona.Show();
             Hide();*/
-            this.Size = new Size(717, 550);
+            this.Size = new Size(739, 600);
             groupBoxTipoPersona p = new groupBoxTipoPersona();
             p.TopLevel = false;
             content.Controls.Clear();
@@ -42,7 +42,7 @@ namespace Logica.WINFORMS
 
         private void personaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(717, 550);
+            this.Size = new Size(739, 600);
             groupBoxTipoPersona p = new groupBoxTipoPersona();
             p.TopLevel = false;
             content.Controls.Clear();

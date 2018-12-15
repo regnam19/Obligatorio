@@ -41,35 +41,36 @@ namespace Logica
                 throw new CedulaPersonaInvalida();
         }
 
-        /*public VOUsuario darUsuario(long ci)
-        {
-            return daou.Find(ci);
-        }*/
-
         public Boolean esAdmin (long ci)
         {
             if (daope.Member(ci))
-                return daoad.member(ci);
+                return true;
             else
-                throw new CedulaPersonaInvalida();
+                return false;
         }
 
         public Boolean esPaciente (long ci)
         {
             if (daope.Member(ci))
-                return daopa.Member(ci);
-             else
-                throw new CedulaPersonaInvalida();
+                return true;
+            else
+                return false;
         }
 
         public Boolean esProfesional (long ci)
         {
             if (daope.Member(ci))
-                return daop.Member(ci);
+                return true;
             else
-                throw new CedulaPersonaInvalida();
+                return false;
         }
-
+        public Boolean consultorioExiste (long id)
+        {
+            if (daoc.Member(id))
+                return true;
+            else
+                return false;
+        }
         public void eliminarPersona(long ci)
         {
             if (daope.Member(ci))
@@ -140,11 +141,6 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
-        public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
-        {
-            return daoh.horariosReservadosConsultorio(dia, idConsultorio);
-        }
-     
         public VOProfesional darProfesional(long ced)
         {
             return daop.Find(ced);
@@ -168,7 +164,12 @@ namespace Logica
                 throw new ConsultorioInvalido();
         }
 
-       
+
+        public List<int> HorariosReservadosConsultorioDiaXProfesional(int idConsultorio, DateTime dia)
+        {
+            return daoh.horariosReservadosConsultorio(dia, idConsultorio);
+        }
+
 
         public List<int> HorariosLibresConsultorioDiaParaProfesional(int idConsultorio, DateTime dia)
         {

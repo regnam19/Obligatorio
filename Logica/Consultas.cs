@@ -23,6 +23,11 @@ namespace Logica
             String consulta = "select * from paciente where ciPaciente =@ci";
             return consulta;
         }
+        public String consultorioExiste()
+        {
+            String consulta = "select * from consultorio where idConsultorio =@idConsultorio;";
+            return consulta;
+        }
         public String buscarPersona()
         {
             String consulta = "select nombre, apellido, celular, fechaNacimiento, direccion, habilitado from persona where ci=@ci";
