@@ -213,5 +213,36 @@ namespace Logica
 
             return lista;
         }
+        public Boolean TieneHorarios(long id)
+        {
+
+            Boolean existe = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.consultorioTieneHorarios(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@idConsultorio", id);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+                existe = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return existe;
+
+
+        }
+
     }
 }

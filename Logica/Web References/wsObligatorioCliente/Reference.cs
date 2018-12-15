@@ -39,6 +39,8 @@ namespace Logica.wsObligatorioCliente {
         
         private System.Threading.SendOrPostCallback consultorioExisteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ConsultorioTieneHorariosOperationCompleted;
+        
         private System.Threading.SendOrPostCallback eliminarPersonaOperationCompleted;
         
         private System.Threading.SendOrPostCallback ingresarPersonaOperationCompleted;
@@ -121,6 +123,9 @@ namespace Logica.wsObligatorioCliente {
         
         /// <remarks/>
         public event consultorioExisteCompletedEventHandler consultorioExisteCompleted;
+        
+        /// <remarks/>
+        public event ConsultorioTieneHorariosCompletedEventHandler ConsultorioTieneHorariosCompleted;
         
         /// <remarks/>
         public event eliminarPersonaCompletedEventHandler eliminarPersonaCompleted;
@@ -308,6 +313,35 @@ namespace Logica.wsObligatorioCliente {
             if ((this.consultorioExisteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.consultorioExisteCompleted(this, new consultorioExisteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultorioTieneHorarios", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ConsultorioTieneHorarios(long idConsultorio) {
+            object[] results = this.Invoke("ConsultorioTieneHorarios", new object[] {
+                        idConsultorio});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ConsultorioTieneHorariosAsync(long idConsultorio) {
+            this.ConsultorioTieneHorariosAsync(idConsultorio, null);
+        }
+        
+        /// <remarks/>
+        public void ConsultorioTieneHorariosAsync(long idConsultorio, object userState) {
+            if ((this.ConsultorioTieneHorariosOperationCompleted == null)) {
+                this.ConsultorioTieneHorariosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultorioTieneHorariosOperationCompleted);
+            }
+            this.InvokeAsync("ConsultorioTieneHorarios", new object[] {
+                        idConsultorio}, this.ConsultorioTieneHorariosOperationCompleted, userState);
+        }
+        
+        private void OnConsultorioTieneHorariosOperationCompleted(object arg) {
+            if ((this.ConsultorioTieneHorariosCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ConsultorioTieneHorariosCompleted(this, new ConsultorioTieneHorariosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1277,6 +1311,32 @@ namespace Logica.wsObligatorioCliente {
         private object[] results;
         
         internal consultorioExisteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void ConsultorioTieneHorariosCompletedEventHandler(object sender, ConsultorioTieneHorariosCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ConsultorioTieneHorariosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ConsultorioTieneHorariosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

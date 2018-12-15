@@ -251,6 +251,7 @@
             this.comboBoxHoraInicio.Size = new System.Drawing.Size(100, 21);
             this.comboBoxHoraInicio.TabIndex = 13;
             this.comboBoxHoraInicio.Visible = false;
+            this.comboBoxHoraInicio.SelectedIndexChanged += new System.EventHandler(this.comboBoxHoraInicio_SelectedIndexChanged);
             this.comboBoxHoraInicio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBoxHoraInicio_KeyPress);
             // 
             // textBoxId
