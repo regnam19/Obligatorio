@@ -275,7 +275,7 @@ namespace Logica.WINFORMS
             {
                 if (textBoxCedula.Text != String.Empty)
                 {
-                    if (ws.esAdmin(Int64.Parse(textBoxCedula.Text)))
+                    if (ws.esAdmin(Int64.Parse(textBoxCedula.Text)) || (ws.esPaciente(Int64.Parse(textBoxCedula.Text)) || (ws.esProfesional(Int64.Parse(textBoxCedula.Text)))))
                     {
                         ws.eliminarPersona(Int64.Parse(textBoxCedula.Text));
                         limpiarTextBox();

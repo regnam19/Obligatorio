@@ -24,17 +24,19 @@ namespace Logica.WINFORMS
         private void btnEnter_Click(object sender, EventArgs e)
         {
 
-            Principal frmPrincipal = new Principal();
-            if (ws.esAdmin(Int64.Parse(textBoxUser.Text)))
+            Registros frmRegistros = new Registros();
+            if (textBoxUser.Text != String.Empty)
             {
-                frmPrincipal.Show();
-                Hide();
+                if (ws.esAdmin(Int64.Parse(textBoxUser.Text)))
+                {
+                    frmRegistros.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña correcta", "ABMAdmin", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                }
             }
-            else
-            {
-                 MessageBox.Show("Usuario y/o contraseña correcta", "ABMAdmin", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-            }
-
 
 
     }
