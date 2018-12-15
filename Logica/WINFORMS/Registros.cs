@@ -81,6 +81,11 @@ namespace Logica.WINFORMS
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void content_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
         /*private void personaToolStripMenuItem_Click(object sender, EventArgs e)
         {
