@@ -296,6 +296,7 @@ app.controller('controllerpaciente', function ($scope, $http, $location, $rootSc
     };
     $scope.myFunc = function ($location) {
         var checked = false;
+        var dentro = false;
         var uri = 'api/Horario/PostReservarHorarioProfesional/';
         var horas = document.getElementsByName('hora');
         for (var i = 0; i < horas.length; i++) {
@@ -316,7 +317,11 @@ app.controller('controllerpaciente', function ($scope, $http, $location, $rootSc
                         alert('Se agrego el horario');
                     }
                 });
-                alert("Horario Reservado");
+                if (!dentro) {
+                    dentro = true;
+                    alert("Horario Reservado");
+                }
+                
                 checked = true;
             }
         }
