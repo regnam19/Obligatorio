@@ -104,7 +104,11 @@ namespace Logica
             String consulta = "select * from horario where idConsultorio=@idConsultorio";
             return consulta;
         }
-
+        public String contraseñaCorrecta()
+        {
+            String consulta = "select * from persona where contrasena=@contraseña";
+            return consulta;
+        }
         /* public String eliminarProfesional()
          {
              String consulta = "delete from profesional where ciProfesional = @ci";

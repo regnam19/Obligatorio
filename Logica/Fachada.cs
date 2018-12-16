@@ -78,7 +78,14 @@ namespace Logica
             else
                 throw new CedulaPersonaInvalida();
         }
-
+        
+        public Boolean contraseñaCorrecta(String contraseña)
+        {
+            if (daoad.ContraseñaCorrecta(contraseña))
+                return true;
+            else
+                return false;
+        }
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {
             if (!daope.Member(ci))

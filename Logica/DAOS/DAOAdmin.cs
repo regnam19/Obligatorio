@@ -104,5 +104,34 @@ namespace Logica
             }
             return voad;
         }
+        public Boolean ContraseñaCorrecta(String contraseña)
+        {
+            bool esadmin = false;
+            String connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            SqlConnection myConnection = new SqlConnection(connectionString);
+
+            myConnection.Open();
+
+            SqlCommand myCommand = new SqlCommand(consulta.contraseñaCorrecta(), myConnection);
+
+            myCommand.Parameters.AddWithValue("@contraseña", contraseña);
+
+            myCommand.ExecuteNonQuery();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+
+            while (myReader.Read())
+            {
+
+                esadmin = true;
+
+            }
+            myReader.Close();
+            myConnection.Close();
+
+            return esadmin;
+
+        }
     }
 }

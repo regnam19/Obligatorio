@@ -25,16 +25,16 @@ namespace Logica.WINFORMS
         {
 
             Registros frmRegistros = new Registros();
-            if (textBoxUser.Text != String.Empty)
+            if ((textBoxUser.Text != String.Empty) && (txtPassword.Text != String.Empty))
             {
-                if (ws.esAdmin(Int64.Parse(textBoxUser.Text)))
+                if (ws.esAdmin(Int64.Parse(textBoxUser.Text)) && (ws.contraseñaCorrecta(txtPassword.Text)))
                 {
                     frmRegistros.Show();
                     Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario y/o contraseña correcta", "ABMAdmin", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Usuario y/o contraseña incorrecta", "LoginAdmin", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 }
             }
 
@@ -105,6 +105,26 @@ namespace Logica.WINFORMS
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void textBoxUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

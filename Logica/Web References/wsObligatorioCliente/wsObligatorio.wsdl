@@ -92,6 +92,20 @@
       <s:element name="eliminarPersonaResponse">
         <s:complexType />
       </s:element>
+      <s:element name="contraseñaCorrecta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="contraseñaCorrectaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="contraseñaCorrectaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="ingresarPersona">
         <s:complexType>
           <s:sequence>
@@ -364,6 +378,12 @@
   <wsdl:message name="eliminarPersonaSoapOut">
     <wsdl:part name="parameters" element="tns:eliminarPersonaResponse" />
   </wsdl:message>
+  <wsdl:message name="contraseñaCorrectaSoapIn">
+    <wsdl:part name="parameters" element="tns:contraseñaCorrecta" />
+  </wsdl:message>
+  <wsdl:message name="contraseñaCorrectaSoapOut">
+    <wsdl:part name="parameters" element="tns:contraseñaCorrectaResponse" />
+  </wsdl:message>
   <wsdl:message name="ingresarPersonaSoapIn">
     <wsdl:part name="parameters" element="tns:ingresarPersona" />
   </wsdl:message>
@@ -476,6 +496,10 @@
     <wsdl:operation name="eliminarPersona">
       <wsdl:input message="tns:eliminarPersonaSoapIn" />
       <wsdl:output message="tns:eliminarPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="contraseñaCorrecta">
+      <wsdl:input message="tns:contraseñaCorrectaSoapIn" />
+      <wsdl:output message="tns:contraseñaCorrectaSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ingresarPersona">
       <wsdl:input message="tns:ingresarPersonaSoapIn" />
@@ -592,6 +616,15 @@
     </wsdl:operation>
     <wsdl:operation name="eliminarPersona">
       <soap:operation soapAction="http://tempuri.org/eliminarPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contraseñaCorrecta">
+      <soap:operation soapAction="http://tempuri.org/contraseñaCorrecta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -784,6 +817,15 @@
     </wsdl:operation>
     <wsdl:operation name="eliminarPersona">
       <soap12:operation soapAction="http://tempuri.org/eliminarPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contraseñaCorrecta">
+      <soap12:operation soapAction="http://tempuri.org/contraseñaCorrecta" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

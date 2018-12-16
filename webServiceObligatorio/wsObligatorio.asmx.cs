@@ -60,7 +60,11 @@ namespace webServiceObligatorio
         {
             fach.eliminarPersona(ci);
         }
-      
+        [WebMethod]
+        public Boolean contraseñaCorrecta(String contraseña)
+        {
+            return fach.contraseñaCorrecta(contraseña);
+        }
         [WebMethod]
         public void ingresarPersona(long ci, String nombre, String apellido, String celular, DateTime fechaNacimiento, String direccion, String contraseña, bool habilitado)
         {

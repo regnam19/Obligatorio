@@ -43,6 +43,8 @@ namespace Logica.wsObligatorioCliente {
         
         private System.Threading.SendOrPostCallback eliminarPersonaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback contraseñaCorrectaOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ingresarPersonaOperationCompleted;
         
         private System.Threading.SendOrPostCallback ingresarPacienteOperationCompleted;
@@ -129,6 +131,9 @@ namespace Logica.wsObligatorioCliente {
         
         /// <remarks/>
         public event eliminarPersonaCompletedEventHandler eliminarPersonaCompleted;
+        
+        /// <remarks/>
+        public event contraseñaCorrectaCompletedEventHandler contraseñaCorrectaCompleted;
         
         /// <remarks/>
         public event ingresarPersonaCompletedEventHandler ingresarPersonaCompleted;
@@ -370,6 +375,35 @@ namespace Logica.wsObligatorioCliente {
             if ((this.eliminarPersonaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.eliminarPersonaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/contraseñaCorrecta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool contraseñaCorrecta(string contraseña) {
+            object[] results = this.Invoke("contraseñaCorrecta", new object[] {
+                        contraseña});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void contraseñaCorrectaAsync(string contraseña) {
+            this.contraseñaCorrectaAsync(contraseña, null);
+        }
+        
+        /// <remarks/>
+        public void contraseñaCorrectaAsync(string contraseña, object userState) {
+            if ((this.contraseñaCorrectaOperationCompleted == null)) {
+                this.contraseñaCorrectaOperationCompleted = new System.Threading.SendOrPostCallback(this.OncontraseñaCorrectaOperationCompleted);
+            }
+            this.InvokeAsync("contraseñaCorrecta", new object[] {
+                        contraseña}, this.contraseñaCorrectaOperationCompleted, userState);
+        }
+        
+        private void OncontraseñaCorrectaOperationCompleted(object arg) {
+            if ((this.contraseñaCorrectaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.contraseñaCorrectaCompleted(this, new contraseñaCorrectaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1353,6 +1387,32 @@ namespace Logica.wsObligatorioCliente {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void eliminarPersonaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void contraseñaCorrectaCompletedEventHandler(object sender, contraseñaCorrectaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class contraseñaCorrectaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal contraseñaCorrectaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
